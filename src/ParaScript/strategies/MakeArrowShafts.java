@@ -1,0 +1,47 @@
+package ParaScript.strategies;
+
+import ParaScript.data.Variables;
+import ParaScript.data.variables.Trees;
+import org.parabot.environment.api.utils.Time;
+import org.parabot.environment.scripts.framework.Strategy;
+import org.rev317.min.api.methods.Menu;
+import org.rev317.min.api.methods.Inventory;
+import org.rev317.min.api.methods.Items;
+import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.methods.SceneObjects;
+import org.rev317.min.api.wrappers.SceneObject;
+
+import java.awt.*;
+
+public class MakeArrowShafts implements Strategy {
+
+    @Override
+    public boolean activate() {
+        if (Variables.running
+                && hasLogs()
+                && (Variables.getStatus() == "none" || Variables.getStatus() == "making arrow shafts")
+                && !Players.getMyPlayer().isInCombat()
+                && Players.getMyPlayer().getAnimation() == -1) {
+            Variables.setStatus("making arrow shafts");
+            return true;
+        }
+        Variables.setStatus("none");
+        return false;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println("making arrow shafts");
+        Inventory.getItem(947).interact(Items.Option.USE);
+        Inventory.getItem(1512).interact(Items.Option.USE_WITH);
+
+        Menu.clickButton(8886);
+        Time.sleep(3000);
+        //Wait for the Player to chop the Tree
+        Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
+    }
+
+    private boolean hasLogs(){
+        return Inventory.contains(1512);
+    }
+}
