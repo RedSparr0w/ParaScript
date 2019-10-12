@@ -3,6 +3,7 @@ package ParaScript.ui;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
+import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.wrappers.Player;
 
 import javax.swing.*;
@@ -60,6 +61,7 @@ public class UI extends JFrame {
         lblUsername.setForeground(Color_WhiteSmoke);
         lblUsername.setBounds(20, 20, 73, 20);
         loginPanel.add(lblUsername);
+        username.setText(Game.isLoggedIn() ? Players.getMyPlayer().getName() : "");
         username.setBounds(20, 40, 150, 20);
         loginPanel.add(username);
 
