@@ -1,10 +1,7 @@
 package ParaScript;
 
 import ParaScript.data.Variables;
-import ParaScript.strategies.MakeArrowShafts;
-import ParaScript.strategies.ScriptState;
-import ParaScript.strategies.Thieving;
-import ParaScript.strategies.WoodcutTree;
+import ParaScript.strategies.*;
 import ParaScript.ui.UI;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.Script;
@@ -31,6 +28,7 @@ public class Main extends Script{
         strategies.add(new ScriptState());
         strategies.add(new MakeArrowShafts());
         strategies.add(new WoodcutTree());
+        strategies.add(new HandleLogin());
         provide(strategies);
         return true;
     }

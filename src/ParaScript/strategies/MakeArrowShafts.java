@@ -42,6 +42,6 @@ public class MakeArrowShafts implements Strategy {
 
     private boolean hasRequiredItems(){
         // Make sure we have a knife and logs
-        return Inventory.contains(947, 1512);
+        return Inventory.getItem(947) != null && Inventory.getItem(1512) != null;
     }
 }
