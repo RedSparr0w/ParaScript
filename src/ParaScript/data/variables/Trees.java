@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Trees {
-    NORMAL("normal", new int[]{1276, 1278}),
-    OAK("oak", new int[]{1281}),
-    WILLOW ("willow", new int[]{5551, 1308, 5553, 5552}),
-    MAPLE("maple", new int[]{1307});
+    NORMAL("Normal", new int[]{1276, 1278}),
+    OAK("Oak", new int[]{1281}),
+    WILLOW ("Willow", new int[]{5551, 1308, 5553, 5552}),
+    MAPLE("Maple", new int[]{1307});
 
     private String name;
     private int[] trees;
