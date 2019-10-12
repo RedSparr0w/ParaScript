@@ -20,7 +20,7 @@ public class UI extends JFrame {
     private JCheckBox birdsNest = new JCheckBox();
 
     public UI() {
-        setTitle("AIO Woodcutter");
+        setTitle("ParaScript");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 400, 280);
