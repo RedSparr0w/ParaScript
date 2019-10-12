@@ -18,7 +18,7 @@ public class MakeArrowShafts implements Strategy {
     @Override
     public boolean activate() {
         if (Variables.running
-                && hasLogs()
+                && hasRequiredItems()
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "making arrow shafts")
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1) {
@@ -34,14 +34,14 @@ public class MakeArrowShafts implements Strategy {
         System.out.println("making arrow shafts");
         Inventory.getItem(947).interact(Items.Option.USE);
         Inventory.getItem(1512).interact(Items.Option.USE_WITH);
-
         Menu.clickButton(8886);
         Time.sleep(3000);
         //Wait for the Player to chop the Tree
         Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
     }
 
-    private boolean hasLogs(){
-        return Inventory.contains(1512);
+    private boolean hasRequiredItems(){
+        // Make sure we have a knife and logs
+        return Inventory.contains(947, 1512);
     }
 }
