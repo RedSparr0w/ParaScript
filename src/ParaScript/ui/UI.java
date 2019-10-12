@@ -33,66 +33,66 @@ public class UI extends JFrame {
         tabbedPane.setBounds(0, 0, 395, 220);
         contentPane.add(tabbedPane);
 
-        JPanel fletchPanel = new JPanel();
-        tabbedPane.addTab("Woodcutting", null, fletchPanel, null);
-        fletchPanel.setLayout(null);
+        JPanel woodcuttingPanel = new JPanel();
+        tabbedPane.addTab("Woodcutting", null, woodcuttingPanel, null);
+        woodcuttingPanel.setLayout(null);
 
         JLabel lblUsername = new JLabel("Username:");
         lblUsername.setBounds(20, 20, 73, 20);
-        fletchPanel.add(lblUsername);
+        woodcuttingPanel.add(lblUsername);
         username.setBounds(20, 40, 150, 20);
-        fletchPanel.add(username);
+        woodcuttingPanel.add(username);
 
         JLabel lblPassword = new JLabel("Password:");
         lblPassword.setBounds(20, 60, 73, 20);
-        fletchPanel.add(lblPassword);
+        woodcuttingPanel.add(lblPassword);
         password.setBounds(20, 80, 150, 20);
-        fletchPanel.add(password);
+        woodcuttingPanel.add(password);
 
         JLabel lblLocation = new JLabel("Location");
         lblLocation.setBounds(200, 20, 73, 20);
-        fletchPanel.add(lblLocation);
+        woodcuttingPanel.add(lblLocation);
 
         /*
         location.setModel(
                 new DefaultComboBoxModel(Methods.locationToStringArray()));
         location.setBounds(200, 40, 150, 20);
-        fletchPanel.add(location);
+        woodcuttingPanel.add(location);
         */
 
         JLabel lblTree = new JLabel("Tree");
         lblTree.setBounds(200, 60, 73, 20);
-        fletchPanel.add(lblTree);
+        woodcuttingPanel.add(lblTree);
 
         treeSelect.setModel(new DefaultComboBoxModel(Trees.toStringArray()));
         treeSelect.setBounds(200, 80, 150, 20);
-        fletchPanel.add(treeSelect);
+        woodcuttingPanel.add(treeSelect);
 
         JLabel lblMethod = new JLabel("Method");
         lblMethod.setBounds(20, 120, 73, 20);
-        fletchPanel.add(lblMethod);
+        woodcuttingPanel.add(lblMethod);
 
         /*
         woodcutOptionButtonGroup.add(bank);
         bank.setSelected(true);
         bank.setBounds(20, 140, 80, 20);
-        fletchPanel.add(bank);
+        woodcuttingPanel.add(bank);
 
         woodcutOptionButtonGroup.add(drop);
         drop.setBounds(20, 160, 80, 20);
-        fletchPanel.add(drop);
+        woodcuttingPanel.add(drop);
 
         JLabel lblBirdsNest = new JLabel("Bird nests");
         lblBirdsNest.setBounds(200, 120, 150, 20);
-        fletchPanel.add(lblBirdsNest);
+        woodcuttingPanel.add(lblBirdsNest);
 
         birdsNest.setBounds(195, 140, 20, 20);
         birdsNest.setSelected(true);
-        fletchPanel.add(birdsNest);
+        woodcuttingPanel.add(birdsNest);
 
         JLabel lblBirdsNestCheckBox = new JLabel("Pickup");
         lblBirdsNestCheckBox.setBounds(215, 140, 150, 20);
-        fletchPanel.add(lblBirdsNestCheckBox);
+        woodcuttingPanel.add(lblBirdsNestCheckBox);
 
         location.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
