@@ -19,5 +19,5 @@ public class Variables {
         currentStatus = i;
     }
 
-    public final static Zone LUMBRIDGE_NORMAL_TREE_ZONE = new Zone(new Tile(3186, 3249), new Tile(3207, 3234));
+    public final static Zone LUMBRIDGE_NORMAL_TREE_ZONE = new Zone(new Tile(3140, 3260), new Tile(3206, 3206));
 }
