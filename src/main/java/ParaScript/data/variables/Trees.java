@@ -30,6 +30,8 @@ public enum Trees {
         return(simpleArray);
     }
 
+    public String getName() { return this.name; }
+
     public int[] getIDs() {
         return this.ids;
     }

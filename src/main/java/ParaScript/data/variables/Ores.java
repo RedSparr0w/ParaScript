@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Ores {
+    COPPER_TIN("Copper & Tin", new int[]{2090, 2094}),
     COPPER("Copper", new int[]{2090}),
     TIN("Tin", new int[]{2094}),
-    COPPER_TIN("Copper & Tin", new int[]{2090, 2094}),
     IRON ("Iron", new int[]{2092}),
     COAL("Coal", new int[]{});
 
@@ -30,6 +30,8 @@ public enum Ores {
         locationsArray.toArray( simpleArray );
         return(simpleArray);
     }
+
+    public String getName() { return this.name; }
 
     public int[] getIDs() {
         return this.ids;

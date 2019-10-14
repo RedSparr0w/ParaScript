@@ -1,5 +1,6 @@
 package ParaScript.data;
 
+import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.variables.Zone;
 import org.rev317.min.api.wrappers.Tile;
@@ -14,8 +15,16 @@ public class Variables {
     // Login Panel
     private static String username = "";
     private static String password = "";
+
     // Settings Panel
     public static String skill_to_train = "Woodcutting";
+
+    // Woodcutting
+    public static int[] woodcutting_tree_selected = Trees.NORMAL.getIDs();
+
+    // Mining
+    public static int[] mining_ore_selected = Ores.COPPER_TIN.getIDs();
+
     // Used for slave accounts
     public static String slaveMaster = "";
 

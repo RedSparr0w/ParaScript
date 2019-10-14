@@ -1,5 +1,6 @@
 package ParaScript.ui;
 
+import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
@@ -21,12 +22,15 @@ public class UI extends JFrame {
     private JCheckBox autoLogin = new JCheckBox();
     // Settings
     private JComboBox skillSelect = new JComboBox();
-    private JRadioButton bank = new JRadioButton("Bank");
-    private JRadioButton drop = new JRadioButton("Drop");
     // Woodcutting
     private JComboBox treeSelect = new JComboBox();
     private JComboBox location = new JComboBox();
     private JCheckBox birdsNest = new JCheckBox();
+    private JRadioButton woodcutting_bank = new JRadioButton("Bank");
+    private JRadioButton woodcutting_drop = new JRadioButton("Drop");
+    private JRadioButton woodcutting_fletch = new JRadioButton("Fletch");
+    // Mining
+    private JComboBox oreSelect = new JComboBox();
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -107,12 +111,12 @@ public class UI extends JFrame {
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
-        settingsPanel.add(skillSelect);
         skillSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
                 Variables.skill_to_train = skillSelect.getSelectedItem().toString();
             }
         });
+        settingsPanel.add(skillSelect);
 
         /*
          * Woodcutting Panel
@@ -131,7 +135,34 @@ public class UI extends JFrame {
         woodcuttingPanel.add(lblTree);
         treeSelect.setModel(new DefaultComboBoxModel(Trees.toStringArray()));
         treeSelect.setBounds(20, 40, 150, 20);
+        treeSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Trees tree : Trees.values()) {
+                    if (tree.getName().equalsIgnoreCase(treeSelect.getSelectedItem().toString())) {
+                        Variables.mining_ore_selected = tree.getIDs();
+                    }
+                }
+            }
+        });
         woodcuttingPanel.add(treeSelect);
+
+        // What should we do with our logs
+        JLabel lblMethod = new JLabel("Method");
+        lblMethod.setBounds(20, 120, 73, 20);
+        woodcuttingPanel.add(lblMethod);
+
+        woodcutOptionButtonGroup.add(woodcutting_bank);
+        woodcutting_bank.setSelected(true);
+        woodcutting_bank.setBounds(20, 140, 80, 20);
+        woodcuttingPanel.add(woodcutting_bank);
+
+        woodcutOptionButtonGroup.add(woodcutting_drop);
+        woodcutting_drop.setBounds(20, 160, 80, 20);
+        woodcuttingPanel.add(woodcutting_drop);
+
+        woodcutOptionButtonGroup.add(woodcutting_fletch);
+        woodcutting_fletch.setBounds(20, 180, 80, 20);
+        woodcuttingPanel.add(woodcutting_fletch);
 
         /*
         JLabel lblLocation = new JLabel("Location");
@@ -142,18 +173,6 @@ public class UI extends JFrame {
         location.setBounds(200, 40, 150, 20);
         woodcuttingPanel.add(location);
 
-        JLabel lblMethod = new JLabel("Method");
-        lblMethod.setBounds(20, 120, 73, 20);
-        woodcuttingPanel.add(lblMethod);
-
-        woodcutOptionButtonGroup.add(bank);
-        bank.setSelected(true);
-        bank.setBounds(20, 140, 80, 20);
-        woodcuttingPanel.add(bank);
-
-        woodcutOptionButtonGroup.add(drop);
-        drop.setBounds(20, 160, 80, 20);
-        woodcuttingPanel.add(drop);
 
         JLabel lblBirdsNest = new JLabel("Bird nests");
         lblBirdsNest.setForeground(WhiteSmoke);
@@ -179,6 +198,34 @@ public class UI extends JFrame {
             }
         });
         */
+
+        /*
+         * Mining Panel
+         */
+
+        JPanel miningPanel = new JPanel();
+        miningPanel.setForeground(Color_WhiteSmoke);
+        miningPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Mining", null, miningPanel, null);
+        miningPanel.setLayout(null);
+
+        // Select which ore to mine
+        JLabel lblOre = new JLabel("Ore");
+        lblOre.setForeground(Color_WhiteSmoke);
+        lblOre.setBounds(20, 20, 73, 20);
+        miningPanel.add(lblOre);
+        oreSelect.setModel(new DefaultComboBoxModel(Ores.toStringArray()));
+        oreSelect.setBounds(20, 40, 150, 20);
+        oreSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Ores ore : Ores.values()) {
+                    if (ore.getName().equalsIgnoreCase(oreSelect.getSelectedItem().toString())) {
+                        Variables.mining_ore_selected = ore.getIDs();
+                    }
+                }
+            }
+        });
+        miningPanel.add(oreSelect);
 
         /*
          * Slave Panel
