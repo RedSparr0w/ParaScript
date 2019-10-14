@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3ab8e8a0-ccfd-4b0b-9547-98173085dc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/MakeArrowShafts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParaScript/strategies/MakeArrowShafts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParaScript/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParaScript/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParaScript/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/Mine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParaScript/strategies/Mine.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +24,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1RwJc2HEUFTeubPY6u2X9b5qHk3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -35,11 +37,12 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ParaScript.strategies" />
+      <recent name="ParaScript.data.variables" />
       <recent name="ParaScript.ui" />
       <recent name="ParaScript.data" />
       <recent name="ParaScript" />
@@ -82,7 +85,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

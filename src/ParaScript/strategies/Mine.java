@@ -43,7 +43,12 @@ public class Mine implements Strategy {
     }
 
     private SceneObject ore(){
-        for(SceneObject ore : SceneObjects.getNearest(Ores.COPPER_TIN.getIDs())){
+        int[] ore_to_mine = Ores.COPPER_TIN.getIDs();
+        if (Inventory.getCount(Ores.COPPER.getIDs()) >= 14)
+            ore_to_mine = Ores.TIN.getIDs();
+        if (Inventory.getCount(Ores.TIN.getIDs()) >= 14)
+            ore_to_mine = Ores.COPPER.getIDs();
+        for(SceneObject ore : SceneObjects.getNearest(ore_to_mine)){
             if(Variables.VARROCK_EAST_MINE_ZONE.inTheZoneObject(ore)) {
                 return ore;
             }
