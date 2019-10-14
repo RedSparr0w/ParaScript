@@ -35,7 +35,7 @@ public class Bank implements Strategy {
             Time.sleep(3000);
             if (Game.getOpenInterfaceId() == 5292) {
                 //Pick Axes
-                org.rev317.min.api.methods.Bank.depositAllExcept(1266, 1352, 1354, 1356, 1358, 1360, 6740);
+                org.rev317.min.api.methods.Bank.depositAllExcept(1266, 1268, 1270, 1272, 1274, 1276);
                 //Axes
                 //org.rev317.min.api.methods.Bank.depositAllExcept(1350, 1352, 1354, 1356, 1358, 1360, 6740);
                 Variables.setStatus("none");
