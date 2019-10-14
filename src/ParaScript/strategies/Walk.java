@@ -25,7 +25,7 @@ public class Walk implements Strategy {
         //Variables.setBotStatus("walking to " + Variables.getTree().getName());
         while (Variables.pathToWalk != null && !Variables.pathToWalk.hasReached()) {
             Variables.pathToWalk.traverse();
-            Time.sleep(1000, 2000);
+            Time.sleep(2000, 3000);
         }
     }
 }

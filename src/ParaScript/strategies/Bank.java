@@ -23,7 +23,7 @@ public class Bank implements Strategy {
         Variables.setStatus("banking items");
         while (Variables.pathToWalk != null && !Variables.pathToWalk.hasReached()) {
             Variables.pathToWalk.traverse();
-            Time.sleep(1000, 2000);
+            Time.sleep(2000, 3000);
         }
         depositItems();
     }

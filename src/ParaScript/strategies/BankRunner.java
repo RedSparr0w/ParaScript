@@ -9,7 +9,7 @@ import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.SceneObjects;
 import org.rev317.min.api.wrappers.SceneObject;
 
-public class Mine implements Strategy {
+public class BankRunner implements Strategy {
     private SceneObject ore;
 
     @Override

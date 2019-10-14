@@ -26,8 +26,15 @@ public class Main extends Script{
         }
 
         strategies.add(new ScriptState());
-        strategies.add(new MakeArrowShafts());
-        strategies.add(new WoodcutTree());
+        if(Variables.skill_to_train.equalsIgnoreCase("Woodcutting")) {
+            strategies.add(new MakeArrowShafts());
+            strategies.add(new WoodcutTree());
+        }
+        if(Variables.skill_to_train.equalsIgnoreCase("Mining")) {
+            strategies.add(new Mine());
+            strategies.add(new Bank());
+            strategies.add(new Walk());
+        }
         strategies.add(new HandleLogin());
         provide(strategies);
         return true;

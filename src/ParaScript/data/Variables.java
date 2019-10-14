@@ -13,6 +13,7 @@ public class Variables {
     private static String currentStatus = "none";
     private static String username = "";
     private static String password = "";
+    public static String skill_to_train = "Woodcutting";
     public static TilePath pathToWalk;
 
     public static String getStatus() {

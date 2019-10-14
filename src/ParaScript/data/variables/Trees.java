@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Trees {
-    NORMAL("Normal", new int[]{1276, 1278}),
+    NORMAL("Normal", new int[]{1276, 1278, 1279}),
     OAK("Oak", new int[]{1281}),
     WILLOW ("Willow", new int[]{5551, 1308, 5553, 5552}),
     MAPLE("Maple", new int[]{1307});

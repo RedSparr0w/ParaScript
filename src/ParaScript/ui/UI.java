@@ -15,15 +15,18 @@ import java.awt.event.ActionListener;
 public class UI extends JFrame {
     private final ButtonGroup woodcutOptionButtonGroup = new ButtonGroup();
     private JPanel contentPane;
-    private JComboBox location = new JComboBox();
-    private JComboBox treeSelect = new JComboBox();
-    private JRadioButton bank = new JRadioButton("Bank");
-    private JRadioButton drop = new JRadioButton("Drop");
-    private JCheckBox birdsNest = new JCheckBox();
     // Login tab
     private JTextField username = new JTextField();
     private JPasswordField password = new JPasswordField();
     private JCheckBox autoLogin = new JCheckBox();
+    // Settings
+    private JComboBox skillSelect = new JComboBox();
+    private JRadioButton bank = new JRadioButton("Bank");
+    private JRadioButton drop = new JRadioButton("Drop");
+    // Woodcutting
+    private JComboBox treeSelect = new JComboBox();
+    private JComboBox location = new JComboBox();
+    private JCheckBox birdsNest = new JCheckBox();
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -84,21 +87,40 @@ public class UI extends JFrame {
         autoLogin.setSelected(true);
         loginPanel.add(autoLogin);
 
+        /*
+         * Settings
+         */
+        JPanel settingsPanel = new JPanel();
+        settingsPanel.setForeground(Color_WhiteSmoke);
+        settingsPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Settings", null, settingsPanel, null);
+        settingsPanel.setLayout(null);
+
+        // Which skill are we training
+        JLabel lblSkillToTrain = new JLabel("Skill to train");
+        lblSkillToTrain.setForeground(Color_WhiteSmoke);
+        lblSkillToTrain.setBounds(20, 20, 73, 20);
+        settingsPanel.add(lblSkillToTrain);
+        skillSelect.setModel(new DefaultComboBoxModel(new String[]{
+                "Woodcutting",
+                "Mining",
+        }));
+        skillSelect.setBounds(20, 40, 150, 20);
+        settingsPanel.add(skillSelect);
+        skillSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.skill_to_train = skillSelect.getSelectedItem().toString();
+            }
+        });
+        /*
+         * Woodcutting Stuff
+         */
+
         JPanel woodcuttingPanel = new JPanel();
         woodcuttingPanel.setForeground(Color_WhiteSmoke);
         woodcuttingPanel.setBackground(Color_WetAsphalt);
         tabbedPane.addTab("Woodcutting", null, woodcuttingPanel, null);
         woodcuttingPanel.setLayout(null);
-
-        /*
-        JLabel lblLocation = new JLabel("Location");
-        lblLocation.setBounds(200, 20, 73, 20);
-        woodcuttingPanel.add(lblLocation);
-
-        location.setModel(new DefaultComboBoxModel(Methods.locationToStringArray()));
-        location.setBounds(200, 40, 150, 20);
-        woodcuttingPanel.add(location);
-        */
 
         // Select which tree to cut
         JLabel lblTree = new JLabel("Tree");
@@ -110,6 +132,14 @@ public class UI extends JFrame {
         woodcuttingPanel.add(treeSelect);
 
         /*
+        JLabel lblLocation = new JLabel("Location");
+        lblLocation.setBounds(200, 20, 73, 20);
+        woodcuttingPanel.add(lblLocation);
+
+        location.setModel(new DefaultComboBoxModel(Methods.locationToStringArray()));
+        location.setBounds(200, 40, 150, 20);
+        woodcuttingPanel.add(location);
+
         JLabel lblMethod = new JLabel("Method");
         lblMethod.setBounds(20, 120, 73, 20);
         woodcuttingPanel.add(lblMethod);
