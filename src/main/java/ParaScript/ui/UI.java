@@ -186,7 +186,7 @@ public class UI extends JFrame {
         JPanel slavePanel = new JPanel();
         slavePanel.setForeground(Color_WhiteSmoke);
         slavePanel.setBackground(Color_WetAsphalt);
-        tabbedPane.addTab("Settings", null, slavePanel, null);
+        tabbedPane.addTab("Bank Runner", null, slavePanel, null);
         slavePanel.setLayout(null);
 
         // Which skill are we training

@@ -60,7 +60,7 @@ public class Variables {
         new Tile(3290, 3397),
         new Tile(3290, 3386),
         new Tile(3288, 3375),
-        new Tile(3287, 3371),
+        new Tile(3287, 3370),
     };
 
 

@@ -2,24 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ab8e8a0-ccfd-4b0b-9547-98173085dc38" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParaScript.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ParaScript.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/data/variables/Ores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Ores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/data/variables/Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/data/variables/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Zone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/HandleLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/HandleLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/MakeArrowShafts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/MakeArrowShafts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/Mine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Mine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/ScriptState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/ScriptState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/Thieving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Thieving.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/Walk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Walk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/strategies/WoodcutTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/WoodcutTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/Variables.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Ores.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Trees.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Zone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Bank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/HandleLogin$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/HandleLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/MakeArrowShafts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Mine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/ScriptState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Thieving.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Walk.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/WoodcutTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +42,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1RwJc2HEUFTeubPY6u2X9b5qHk3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -58,10 +70,8 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="ParaScript" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src\main" />
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src" />
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\main\java" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ParaScript.strategies" />
@@ -70,8 +80,10 @@
       <recent name="ParaScript.data" />
       <recent name="ParaScript" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src\main" />
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src" />
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
