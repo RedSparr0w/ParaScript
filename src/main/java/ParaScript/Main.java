@@ -19,11 +19,10 @@ import java.util.ArrayList;
 public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
+    private UI ui = new UI();
 
     @Override
     public boolean onExecute() {
-
-        UI ui = new UI();
         ui.setVisible(true);
         while (!Variables.running) {
             Time.sleep(300);
@@ -50,6 +49,7 @@ public class Main extends Script implements MessageListener, Paintable {
 
     @Override
     public void onFinish() {
+        ui.dispose();
         System.out.println("Script Stopped");
     }
 

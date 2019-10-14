@@ -3,28 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3ab8e8a0-ccfd-4b0b-9547-98173085dc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ParaScript.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ParaScript.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/Variables.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Ores.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Trees.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/data/variables/Zone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Bank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/HandleLogin$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/HandleLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/MakeArrowShafts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Mine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/ScriptState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Thieving.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/Walk.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/strategies/WoodcutTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaScript/ui/UI.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
