@@ -20,6 +20,7 @@ public class Mine implements Strategy {
         if (Variables.running
                 && ore != null
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "mining")
+                && Variables.VARROCK_EAST_MINE_ZONE.inTheZone()
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
                 && !Inventory.isFull()) {
@@ -42,8 +43,8 @@ public class Mine implements Strategy {
     }
 
     private SceneObject ore(){
-        for(SceneObject tree : SceneObjects.getNearest(Ores.COPPER_TIN.getIDs())){
-            if(tree != null){
+        for(SceneObject ore : SceneObjects.getNearest(Ores.COPPER_TIN.getIDs())){
+            if(Variables.VARROCK_EAST_MINE_ZONE.inTheZoneObject(ore)) {
                 return ore;
             }
         }
