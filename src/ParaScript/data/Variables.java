@@ -9,11 +9,15 @@ import java.util.List;
 
 public class Variables {
     public static boolean running = false;
-
     private static String currentStatus = "none";
+
+    // Login Panel
     private static String username = "";
     private static String password = "";
+    // Settings Panel
     public static String skill_to_train = "Woodcutting";
+
+    // Used to walk places
     public static TilePath pathToWalk;
 
     public static String getStatus() {
