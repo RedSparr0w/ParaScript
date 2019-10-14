@@ -139,7 +139,7 @@ public class UI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 for (Trees tree : Trees.values()) {
                     if (tree.getName().equalsIgnoreCase(treeSelect.getSelectedItem().toString())) {
-                        Variables.mining_ore_selected = tree.getIDs();
+                        Variables.woodcutting_tree_selected = tree;
                     }
                 }
             }
@@ -220,7 +220,7 @@ public class UI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 for (Ores ore : Ores.values()) {
                     if (ore.getName().equalsIgnoreCase(oreSelect.getSelectedItem().toString())) {
-                        Variables.mining_ore_selected = ore.getIDs();
+                        Variables.mining_ore_selected = ore;
                     }
                 }
             }

@@ -41,7 +41,7 @@ public class Mine implements Strategy {
     }
 
     private SceneObject ore(){
-        int[] ore_to_mine = Variables.mining_ore_selected;
+        int[] ore_to_mine = Variables.mining_ore_selected.getIDs();
         if (ore_to_mine == Ores.COPPER_TIN.getIDs()) {
             if (Inventory.getCount(437) >= 14)
                 ore_to_mine = Ores.TIN.getIDs();

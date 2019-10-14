@@ -69,18 +69,22 @@ public class Main extends Script implements MessageListener, Paintable {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", 1, 14));
-        g.drawString("AIOWoodcutter", 360, 247);
+        g.drawString("ParaScript", 360, 247);
         g.setFont(new Font("Arial", 1, 11));
         g.drawString("Status: " + Variables.getStatus(), 360, 270);
-        g.drawString("Logs(P/H): " + 10 + "(" + 120 + ")", 360, 290);
-        g.drawString("EXP(P/H): " + 1000 + "(" + 12685 + ")", 360, 310);
-        g.drawString("Runtime: " + "02:22:20", 360, 330);
+        g.drawString("Items(P/H): " + Methods.formatNumber(Variables.itemsGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour(Variables.itemsGained)) + ")", 360, 290);
+        g.drawString("EXP(P/H): " + Methods.formatNumber((int) Variables.expGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour((int) Variables.expGained)) + ")", 360, 310);
+        g.drawString("Runtime: " + Variables.SCRIPT_TIMER.toString(), 360, 330);
 
     }
 
     public void messageReceived(MessageEvent message) {
         switch (message.getType()) {
             case 0:
+                if (message.getMessage().startsWith("You manage to ")) {
+                    Variables.addItemGained(1);
+                    Variables.addExpGained();
+                }
                 if (message.getMessage().contains("Congratulations, you advanced a woodcutting level.")) {
                     // add in level up to paint
                 }

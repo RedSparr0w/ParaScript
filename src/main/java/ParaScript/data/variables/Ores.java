@@ -5,18 +5,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Ores {
-    COPPER_TIN("Copper & Tin", new int[]{2090, 2094}),
-    COPPER("Copper", new int[]{2090}),
-    TIN("Tin", new int[]{2094}),
-    IRON ("Iron", new int[]{2092}),
-    COAL("Coal", new int[]{});
+    COPPER_TIN("Copper & Tin", new int[]{2090, 2094}, 17.5),
+    COPPER("Copper", new int[]{2090}, 17.5),
+    TIN("Tin", new int[]{2094}, 17.5),
+    IRON ("Iron", new int[]{2092}, 35),
+    COAL("Coal", new int[]{}, 50);
 
     private String name;
     private int[] ids;
+    private double xp;
 
-    Ores(String name, int[] ids) {
+    Ores(String name, int[] ids, double xp) {
         this.name = name;
         this.ids = ids;
+        this.xp = xp;
     }
 
     public static String[] toStringArray() {
@@ -33,7 +35,7 @@ public enum Ores {
 
     public String getName() { return this.name; }
 
-    public int[] getIDs() {
-        return this.ids;
-    }
+    public int[] getIDs() { return this.ids; }
+
+    public double getXP() { return this.xp; }
 }
