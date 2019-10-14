@@ -35,7 +35,7 @@ public class Variables {
     // Mining Varrock
 
     public final static Zone VARROCK_EAST_BANK_ZONE = new Zone(new Tile(3250, 3424), new Tile(3257, 3416));
-    public final static Zone VARROCK_EAST_MINE_ZONE = new Zone(new Tile(3278, 3372), new Tile(3295, 3358));
+    public final static Zone VARROCK_EAST_MINE_ZONE = new Zone(new Tile(3276, 3375), new Tile(3298, 3354));
 
     public final static Tile[] VARROCK_EAST_MINE_PATH_TO_BANK = new Tile[]{
         new Tile(3289, 3373),
