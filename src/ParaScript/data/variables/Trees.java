@@ -11,18 +11,18 @@ public enum Trees {
     MAPLE("Maple", new int[]{1307});
 
     private String name;
-    private int[] trees;
+    private int[] ids;
 
-    Trees(String name, int[] trees) {
+    Trees(String name, int[] ids) {
         this.name = name;
-        this.trees = trees;
+        this.ids = ids;
     }
 
     public static String[] toStringArray() {
         List<Trees> enumList = Arrays.asList(Trees.values());
         List<String> locationsArray = new ArrayList<>();
-        for (Trees tree : enumList) {
-            locationsArray.add(tree.name);
+        for (Trees obj : enumList) {
+            locationsArray.add(obj.name);
         }
 
         String[] simpleArray = new String[ locationsArray.size() ];
@@ -31,6 +31,6 @@ public enum Trees {
     }
 
     public int[] getIDs() {
-        return this.trees;
+        return this.ids;
     }
 }
