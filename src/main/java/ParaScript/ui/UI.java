@@ -35,7 +35,7 @@ public class UI extends JFrame {
     private Color Color_Alizarin = new Color(231, 76, 60);
 
     public UI() {
-        setTitle("ParaScript");
+        setTitle("src/ParaScript");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 400, 300);
@@ -51,7 +51,7 @@ public class UI extends JFrame {
         contentPane.add(tabbedPane);
 
         /*
-         * Login Stuff
+         * Login Panel
          */
         JPanel loginPanel = new JPanel();
         loginPanel.setForeground(Color_WhiteSmoke);
@@ -88,7 +88,7 @@ public class UI extends JFrame {
         loginPanel.add(autoLogin);
 
         /*
-         * Settings
+         * Settings Panel
          */
         JPanel settingsPanel = new JPanel();
         settingsPanel.setForeground(Color_WhiteSmoke);
@@ -104,6 +104,7 @@ public class UI extends JFrame {
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
                 "Woodcutting",
                 "Mining",
+                "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
         settingsPanel.add(skillSelect);
@@ -112,8 +113,9 @@ public class UI extends JFrame {
                 Variables.skill_to_train = skillSelect.getSelectedItem().toString();
             }
         });
+
         /*
-         * Woodcutting Stuff
+         * Woodcutting Panel
          */
 
         JPanel woodcuttingPanel = new JPanel();
@@ -177,6 +179,29 @@ public class UI extends JFrame {
             }
         });
         */
+
+        /*
+         * Slave Panel
+         */
+        JPanel slavePanel = new JPanel();
+        slavePanel.setForeground(Color_WhiteSmoke);
+        slavePanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Settings", null, slavePanel, null);
+        slavePanel.setLayout(null);
+
+        // Which skill are we training
+        JLabel lblSlaveMaster = new JLabel("Slave Master");
+        lblSlaveMaster.setForeground(Color_WhiteSmoke);
+        lblSlaveMaster.setBounds(20, 20, 73, 20);
+        slavePanel.add(lblSlaveMaster);
+        JTextField slaveMaster = new JTextField();
+        slaveMaster.setBounds(20, 40, 150, 20);
+        slavePanel.add(slaveMaster);
+        slaveMaster.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.slaveMaster = slaveMaster.getText();
+            }
+        });
 
         JButton start = new JButton("START");
         start.addActionListener(new ActionListener() {

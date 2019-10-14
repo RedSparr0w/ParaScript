@@ -16,6 +16,8 @@ public class Variables {
     private static String password = "";
     // Settings Panel
     public static String skill_to_train = "Woodcutting";
+    // Used for slave accounts
+    public static String slaveMaster = "";
 
     // Used to walk places
     public static TilePath pathToWalk;
