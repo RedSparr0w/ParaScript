@@ -11,7 +11,8 @@ public class Walk implements Strategy {
 
     @Override
     public boolean activate() {
-        return Game.isLoggedIn()
+        return Variables.running
+                && Game.isLoggedIn()
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "walking to mine")
                 && !Inventory.isFull()
                 && Variables.VARROCK_EAST_BANK_ZONE.inTheZone();

@@ -11,7 +11,8 @@ public class Bank implements Strategy {
 
     @Override
     public boolean activate() {
-        return Game.isLoggedIn()
+        return Variables.running
+                && Game.isLoggedIn()
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "banking items")
                 && Inventory.isFull();
     }
