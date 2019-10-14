@@ -22,11 +22,13 @@ public class Bank implements Strategy {
         Variables.pathToWalk = new TilePath(Variables.VARROCK_EAST_MINE_PATH_TO_BANK);
         Variables.setStatus("banking items");
         while (Variables.pathToWalk != null && !Variables.pathToWalk.hasReached()) {
+            if (!Game.isLoggedIn()) new HandleLogin().execute();
             Variables.pathToWalk.traverse();
             Time.sleep(2000, 3000);
         }
         depositItems();
     }
+
     public void depositItems() {
         Npc banker[] = Npcs.getNearest(494);
 
