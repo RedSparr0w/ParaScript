@@ -92,10 +92,10 @@ public class Variables {
     public static void addExpGained(){
         double xp_to_add = 0;
         switch(skill_to_train){
-            case "woodcutting":
+            case "Woodcutting":
                 xp_to_add = woodcutting_tree_selected.getXP();
                 break;
-            case "mining":
+            case "Mining":
                 xp_to_add = mining_ore_selected.getXP();
                 break;
         }
