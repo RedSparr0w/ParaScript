@@ -5,6 +5,7 @@ import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
+import org.rev317.min.api.methods.Items;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.SceneObjects;
 import org.rev317.min.api.wrappers.SceneObject;
@@ -32,6 +33,9 @@ public class Mine implements Strategy {
     @Override
     public void execute() {
         try {
+            if (Variables.shouldDropItems()) {
+                if (Inventory.getCount(441) >= 1) Inventory.getItem(441).interact(Items.Option.DROP);
+            }
             ore.interact(SceneObjects.Option.MINE);
             Time.sleep(1000);
             Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
@@ -41,11 +45,13 @@ public class Mine implements Strategy {
     }
 
     private SceneObject ore(){
-        int[] ore_to_mine = Ores.COPPER_TIN.getIDs();
-        if (Inventory.getCount(437) >= 14)
-            ore_to_mine = Ores.TIN.getIDs();
-        if (Inventory.getCount(439) >= 14)
-            ore_to_mine = Ores.COPPER.getIDs();
+        int[] ore_to_mine = Variables.mining_ore_selected.getIDs();
+        if (ore_to_mine == Ores.COPPER_TIN.getIDs()) {
+            if (Inventory.getCount(437) >= 14)
+                ore_to_mine = Ores.TIN.getIDs();
+            if (Inventory.getCount(439) >= 14)
+                ore_to_mine = Ores.COPPER.getIDs();
+        }
         for(SceneObject ore : SceneObjects.getNearest(ore_to_mine)){
             if(Variables.VARROCK_EAST_MINE_ZONE.inTheZoneObject(ore)) {
                 return ore;

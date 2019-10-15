@@ -1,9 +1,11 @@
 package ParaScript.ui;
 
+import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Player;
 
 import javax.swing.*;
@@ -15,18 +17,25 @@ import java.awt.event.ActionListener;
 public class UI extends JFrame {
     private final ButtonGroup woodcutOptionButtonGroup = new ButtonGroup();
     private JPanel contentPane;
+
     // Login tab
     private JTextField username = new JTextField();
     private JPasswordField password = new JPasswordField();
     private JCheckBox autoLogin = new JCheckBox();
+
     // Settings
     private JComboBox skillSelect = new JComboBox();
-    private JRadioButton bank = new JRadioButton("Bank");
-    private JRadioButton drop = new JRadioButton("Drop");
+
     // Woodcutting
     private JComboBox treeSelect = new JComboBox();
+    private JComboBox woodcuttingMethod = new JComboBox();
     private JComboBox location = new JComboBox();
     private JCheckBox birdsNest = new JCheckBox();
+
+    // Mining
+    private JComboBox oreSelect = new JComboBox();
+    private JComboBox miningMethod = new JComboBox();
+
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -35,7 +44,7 @@ public class UI extends JFrame {
     private Color Color_Alizarin = new Color(231, 76, 60);
 
     public UI() {
-        setTitle("ParaScript");
+        setTitle("src/ParaScript");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 400, 300);
@@ -51,7 +60,7 @@ public class UI extends JFrame {
         contentPane.add(tabbedPane);
 
         /*
-         * Login Stuff
+         * Login Panel
          */
         JPanel loginPanel = new JPanel();
         loginPanel.setForeground(Color_WhiteSmoke);
@@ -88,7 +97,7 @@ public class UI extends JFrame {
         loginPanel.add(autoLogin);
 
         /*
-         * Settings
+         * Settings Panel
          */
         JPanel settingsPanel = new JPanel();
         settingsPanel.setForeground(Color_WhiteSmoke);
@@ -102,18 +111,26 @@ public class UI extends JFrame {
         lblSkillToTrain.setBounds(20, 20, 73, 20);
         settingsPanel.add(lblSkillToTrain);
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
-                "Woodcutting",
-                "Mining",
+                Skill.WOODCUTTING.getName(),
+                Skill.MINING.getName(),
+                "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
-        settingsPanel.add(skillSelect);
         skillSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                Variables.skill_to_train = skillSelect.getSelectedItem().toString();
+                for (Skill skill : Skill.values()) {
+                    if (skill.getName().equalsIgnoreCase(skillSelect.getSelectedItem().toString())) {
+                        Variables.skill_to_train = skill;
+                        return;
+                    }
+                    Variables.skill_to_train = null;
+                }
             }
         });
+        settingsPanel.add(skillSelect);
+
         /*
-         * Woodcutting Stuff
+         * Woodcutting Panel
          */
 
         JPanel woodcuttingPanel = new JPanel();
@@ -125,11 +142,38 @@ public class UI extends JFrame {
         // Select which tree to cut
         JLabel lblTree = new JLabel("Tree");
         lblTree.setForeground(Color_WhiteSmoke);
-        lblTree.setBounds(20, 20, 73, 20);
+        lblTree.setBounds(20, 20, 150, 20);
         woodcuttingPanel.add(lblTree);
         treeSelect.setModel(new DefaultComboBoxModel(Trees.toStringArray()));
         treeSelect.setBounds(20, 40, 150, 20);
+        treeSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Trees tree : Trees.values()) {
+                    if (tree.getName().equalsIgnoreCase(treeSelect.getSelectedItem().toString())) {
+                        Variables.woodcutting_tree_selected = tree;
+                    }
+                }
+            }
+        });
         woodcuttingPanel.add(treeSelect);
+
+        // What should we do with our logs
+        JLabel lblWoodcuttingMethod = new JLabel("Method");
+        lblWoodcuttingMethod.setForeground(Color_WhiteSmoke);
+        lblWoodcuttingMethod.setBounds(20, 60, 150, 20);
+        woodcuttingPanel.add(lblWoodcuttingMethod);
+        woodcuttingMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Fletch",
+                "Bank",
+                "Drop",
+        }));
+        woodcuttingMethod.setBounds(20, 80, 150, 20);
+        woodcuttingMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.woodcutting_method = woodcuttingMethod.getSelectedItem().toString();
+            }
+        });
+        woodcuttingPanel.add(woodcuttingMethod);
 
         /*
         JLabel lblLocation = new JLabel("Location");
@@ -140,18 +184,6 @@ public class UI extends JFrame {
         location.setBounds(200, 40, 150, 20);
         woodcuttingPanel.add(location);
 
-        JLabel lblMethod = new JLabel("Method");
-        lblMethod.setBounds(20, 120, 73, 20);
-        woodcuttingPanel.add(lblMethod);
-
-        woodcutOptionButtonGroup.add(bank);
-        bank.setSelected(true);
-        bank.setBounds(20, 140, 80, 20);
-        woodcuttingPanel.add(bank);
-
-        woodcutOptionButtonGroup.add(drop);
-        drop.setBounds(20, 160, 80, 20);
-        woodcuttingPanel.add(drop);
 
         JLabel lblBirdsNest = new JLabel("Bird nests");
         lblBirdsNest.setForeground(WhiteSmoke);
@@ -177,6 +209,74 @@ public class UI extends JFrame {
             }
         });
         */
+
+        /*
+         * Mining Panel
+         */
+
+        JPanel miningPanel = new JPanel();
+        miningPanel.setForeground(Color_WhiteSmoke);
+        miningPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Mining", null, miningPanel, null);
+        miningPanel.setLayout(null);
+
+        // Select which ore to mine
+        JLabel lblOre = new JLabel("Ore");
+        lblOre.setForeground(Color_WhiteSmoke);
+        lblOre.setBounds(20, 20, 73, 20);
+        miningPanel.add(lblOre);
+        oreSelect.setModel(new DefaultComboBoxModel(Ores.toStringArray()));
+        oreSelect.setBounds(20, 40, 150, 20);
+        oreSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Ores ore : Ores.values()) {
+                    if (ore.getName().equalsIgnoreCase(oreSelect.getSelectedItem().toString())) {
+                        Variables.mining_ore_selected = ore;
+                    }
+                }
+            }
+        });
+        miningPanel.add(oreSelect);
+
+        // What should we do with our ores
+        JLabel lblMiningMethod = new JLabel("Method");
+        lblMiningMethod.setForeground(Color_WhiteSmoke);
+        lblMiningMethod.setBounds(20, 60, 150, 20);
+        miningPanel.add(lblMiningMethod);
+        miningMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Bank",
+                "Drop",
+        }));
+        miningMethod.setBounds(20, 80, 150, 20);
+        miningMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.mining_method = miningMethod.getSelectedItem().toString();
+            }
+        });
+        miningPanel.add(miningMethod);
+
+        /*
+         * Slave Panel
+         */
+        JPanel slavePanel = new JPanel();
+        slavePanel.setForeground(Color_WhiteSmoke);
+        slavePanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Bank Runner", null, slavePanel, null);
+        slavePanel.setLayout(null);
+
+        // Which skill are we training
+        JLabel lblSlaveMaster = new JLabel("Slave Master");
+        lblSlaveMaster.setForeground(Color_WhiteSmoke);
+        lblSlaveMaster.setBounds(20, 20, 73, 20);
+        slavePanel.add(lblSlaveMaster);
+        JTextField slaveMaster = new JTextField();
+        slaveMaster.setBounds(20, 40, 150, 20);
+        slavePanel.add(slaveMaster);
+        slaveMaster.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.slaveMaster = slaveMaster.getText();
+            }
+        });
 
         JButton start = new JButton("START");
         start.addActionListener(new ActionListener() {

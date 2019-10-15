@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.parabot:internal-api:1.52.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/parabot/internal-api/1.52.1/internal-api-1.52.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/parabot/internal-api/1.52.1/internal-api-1.52.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/parabot/internal-api/1.52.1/internal-api-1.52.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

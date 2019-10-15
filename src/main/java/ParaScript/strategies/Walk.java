@@ -24,6 +24,7 @@ public class Walk implements Strategy {
         Variables.pathToWalk = new TilePath(Variables.VARROCK_EAST_BANK_PATH_TO_MINE);
         //Variables.setBotStatus("walking to " + Variables.getTree().getName());
         while (Variables.pathToWalk != null && !Variables.pathToWalk.hasReached()) {
+            if (!Game.isLoggedIn()) new HandleLogin().execute();
             Variables.pathToWalk.traverse();
             Time.sleep(2000, 3000);
         }
