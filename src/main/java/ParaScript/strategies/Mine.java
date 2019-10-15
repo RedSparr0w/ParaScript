@@ -5,6 +5,7 @@ import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
+import org.rev317.min.api.methods.Items;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.SceneObjects;
 import org.rev317.min.api.wrappers.SceneObject;
@@ -32,6 +33,9 @@ public class Mine implements Strategy {
     @Override
     public void execute() {
         try {
+            if (Variables.shouldDropItems()) {
+                if (Inventory.getCount(441) >= 1) Inventory.getItem(441).interact(Items.Option.DROP);
+            }
             ore.interact(SceneObjects.Option.MINE);
             Time.sleep(1000);
             Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);

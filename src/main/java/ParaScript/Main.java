@@ -44,6 +44,7 @@ public class Main extends Script implements MessageListener, Paintable {
         if(Variables.skill_to_train == null) {
             strategies.add(new Bank());
             strategies.add(new Walk());
+            strategies.add(new PickupItems());
         }
         strategies.add(new HandleLogin());
         provide(strategies);

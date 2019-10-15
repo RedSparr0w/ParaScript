@@ -28,9 +28,11 @@ public class Variables {
 
     // Woodcutting
     public static Trees woodcutting_tree_selected = Trees.NORMAL;
+    public static String woodcutting_method = "Fletch";
 
     // Mining
     public static Ores mining_ore_selected = Ores.COPPER_TIN;
+    public static String mining_method = "Bank";
 
     // Used for slave accounts
     public static String slaveMaster = "";
@@ -99,5 +101,39 @@ public class Variables {
     public static void updateExpGained(){
         if (skill_to_train == null) return;
         expGained = skill_to_train.getExperience() - baseExperience;
+    }
+
+    public static boolean shouldBankItems(){
+        if (skill_to_train == null) return true;
+        switch (skill_to_train.getName()){
+            case "Woodcutting":
+                return woodcutting_method.equalsIgnoreCase("Bank");
+            case "Mining":
+                return mining_method.equalsIgnoreCase("Bank");
+            default:
+                return true;
+        }
+    }
+
+    public static boolean shouldDropItems(){
+        if (skill_to_train == null) return false;
+        switch (skill_to_train.getName()){
+            case "Woodcutting":
+                return woodcutting_method.equalsIgnoreCase("Drop");
+            case "Mining":
+                return mining_method.equalsIgnoreCase("Drop");
+            default:
+                return false;
+        }
+    }
+
+    public static boolean shouldFletchItems(){
+        if (skill_to_train == null) return false;
+        switch (skill_to_train.getName()){
+            case "Woodcutting":
+                return woodcutting_method.equalsIgnoreCase("Fletch");
+            default:
+                return false;
+        }
     }
 }

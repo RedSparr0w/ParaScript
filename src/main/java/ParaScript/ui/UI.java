@@ -17,21 +17,25 @@ import java.awt.event.ActionListener;
 public class UI extends JFrame {
     private final ButtonGroup woodcutOptionButtonGroup = new ButtonGroup();
     private JPanel contentPane;
+
     // Login tab
     private JTextField username = new JTextField();
     private JPasswordField password = new JPasswordField();
     private JCheckBox autoLogin = new JCheckBox();
+
     // Settings
     private JComboBox skillSelect = new JComboBox();
+
     // Woodcutting
     private JComboBox treeSelect = new JComboBox();
+    private JComboBox woodcuttingMethod = new JComboBox();
     private JComboBox location = new JComboBox();
     private JCheckBox birdsNest = new JCheckBox();
-    private JRadioButton woodcutting_bank = new JRadioButton("Bank");
-    private JRadioButton woodcutting_drop = new JRadioButton("Drop");
-    private JRadioButton woodcutting_fletch = new JRadioButton("Fletch");
+
     // Mining
     private JComboBox oreSelect = new JComboBox();
+    private JComboBox miningMethod = new JComboBox();
+
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -138,7 +142,7 @@ public class UI extends JFrame {
         // Select which tree to cut
         JLabel lblTree = new JLabel("Tree");
         lblTree.setForeground(Color_WhiteSmoke);
-        lblTree.setBounds(20, 20, 73, 20);
+        lblTree.setBounds(20, 20, 150, 20);
         woodcuttingPanel.add(lblTree);
         treeSelect.setModel(new DefaultComboBoxModel(Trees.toStringArray()));
         treeSelect.setBounds(20, 40, 150, 20);
@@ -154,22 +158,22 @@ public class UI extends JFrame {
         woodcuttingPanel.add(treeSelect);
 
         // What should we do with our logs
-        JLabel lblMethod = new JLabel("Method");
-        lblMethod.setBounds(20, 120, 73, 20);
-        woodcuttingPanel.add(lblMethod);
-
-        woodcutOptionButtonGroup.add(woodcutting_bank);
-        woodcutting_bank.setSelected(true);
-        woodcutting_bank.setBounds(20, 140, 80, 20);
-        woodcuttingPanel.add(woodcutting_bank);
-
-        woodcutOptionButtonGroup.add(woodcutting_drop);
-        woodcutting_drop.setBounds(20, 160, 80, 20);
-        woodcuttingPanel.add(woodcutting_drop);
-
-        woodcutOptionButtonGroup.add(woodcutting_fletch);
-        woodcutting_fletch.setBounds(20, 180, 80, 20);
-        woodcuttingPanel.add(woodcutting_fletch);
+        JLabel lblWoodcuttingMethod = new JLabel("Method");
+        lblWoodcuttingMethod.setForeground(Color_WhiteSmoke);
+        lblWoodcuttingMethod.setBounds(20, 60, 150, 20);
+        woodcuttingPanel.add(lblWoodcuttingMethod);
+        woodcuttingMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Fletch",
+                "Bank",
+                "Drop",
+        }));
+        woodcuttingMethod.setBounds(20, 80, 150, 20);
+        woodcuttingMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.woodcutting_method = woodcuttingMethod.getSelectedItem().toString();
+            }
+        });
+        woodcuttingPanel.add(woodcuttingMethod);
 
         /*
         JLabel lblLocation = new JLabel("Location");
@@ -233,6 +237,23 @@ public class UI extends JFrame {
             }
         });
         miningPanel.add(oreSelect);
+
+        // What should we do with our ores
+        JLabel lblMiningMethod = new JLabel("Method");
+        lblMiningMethod.setForeground(Color_WhiteSmoke);
+        lblMiningMethod.setBounds(20, 60, 150, 20);
+        miningPanel.add(lblMiningMethod);
+        miningMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Bank",
+                "Drop",
+        }));
+        miningMethod.setBounds(20, 80, 150, 20);
+        miningMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.mining_method = miningMethod.getSelectedItem().toString();
+            }
+        });
+        miningPanel.add(miningMethod);
 
         /*
          * Slave Panel
