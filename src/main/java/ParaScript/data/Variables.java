@@ -4,6 +4,7 @@ import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.variables.Zone;
 import org.parabot.environment.api.utils.Timer;
+import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
 
@@ -15,6 +16,7 @@ public class Variables {
     public static boolean running = false;
     private static String currentStatus = "none";
     public static int itemsGained = 0;
+    public static double baseExperience = 0;
     public static double expGained = 0;
 
     // Login Panel
@@ -22,7 +24,7 @@ public class Variables {
     private static String password = "";
 
     // Settings Panel
-    public static String skill_to_train = "Woodcutting";
+    public static Skill skill_to_train = Skill.WOODCUTTING;
 
     // Woodcutting
     public static Trees woodcutting_tree_selected = Trees.NORMAL;
@@ -89,16 +91,13 @@ public class Variables {
         itemsGained += amount;
     }
 
-    public static void addExpGained(){
-        double xp_to_add = 0;
-        switch(skill_to_train){
-            case "Woodcutting":
-                xp_to_add = woodcutting_tree_selected.getXP();
-                break;
-            case "Mining":
-                xp_to_add = mining_ore_selected.getXP();
-                break;
-        }
-        expGained += xp_to_add;
+    public static void setBaseExp(){
+        if (skill_to_train == null) return;
+        baseExperience = skill_to_train.getExperience();
+    }
+
+    public static void updateExpGained(){
+        if (skill_to_train == null) return;
+        expGained = skill_to_train.getExperience() - baseExperience;
     }
 }

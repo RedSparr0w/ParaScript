@@ -5,6 +5,7 @@ import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Player;
 
 import javax.swing.*;
@@ -106,14 +107,20 @@ public class UI extends JFrame {
         lblSkillToTrain.setBounds(20, 20, 73, 20);
         settingsPanel.add(lblSkillToTrain);
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
-                "Woodcutting",
-                "Mining",
+                Skill.WOODCUTTING.getName(),
+                Skill.MINING.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
         skillSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                Variables.skill_to_train = skillSelect.getSelectedItem().toString();
+                for (Skill skill : Skill.values()) {
+                    if (skill.getName().equalsIgnoreCase(skillSelect.getSelectedItem().toString())) {
+                        Variables.skill_to_train = skill;
+                        return;
+                    }
+                    Variables.skill_to_train = null;
+                }
             }
         });
         settingsPanel.add(skillSelect);

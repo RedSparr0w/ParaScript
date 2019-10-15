@@ -11,6 +11,7 @@ import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.ScriptManifest;
 import org.rev317.min.api.events.MessageEvent;
 import org.rev317.min.api.events.listeners.MessageListener;
+import org.rev317.min.api.methods.Skill;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,17 +29,19 @@ public class Main extends Script implements MessageListener, Paintable {
             Time.sleep(300);
         }
 
+        Variables.setBaseExp();
+
         strategies.add(new ScriptState());
-        if(Variables.skill_to_train.equalsIgnoreCase("Woodcutting")) {
+        if(Variables.skill_to_train == Skill.WOODCUTTING) {
             strategies.add(new MakeArrowShafts());
             strategies.add(new WoodcutTree());
         }
-        if(Variables.skill_to_train.equalsIgnoreCase("Mining")) {
+        if(Variables.skill_to_train == Skill.MINING) {
             strategies.add(new Mine());
             strategies.add(new Bank());
             strategies.add(new Walk());
         }
-        if(Variables.skill_to_train.equalsIgnoreCase("Bank Runner")) {
+        if(Variables.skill_to_train == null) {
             strategies.add(new Bank());
             strategies.add(new Walk());
         }
@@ -83,16 +86,19 @@ public class Main extends Script implements MessageListener, Paintable {
             case 0:
                 if (message.getMessage().startsWith("You manage to ")) {
                     Variables.addItemGained(1);
-                    Variables.addExpGained();
+                    Variables.updateExpGained();
                 }
                 if (message.getMessage().contains("Congratulations, you advanced a woodcutting level.")) {
                     // add in level up to paint
                 }
                 break;
             case 4:
-                if(Variables.skill_to_train.equalsIgnoreCase("Bank Runner")) {
+                if(Variables.skill_to_train == null) {
                     if (message.getMessage().startsWith(Variables.slaveMaster.toLowerCase() + " wishes to trade with you")) {
-                        // add in level up to paint
+                        // accept trade
+                        // take items, give items if smithing or similar
+                        // goto bank, deposit/withdraw items
+                        // go back to user
                     }
                 }
                 break;
