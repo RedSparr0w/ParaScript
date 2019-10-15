@@ -1,8 +1,6 @@
 package ParaScript.data;
 
-import ParaScript.data.variables.Ores;
-import ParaScript.data.variables.Trees;
-import ParaScript.data.variables.Zone;
+import ParaScript.data.variables.*;
 import org.parabot.environment.api.utils.Timer;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
@@ -101,6 +99,18 @@ public class Variables {
     public static void updateExpGained(){
         if (skill_to_train == null) return;
         expGained = skill_to_train.getExperience() - baseExperience;
+    }
+
+    public static int[] getItemIDs(){
+        if (skill_to_train == null) return new int[]{-1};
+        switch (skill_to_train.getName()){
+            case "Woodcutting":
+                return woodcutting_tree_selected.getIDs();
+            case "Mining":
+                return mining_ore_selected.getIDs();
+            default:
+                return new int[]{-1};
+        }
     }
 
     public static boolean shouldBankItems(){

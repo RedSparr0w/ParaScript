@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3ab8e8a0-ccfd-4b0b-9547-98173085dc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="parascript" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -49,10 +49,8 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="ParaScript" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src\main" />
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src" />
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\main\java" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ParaScript.strategies" />
@@ -61,8 +59,10 @@
       <recent name="ParaScript.ui" />
       <recent name="ParaScript.data" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src\main" />
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\src" />
+      <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
