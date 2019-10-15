@@ -42,7 +42,7 @@ public class Bank implements Strategy {
                 if (Variables.skill_to_train == Skill.WOODCUTTING)
                     org.rev317.min.api.methods.Bank.depositAllExcept(1350, 1352, 1354, 1356, 1358, 1360, 6740);
                 if (Variables.skill_to_train == null) {
-                    org.rev317.min.api.methods.Bank.depositAll();
+                    org.rev317.min.api.methods.Bank.depositAllExcept(1);
                     Variables.addItemGained(28);
                 }
                 Variables.setStatus("none");
