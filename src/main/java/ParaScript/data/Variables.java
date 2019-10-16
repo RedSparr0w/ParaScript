@@ -77,6 +77,9 @@ public class Variables {
         new Tile(3288, 3372, 0),
     };
 
+    // Smithing Falador
+    public final static Zone FALADOR_WEST_BANK_ZONE = new Zone(new Tile(2943, 3374), new Tile(2950, 3367));
+
     public final static Tile[] FALADOR_WEST_BANK_TO_FURNACE = new Tile[] {
         new Tile(2946, 3368),
         new Tile(2953, 3378),
@@ -85,10 +88,10 @@ public class Variables {
     };
 
     public final static Tile[] FALADOR_WEST_FURNACE_TO_BANK = new Tile[] {
-            new Tile(2946, 3368, 0),
-            new Tile(2953, 3378, 0),
-            new Tile(2966, 3377, 0),
-            new Tile(2974, 3369, 0)
+        new Tile(2974, 3369, 0),
+        new Tile(2966, 3377, 0),
+        new Tile(2953, 3378, 0),
+        new Tile(2946, 3368, 0),
     };
 
 
