@@ -54,27 +54,41 @@ public class Variables {
     public final static Zone VARROCK_EAST_MINE_ZONE = new Zone(new Tile(3276, 3375), new Tile(3298, 3354));
 
     public final static Tile[] VARROCK_EAST_MINE_PATH_TO_BANK = new Tile[]{
-            new Tile(3288, 3372, 0),
-            new Tile(3288, 3372, 0),
-            new Tile(3290, 3385, 0),
-            new Tile(3290, 3398, 0),
-            new Tile(3285, 3411, 0),
-            new Tile(3278, 3422, 0),
-            new Tile(3266, 3427, 0),
-            new Tile(3254, 3425, 0),
-            new Tile(3253, 3420, 0),
+        new Tile(3288, 3372, 0),
+        new Tile(3288, 3372, 0),
+        new Tile(3290, 3385, 0),
+        new Tile(3290, 3398, 0),
+        new Tile(3285, 3411, 0),
+        new Tile(3278, 3422, 0),
+        new Tile(3266, 3427, 0),
+        new Tile(3254, 3425, 0),
+        new Tile(3253, 3420, 0),
     };
 
     public final static Tile[] VARROCK_EAST_BANK_PATH_TO_MINE = new Tile[] {
-            new Tile(3253, 3420, 0),
-            new Tile(3254, 3425, 0),
-            new Tile(3266, 3427, 0),
-            new Tile(3278, 3422, 0),
-            new Tile(3285, 3411, 0),
-            new Tile(3290, 3398, 0),
-            new Tile(3290, 3385, 0),
-            new Tile(3288, 3372, 0),
-            new Tile(3288, 3372, 0),
+        new Tile(3253, 3420, 0),
+        new Tile(3254, 3425, 0),
+        new Tile(3266, 3427, 0),
+        new Tile(3278, 3422, 0),
+        new Tile(3285, 3411, 0),
+        new Tile(3290, 3398, 0),
+        new Tile(3290, 3385, 0),
+        new Tile(3288, 3372, 0),
+        new Tile(3288, 3372, 0),
+    };
+
+    public final static Tile[] FALADOR_WEST_BANK_TO_FURNACE = new Tile[] {
+        new Tile(2946, 3368),
+        new Tile(2953, 3378),
+        new Tile(2966, 3377),
+        new Tile(2974, 3369),
+    };
+
+    public final static Tile[] FALADOR_WEST_FURNACE_TO_BANK = new Tile[] {
+            new Tile(2946, 3368, 0),
+            new Tile(2953, 3378, 0),
+            new Tile(2966, 3377, 0),
+            new Tile(2974, 3369, 0)
     };
 
 
