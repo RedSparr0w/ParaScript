@@ -34,7 +34,7 @@ public class PickupItems implements Strategy {
             GroundItem[] items = GroundItems.getNearest(436, 438, 440);
             for (GroundItem item : items) {
                 item.take();
-                Time.sleep(1500);
+                Time.sleep(500);
                 if (Inventory.isFull()){
                     Variables.setStatus("none");
                     return;

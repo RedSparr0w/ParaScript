@@ -54,29 +54,27 @@ public class Variables {
     public final static Zone VARROCK_EAST_MINE_ZONE = new Zone(new Tile(3276, 3375), new Tile(3298, 3354));
 
     public final static Tile[] VARROCK_EAST_MINE_PATH_TO_BANK = new Tile[]{
-        new Tile(3289, 3373),
-        new Tile(3289, 3373),
-        new Tile(3290, 3384),
-        new Tile(3290, 3395),
-        new Tile(3289, 3406),
-        new Tile(3281, 3416),
-        new Tile(3275, 3425),
-        new Tile(3264, 3426),
-        new Tile(3253, 3425),
-        new Tile(3253, 3420),
+            new Tile(3288, 3372, 0),
+            new Tile(3288, 3372, 0),
+            new Tile(3290, 3385, 0),
+            new Tile(3290, 3398, 0),
+            new Tile(3285, 3411, 0),
+            new Tile(3278, 3422, 0),
+            new Tile(3266, 3427, 0),
+            new Tile(3254, 3425, 0),
+            new Tile(3253, 3420, 0),
     };
 
     public final static Tile[] VARROCK_EAST_BANK_PATH_TO_MINE = new Tile[] {
-        new Tile(3253, 3423),
-        new Tile(3253, 3423),
-        new Tile(3262, 3427),
-        new Tile(3273, 3427),
-        new Tile(3280, 3418),
-        new Tile(3288, 3408),
-        new Tile(3290, 3397),
-        new Tile(3290, 3386),
-        new Tile(3288, 3375),
-        new Tile(3287, 3370),
+            new Tile(3253, 3420, 0),
+            new Tile(3254, 3425, 0),
+            new Tile(3266, 3427, 0),
+            new Tile(3278, 3422, 0),
+            new Tile(3285, 3411, 0),
+            new Tile(3290, 3398, 0),
+            new Tile(3290, 3385, 0),
+            new Tile(3288, 3372, 0),
+            new Tile(3288, 3372, 0),
     };
 
 

@@ -25,7 +25,7 @@ public class Bank implements Strategy {
         while (Variables.pathToWalk != null && !Variables.pathToWalk.hasReached()) {
             if (!Game.isLoggedIn()) new HandleLogin().execute();
             Variables.pathToWalk.traverse();
-            Time.sleep(2000, 3000);
+            Time.sleep(2500);
         }
         depositItems();
     }
