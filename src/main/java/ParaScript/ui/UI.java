@@ -1,7 +1,6 @@
 package ParaScript.ui;
 
-import ParaScript.data.variables.Ores;
-import ParaScript.data.variables.Trees;
+import ParaScript.data.variables.*;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Players;
