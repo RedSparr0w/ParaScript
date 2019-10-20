@@ -29,17 +29,19 @@ public class PickupItems implements Strategy {
 
     @Override
     public void execute() {
+        int currentItemAmount = Inventory.getCount(true);
         try {
             for (GroundItem item : items) {
                 item.take();
                 Time.sleep(() -> item.distanceTo() < 1, 2000);
                 if (Inventory.isFull()){
-                    return;
+                    break;
                 }
             }
         } catch (Exception err){
             System.out.println("Pickup items error: ¯\\_(ツ)_/¯");
         }
+        Variables.addItemGained(Inventory.getCount(true) - currentItemAmount);
     }
 
     private GroundItem[] getItems(){
