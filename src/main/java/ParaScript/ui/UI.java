@@ -271,7 +271,7 @@ public class UI extends JFrame {
         tabbedPane.addTab("Thieving", null, thievingPanel, null);
         thievingPanel.setLayout(null);
 
-        // Select which ore to mine
+        // Select which npc should be our victim
         JLabel lblNpc = new JLabel("NPC");
         lblOre.setForeground(Color_WhiteSmoke);
         lblOre.setBounds(20, 20, 73, 20);
@@ -289,23 +289,6 @@ public class UI extends JFrame {
         });
         thievingPanel.add(npcSelect);
 
-        // What should we do with our ores
-        JLabel lblTheivingMethod = new JLabel("Method");
-        lblMiningMethod.setForeground(Color_WhiteSmoke);
-        lblMiningMethod.setBounds(20, 60, 150, 20);
-        miningPanel.add(lblMiningMethod);
-        miningMethod.setModel(new DefaultComboBoxModel(new String[]{
-                "Bank",
-                "Drop",
-        }));
-        miningMethod.setBounds(20, 80, 150, 20);
-        miningMethod.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                Variables.thieving_method = thievingMethod.getSelectedItem().toString();
-            }
-        });
-        miningPanel.add(thievingMethod);
-
         /*
          * Slave Panel
          */
@@ -315,7 +298,7 @@ public class UI extends JFrame {
         tabbedPane.addTab("Bank Runner", null, slavePanel, null);
         slavePanel.setLayout(null);
 
-        // Which skill are we training
+        // Name of the Master account
         JLabel lblSlaveMaster = new JLabel("Slave Master");
         lblSlaveMaster.setForeground(Color_WhiteSmoke);
         lblSlaveMaster.setBounds(20, 20, 73, 20);
