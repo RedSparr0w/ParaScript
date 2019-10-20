@@ -16,7 +16,7 @@ import org.rev317.min.api.methods.Skill;
 import java.awt.*;
 import java.util.ArrayList;
 
-@ScriptManifest(author = "RedSparr0w", category = Category.OTHER, description = "ParaScript", name = "ParaScript", servers = { "2006rebotted" }, version = 1)
+@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1)
 public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
@@ -40,6 +40,9 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Mine());
             strategies.add(new Bank());
             strategies.add(new Walk());
+        }
+        if(Variables.skill_to_train == Skill.THIEVING) {
+            strategies.add(new Thieving());
         }
         if(Variables.skill_to_train == null) {
             strategies.add(new Bank());
@@ -72,9 +75,9 @@ public class Main extends Script implements MessageListener, Paintable {
         g.fillRect(355, 252, 160, 85);
 
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", 1, 14));
-        g.drawString("ParaScript", 360, 247);
-        g.setFont(new Font("Arial", 1, 11));
+        g.setFont(new Font("Arial", Font.BOLD, 14));
+        g.drawString("2006AIO", 360, 247);
+        g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString("Status: " + Variables.getStatus(), 360, 270);
         g.drawString("Items(P/H): " + Methods.formatNumber(Variables.itemsGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour(Variables.itemsGained)) + ")", 360, 290);
         g.drawString("EXP(P/H): " + Methods.formatNumber((int) Variables.expGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour((int) Variables.expGained)) + ")", 360, 310);
@@ -85,11 +88,12 @@ public class Main extends Script implements MessageListener, Paintable {
     public void messageReceived(MessageEvent message) {
         switch (message.getType()) {
             case 0:
-                if (message.getMessage().startsWith("You manage to ")) {
-                    Variables.addItemGained(1);
-                    Variables.updateExpGained();
+                if (message.getMessage().startsWith("You manage to ") || // woodcutting, mining
+                    message.getMessage().startsWith("You pick the ")) {  // pickpockets
+                        Variables.addItemGained(1);
+                        Variables.updateExpGained();
                 }
-                if (message.getMessage().contains("Congratulations, you advanced a woodcutting level.")) {
+                if (message.getMessage().startsWith("Congratulations, you advanced a")) {
                     // add in level up to paint
                 }
                 break;

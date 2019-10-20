@@ -1,5 +1,6 @@
 package ParaScript.data;
 
+import ParaScript.data.variables.Npcs;
 import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.variables.Zone;
@@ -33,6 +34,11 @@ public class Variables {
     // Mining
     public static Ores mining_ore_selected = Ores.COPPER_TIN;
     public static String mining_method = "Bank";
+
+    //Thieving
+    public static Npcs thieving_npc_selected = Npcs.MAN;
+    public static String thieving_method = "None";
+
 
     // Used for slave accounts
     public static String slaveMaster = "";
@@ -81,7 +87,35 @@ public class Variables {
         new Tile(3287, 3370),
     };
 
+    //mining lumbridge
+    public final static Zone LUMBRIDGE_BANK_ZONE = new Zone(new Tile(3205, 3225), new Tile(3211, 3214));
+    public final static Zone LUMBRIDGE_MINE_ZONE = new Zone(new Tile(3276, 3375), new Tile(3298, 3354));
 
+    public final static Tile[] LUMBRIDGE_EAST_MINE_PATH_TO_BANK = new Tile[]{
+            new Tile(3289, 3373),
+            new Tile(3289, 3373),
+            new Tile(3290, 3384),
+            new Tile(3290, 3395),
+            new Tile(3289, 3406),
+            new Tile(3281, 3416),
+            new Tile(3275, 3425),
+            new Tile(3264, 3426),
+            new Tile(3253, 3425),
+            new Tile(3253, 3420),
+    };
+
+    public final static Tile[] LUMBRIDGE_BANK_PATH_TO_MINE = new Tile[] {
+            new Tile(3253, 3423),
+            new Tile(3253, 3423),
+            new Tile(3262, 3427),
+            new Tile(3273, 3427),
+            new Tile(3280, 3418),
+            new Tile(3288, 3408),
+            new Tile(3290, 3397),
+            new Tile(3290, 3386),
+            new Tile(3288, 3375),
+            new Tile(3287, 3370),
+    };
 
     public static String getAccountUsername() { return username; }
     public static void setAccountUsername(String i) { username = i; }
