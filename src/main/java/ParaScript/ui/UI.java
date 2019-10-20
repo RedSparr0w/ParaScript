@@ -293,11 +293,11 @@ public class UI extends JFrame {
                     }
                 }
                 if (Variables.fighting_npc_selected == FightingNpcs.CUSTOM) {
-                    lblThievingNpcCustomID.setVisible(true);
-                    thievingNpcCustomID.setVisible(true);
+                    lblFightingNpcCustomID.setVisible(true);
+                    fightingNpcCustomID.setVisible(true);
                 } else {
-                    lblThievingNpcCustomID.setVisible(false);
-                    thievingNpcCustomID.setVisible(false);
+                    lblFightingNpcCustomID.setVisible(false);
+                    fightingNpcCustomID.setVisible(false);
                 }
                 UI.this.revalidate();
                 UI.this.repaint();
