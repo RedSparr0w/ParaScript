@@ -14,4 +14,21 @@ public class Methods {
         }
         return "" + number;
     }
+
+    public static int[] combineIntArrays(int[] array1, int[] array2){
+        int[] array1and2 = new int[array1.length + array2.length];
+        int currentPosition = 0;
+
+        for( int i = 0; i < array1.length; i++) {
+            array1and2[currentPosition] = array1[i];
+            currentPosition++;
+        }
+
+        for( int j = 0; j < array2.length; j++) {
+            array1and2[currentPosition] = array2[j];
+            currentPosition++;
+        }
+
+        return array1and2;
+    }
 }

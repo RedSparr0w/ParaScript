@@ -1,5 +1,6 @@
 package ParaScript.strategies;
 
+import ParaScript.Methods;
 import ParaScript.data.Variables;
 import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
@@ -33,6 +34,7 @@ public class PickupItems implements Strategy {
         try {
             for (GroundItem item : items) {
                 item.take();
+                Time.sleep(500);
                 Time.sleep(() -> item.distanceTo() < 1, 2000);
                 if (Inventory.isFull()){
                     break;
@@ -50,6 +52,7 @@ public class PickupItems implements Strategy {
             if (Variables.fighting_bury_bones)
                 itemIDs = new int[]{526};
         }
+        itemIDs = Methods.combineIntArrays(Variables.fighting_item_ids, itemIDs);
         return GroundItems.getNearest(itemIDs);
     }
 }

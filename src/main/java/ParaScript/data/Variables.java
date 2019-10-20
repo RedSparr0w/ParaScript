@@ -33,6 +33,7 @@ public class Variables {
     // Fighting
     public static FightingNpcs fighting_npc_selected = FightingNpcs.MAN_WOMAN;
     public static boolean fighting_bury_bones = true;
+    public static int[] fighting_item_ids = new int[]{};
 
     // Thieving
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;

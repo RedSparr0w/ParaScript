@@ -41,6 +41,8 @@ public class UI extends JFrame {
     private JLabel lblFightingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField fightingNpcCustomID = new JTextField();
     private JCheckBox fightingBuryBones = new JCheckBox();
+    private JLabel lblFightingItemCustomID = new JLabel("Pickup Item IDs");
+    private JTextField fightingItemCustomID = new JTextField();
 
     // Thieving
     private JComboBox thievingNpcSelect = new JComboBox();
@@ -348,6 +350,33 @@ public class UI extends JFrame {
             }
         });
         fightingPanel.add(fightingBuryBones);
+
+        // Custom items to pickup
+        lblFightingItemCustomID.setForeground(Color_WhiteSmoke);
+        lblFightingItemCustomID.setBounds(20, 120, 150, 20);
+        fightingPanel.add(lblFightingItemCustomID);
+        fightingItemCustomID.setBounds(20, 140, 150, 20);
+        fightingItemCustomID.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    String[] sample = fightingItemCustomID.getText().split("(,|;)\\s*");
+                    int[] customIDs = new int[sample.length];
+
+                    for (int i = 0; i < sample.length; i++)
+                        customIDs[i] = Integer.parseInt(sample[i]);
+                    Variables.fighting_item_ids = customIDs;
+                } catch (Exception err) {
+                    Variables.fighting_item_ids = new int[]{};
+                }
+            }
+        });
+        fightingPanel.add(fightingItemCustomID);
 
         /*
          * Thieving Panel
