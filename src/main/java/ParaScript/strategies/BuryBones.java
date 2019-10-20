@@ -42,6 +42,6 @@ public class BuryBones implements Strategy {
 
     private boolean hasBones(){
         // Make sure we have bones
-        return Inventory.getItem(527) != null;
+        return Inventory.getItem(527) != null; // TODO: need to add the other bones too
     }
 }

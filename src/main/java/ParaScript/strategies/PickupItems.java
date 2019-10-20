@@ -50,7 +50,7 @@ public class PickupItems implements Strategy {
         int[] itemIDs = new int[]{};
         if (Variables.skill_to_train == Skill.ATTACK){
             if (Variables.fighting_bury_bones)
-                itemIDs = new int[]{526};
+                itemIDs = new int[]{526}; // TODO: need to add all the other bones
         }
         itemIDs = Methods.combineIntArrays(Variables.fighting_item_ids, itemIDs);
         return GroundItems.getNearest(itemIDs);
