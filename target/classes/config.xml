@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <config>
-    <jars basedir="C:/Users/Dan-j/IdeaProjects/ParaScript/target/">
+    <jars basedir="C:\\Users\\DarkA\\Desktop\\ParaScript/target/">
         <jar in="1000204.jar" out="/home/ci/jars/1000204.jar"/>
     </jars>
 

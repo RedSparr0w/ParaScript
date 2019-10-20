@@ -1,5 +1,6 @@
 package ParaScript.ui;
 
+import ParaScript.data.variables.Npcs;
 import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
@@ -36,6 +37,10 @@ public class UI extends JFrame {
     private JComboBox oreSelect = new JComboBox();
     private JComboBox miningMethod = new JComboBox();
 
+    //Thieving
+    private JComboBox npcSelect = new JComboBox();
+    private JComboBox thievingMethod = new JComboBox();
+
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -44,7 +49,7 @@ public class UI extends JFrame {
     private Color Color_Alizarin = new Color(231, 76, 60);
 
     public UI() {
-        setTitle("src/ParaScript");
+        setTitle("2006AIO");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 400, 300);
@@ -113,6 +118,7 @@ public class UI extends JFrame {
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
                 Skill.WOODCUTTING.getName(),
                 Skill.MINING.getName(),
+                Skill.THIEVING.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
@@ -254,6 +260,51 @@ public class UI extends JFrame {
             }
         });
         miningPanel.add(miningMethod);
+
+        /*
+         * Thieving Panel
+         */
+
+        JPanel thievingPanel = new JPanel();
+        thievingPanel.setForeground(Color_WhiteSmoke);
+        thievingPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Thieving", null, thievingPanel, null);
+        thievingPanel.setLayout(null);
+
+        // Select which ore to mine
+        JLabel lblNpc = new JLabel("NPC");
+        lblOre.setForeground(Color_WhiteSmoke);
+        lblOre.setBounds(20, 20, 73, 20);
+        thievingPanel.add(lblNpc);
+        npcSelect.setModel(new DefaultComboBoxModel(Npcs.toStringArray()));
+        npcSelect.setBounds(20, 40, 150, 20);
+        npcSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Npcs npc : Npcs.values()) {
+                    if (npc.getName().equalsIgnoreCase(npcSelect.getSelectedItem().toString())) {
+                        Variables.thieving_npc_selected = npc;
+                    }
+                }
+            }
+        });
+        thievingPanel.add(npcSelect);
+
+        // What should we do with our ores
+        JLabel lblTheivingMethod = new JLabel("Method");
+        lblMiningMethod.setForeground(Color_WhiteSmoke);
+        lblMiningMethod.setBounds(20, 60, 150, 20);
+        miningPanel.add(lblMiningMethod);
+        miningMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Bank",
+                "Drop",
+        }));
+        miningMethod.setBounds(20, 80, 150, 20);
+        miningMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.thieving_method = thievingMethod.getSelectedItem().toString();
+            }
+        });
+        miningPanel.add(thievingMethod);
 
         /*
          * Slave Panel
