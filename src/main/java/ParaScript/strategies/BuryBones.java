@@ -3,10 +3,7 @@ package ParaScript.strategies;
 import ParaScript.data.Variables;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.Items;
-import org.rev317.min.api.methods.Menu;
-import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.methods.*;
 
 public class BuryBones implements Strategy {
 
@@ -33,8 +30,8 @@ public class BuryBones implements Strategy {
     private void buryBones(){
         try {
             Inventory.getItem(527).interact(Items.Option.SECOND);
-            Time.sleep(250);
-            if (hasBones()) buryBones();
+            Time.sleep(500);
+            if (Game.isLoggedIn() && hasBones()) buryBones();
         } catch (Exception err) {
             System.out.println("Bone burying error: ¯\\_(ツ)_/¯");
         }
