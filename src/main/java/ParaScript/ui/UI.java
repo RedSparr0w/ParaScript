@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class UI extends JFrame {
     private final ButtonGroup woodcutOptionButtonGroup = new ButtonGroup();
@@ -39,7 +41,8 @@ public class UI extends JFrame {
 
     //Thieving
     private JComboBox npcSelect = new JComboBox();
-    private JComboBox thievingMethod = new JComboBox();
+    private JLabel lblNpcThievingCustomID = new JLabel("Custom NPC IDs");
+    private JTextField npcThievingCustomID = new JTextField();
 
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
@@ -273,8 +276,8 @@ public class UI extends JFrame {
 
         // Select which npc should be our victim
         JLabel lblNpc = new JLabel("NPC");
-        lblOre.setForeground(Color_WhiteSmoke);
-        lblOre.setBounds(20, 20, 73, 20);
+        lblNpc.setForeground(Color_WhiteSmoke);
+        lblNpc.setBounds(20, 20, 73, 20);
         thievingPanel.add(lblNpc);
         npcSelect.setModel(new DefaultComboBoxModel(Npcs.toStringArray()));
         npcSelect.setBounds(20, 40, 150, 20);
@@ -285,9 +288,47 @@ public class UI extends JFrame {
                         Variables.thieving_npc_selected = npc;
                     }
                 }
+                if (Variables.thieving_npc_selected == Npcs.CUSTOM) {
+                    lblNpcThievingCustomID.setVisible(true);
+                    npcThievingCustomID.setVisible(true);
+                } else {
+                    lblNpcThievingCustomID.setVisible(false);
+                    npcThievingCustomID.setVisible(false);
+                }
+                UI.this.revalidate();
+                UI.this.repaint();
             }
         });
         thievingPanel.add(npcSelect);
+
+        // Custom npc id to steal from
+        lblNpcThievingCustomID.setForeground(Color_WhiteSmoke);
+        lblNpcThievingCustomID.setBounds(200, 20, 150, 20);
+        thievingPanel.add(lblNpcThievingCustomID);
+        npcThievingCustomID.setBounds(200, 40, 150, 20);
+        npcThievingCustomID.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    String[] sample = npcThievingCustomID.getText().split("(,|;)\\s*");
+                    int[] customIDs = new int[sample.length];
+
+                    for (int i = 0; i < sample.length; i++)
+                        customIDs[i] = Integer.parseInt(sample[i]);
+                    Variables.thieving_npc_selected.setIDs(customIDs);
+                } catch (Exception err) {
+                    Npcs.CUSTOM.setIDs(new int[]{0});
+                }
+            }
+        });
+        thievingPanel.add(npcThievingCustomID);
+        lblNpcThievingCustomID.setVisible(false);
+        npcThievingCustomID.setVisible(false);
 
         /*
          * Slave Panel
