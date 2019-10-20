@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Npcs {
-    MAN("Man", new int[]{3}, 8);
+    MAN_WOMAN("Man & Woman", new int[]{1,2,3,4}, 8); // Man and Woman
 
     private String name;
     private int[] ids;
