@@ -45,6 +45,8 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Thieving());
         }
         if(Variables.skill_to_train == Skill.ATTACK) {
+            // Activate auto retaliate
+            org.rev317.min.api.methods.Menu.clickButton(150);
             strategies.add(new PickupItems());
             strategies.add(new BuryBones());
             strategies.add(new Fighting());
