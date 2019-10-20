@@ -32,17 +32,19 @@ public class Thieving implements Strategy {
     public void execute() {
         victim.interact(Npcs.Option.PICKPOCKET);
         Time.sleep(1000);
-        //Wait for the Player to finish pickpocketing
-        Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 500);
+        //Wait for the Player to finish pickpocketing (max 2 seconds)
+        Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 2000);
     }
 
     private Npc victim(){
-        int[] npc_to_thieve = Variables.thieving_npc_selected.getIDs();
-        for(Npc victim : Npcs.getNearest(npc_to_thieve)){
-            if(victim != null){
-                return victim;
+        try {
+            int[] npc_to_thieve = Variables.thieving_npc_selected.getIDs();
+            for (Npc victim : Npcs.getNearest(npc_to_thieve)) {
+                if (victim != null) {
+                    return victim;
+                }
             }
-        }
+        } catch (Exception err){}
         return null;
     }
 }
