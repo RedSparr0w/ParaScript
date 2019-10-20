@@ -32,6 +32,7 @@ public class Fighting implements Strategy {
         Time.sleep(2000);
         // Wait for the Player to finish attacking (max 30 seconds)
         Time.sleep(() -> !Players.getMyPlayer().isInCombat(), 30000);
+        Variables.updateExpGained();
     }
 
     private Npc victim(){
