@@ -1,15 +1,10 @@
 package ParaScript.data;
 
-import ParaScript.data.variables.Npcs;
-import ParaScript.data.variables.Ores;
-import ParaScript.data.variables.Trees;
-import ParaScript.data.variables.Zone;
+import ParaScript.data.variables.*;
 import org.parabot.environment.api.utils.Timer;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
-
-import java.util.List;
 
 public class Variables {
     public static final Timer SCRIPT_TIMER = new Timer();
@@ -35,9 +30,12 @@ public class Variables {
     public static Ores mining_ore_selected = Ores.COPPER_TIN;
     public static String mining_method = "Bank";
 
-    //Thieving
-    public static Npcs thieving_npc_selected = Npcs.MAN_WOMAN;
-    public static String thieving_method = "None";
+    // Thieving
+    public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;
+    //public static String thieving_method = "None";
+
+    // Fighting
+    public static FightingNpcs fighting_npc_selected = FightingNpcs.MAN_WOMAN;
 
 
     // Used for slave accounts

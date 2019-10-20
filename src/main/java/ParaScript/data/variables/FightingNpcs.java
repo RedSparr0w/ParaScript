@@ -4,24 +4,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Npcs {
-    MAN_WOMAN("Man & Woman", new int[]{1, 2, 3, 4, 5, 6}, 8),
+public enum FightingNpcs {
+    CHICKEN("Chicken", new int[]{41}, 3),
+    MAN_WOMAN("Man & Woman", new int[]{1, 2, 3, 4, 5, 6}, 0),
+    COW("Cow", new int[]{81, 397, 1766, 1767}, 0),
     CUSTOM("Custom (specify IDs)", new int[]{-1}, 0);
 
     private String name;
     private int[] ids;
-    private double xp;
+    private int hp;
 
-    Npcs(String name, int[] ids, double xp) {
+    FightingNpcs(String name, int[] ids, int hp) {
         this.name = name;
         this.ids = ids;
-        this.xp = xp;
+        this.hp = hp;
     }
 
     public static String[] toStringArray() {
-        List<Npcs> enumList = Arrays.asList(Npcs.values());
+        List<FightingNpcs> enumList = Arrays.asList(FightingNpcs.values());
         List<String> npcsArray = new ArrayList<>();
-        for (Npcs npc : enumList) {
+        for (FightingNpcs npc : enumList) {
             npcsArray.add(npc.name);
         }
 
@@ -40,5 +42,5 @@ public enum Npcs {
         }
     }
 
-    public double getXP() { return this.xp; }
+    public double getHP() { return this.hp; }
 }

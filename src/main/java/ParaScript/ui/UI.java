@@ -1,13 +1,13 @@
 package ParaScript.ui;
 
-import ParaScript.data.variables.Npcs;
+import ParaScript.data.variables.FightingNpcs;
+import ParaScript.data.variables.ThievingNpcs;
 import ParaScript.data.variables.Ores;
 import ParaScript.data.variables.Trees;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.Skill;
-import org.rev317.min.api.wrappers.Player;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -39,10 +39,15 @@ public class UI extends JFrame {
     private JComboBox oreSelect = new JComboBox();
     private JComboBox miningMethod = new JComboBox();
 
-    //Thieving
-    private JComboBox npcSelect = new JComboBox();
-    private JLabel lblNpcThievingCustomID = new JLabel("Custom NPC IDs");
-    private JTextField npcThievingCustomID = new JTextField();
+    // Fighting
+    private JComboBox fightingNpcSelect = new JComboBox();
+    private JLabel lblFightingNpcCustomID = new JLabel("Custom NPC IDs");
+    private JTextField fightingNpcCustomID = new JTextField();
+
+    // Thieving
+    private JComboBox thievingNpcSelect = new JComboBox();
+    private JLabel lblThievingNpcCustomID = new JLabel("Custom NPC IDs");
+    private JTextField thievingNpcCustomID = new JTextField();
 
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
@@ -121,6 +126,7 @@ public class UI extends JFrame {
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
                 Skill.WOODCUTTING.getName(),
                 Skill.MINING.getName(),
+                Skill.ATTACK.getName(),
                 Skill.THIEVING.getName(),
                 "Bank Runner",
         }));
@@ -265,6 +271,72 @@ public class UI extends JFrame {
         miningPanel.add(miningMethod);
 
         /*
+         * Fighting Panel
+         */
+
+        JPanel fightingPanel = new JPanel();
+        fightingPanel.setForeground(Color_WhiteSmoke);
+        fightingPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Fighting", null, fightingPanel, null);
+        fightingPanel.setLayout(null);
+
+        // Select which npc should be our victim
+        JLabel lblFightingNpc = new JLabel("NPC");
+        lblFightingNpc.setForeground(Color_WhiteSmoke);
+        lblFightingNpc.setBounds(20, 20, 73, 20);
+        fightingPanel.add(lblFightingNpc);
+        fightingNpcSelect.setModel(new DefaultComboBoxModel(FightingNpcs.toStringArray()));
+        fightingNpcSelect.setBounds(20, 40, 150, 20);
+        fightingNpcSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (FightingNpcs npc : FightingNpcs.values()) {
+                    if (npc.getName().equalsIgnoreCase(fightingNpcSelect.getSelectedItem().toString())) {
+                        Variables.fighting_npc_selected = npc;
+                    }
+                }
+                if (Variables.fighting_npc_selected == FightingNpcs.CUSTOM) {
+                    lblThievingNpcCustomID.setVisible(true);
+                    thievingNpcCustomID.setVisible(true);
+                } else {
+                    lblThievingNpcCustomID.setVisible(false);
+                    thievingNpcCustomID.setVisible(false);
+                }
+                UI.this.revalidate();
+                UI.this.repaint();
+            }
+        });
+        fightingPanel.add(fightingNpcSelect);
+
+        // Custom npc id to attack
+        lblFightingNpcCustomID.setForeground(Color_WhiteSmoke);
+        lblFightingNpcCustomID.setBounds(200, 20, 150, 20);
+        fightingPanel.add(lblFightingNpcCustomID);
+        fightingNpcCustomID.setBounds(200, 40, 150, 20);
+        fightingNpcCustomID.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    String[] sample = fightingNpcCustomID.getText().split("(,|;)\\s*");
+                    int[] customIDs = new int[sample.length];
+
+                    for (int i = 0; i < sample.length; i++)
+                        customIDs[i] = Integer.parseInt(sample[i]);
+                    Variables.fighting_npc_selected.setIDs(customIDs);
+                } catch (Exception err) {
+                    FightingNpcs.CUSTOM.setIDs(new int[]{0});
+                }
+            }
+        });
+        fightingPanel.add(fightingNpcCustomID);
+        lblFightingNpcCustomID.setVisible(false);
+        fightingNpcCustomID.setVisible(false);
+
+        /*
          * Thieving Panel
          */
 
@@ -275,38 +347,38 @@ public class UI extends JFrame {
         thievingPanel.setLayout(null);
 
         // Select which npc should be our victim
-        JLabel lblNpc = new JLabel("NPC");
-        lblNpc.setForeground(Color_WhiteSmoke);
-        lblNpc.setBounds(20, 20, 73, 20);
-        thievingPanel.add(lblNpc);
-        npcSelect.setModel(new DefaultComboBoxModel(Npcs.toStringArray()));
-        npcSelect.setBounds(20, 40, 150, 20);
-        npcSelect.addActionListener (new ActionListener () {
+        JLabel lblThievingNpc = new JLabel("NPC");
+        lblThievingNpc.setForeground(Color_WhiteSmoke);
+        lblThievingNpc.setBounds(20, 20, 73, 20);
+        thievingPanel.add(lblThievingNpc);
+        thievingNpcSelect.setModel(new DefaultComboBoxModel(ThievingNpcs.toStringArray()));
+        thievingNpcSelect.setBounds(20, 40, 150, 20);
+        thievingNpcSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                for (Npcs npc : Npcs.values()) {
-                    if (npc.getName().equalsIgnoreCase(npcSelect.getSelectedItem().toString())) {
+                for (ThievingNpcs npc : ThievingNpcs.values()) {
+                    if (npc.getName().equalsIgnoreCase(thievingNpcSelect.getSelectedItem().toString())) {
                         Variables.thieving_npc_selected = npc;
                     }
                 }
-                if (Variables.thieving_npc_selected == Npcs.CUSTOM) {
-                    lblNpcThievingCustomID.setVisible(true);
-                    npcThievingCustomID.setVisible(true);
+                if (Variables.thieving_npc_selected == ThievingNpcs.CUSTOM) {
+                    lblThievingNpcCustomID.setVisible(true);
+                    thievingNpcCustomID.setVisible(true);
                 } else {
-                    lblNpcThievingCustomID.setVisible(false);
-                    npcThievingCustomID.setVisible(false);
+                    lblThievingNpcCustomID.setVisible(false);
+                    thievingNpcCustomID.setVisible(false);
                 }
                 UI.this.revalidate();
                 UI.this.repaint();
             }
         });
-        thievingPanel.add(npcSelect);
+        thievingPanel.add(thievingNpcSelect);
 
         // Custom npc id to steal from
-        lblNpcThievingCustomID.setForeground(Color_WhiteSmoke);
-        lblNpcThievingCustomID.setBounds(200, 20, 150, 20);
-        thievingPanel.add(lblNpcThievingCustomID);
-        npcThievingCustomID.setBounds(200, 40, 150, 20);
-        npcThievingCustomID.addFocusListener(new FocusListener() {
+        lblThievingNpcCustomID.setForeground(Color_WhiteSmoke);
+        lblThievingNpcCustomID.setBounds(200, 20, 150, 20);
+        thievingPanel.add(lblThievingNpcCustomID);
+        thievingNpcCustomID.setBounds(200, 40, 150, 20);
+        thievingNpcCustomID.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 // we don't need to do anything here
@@ -315,20 +387,20 @@ public class UI extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 try {
-                    String[] sample = npcThievingCustomID.getText().split("(,|;)\\s*");
+                    String[] sample = thievingNpcCustomID.getText().split("(,|;)\\s*");
                     int[] customIDs = new int[sample.length];
 
                     for (int i = 0; i < sample.length; i++)
                         customIDs[i] = Integer.parseInt(sample[i]);
                     Variables.thieving_npc_selected.setIDs(customIDs);
                 } catch (Exception err) {
-                    Npcs.CUSTOM.setIDs(new int[]{0});
+                    ThievingNpcs.CUSTOM.setIDs(new int[]{0});
                 }
             }
         });
-        thievingPanel.add(npcThievingCustomID);
-        lblNpcThievingCustomID.setVisible(false);
-        npcThievingCustomID.setVisible(false);
+        thievingPanel.add(thievingNpcCustomID);
+        lblThievingNpcCustomID.setVisible(false);
+        thievingNpcCustomID.setVisible(false);
 
         /*
          * Slave Panel

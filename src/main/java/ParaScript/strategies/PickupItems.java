@@ -17,7 +17,6 @@ public class PickupItems implements Strategy {
     public boolean activate() {
         if (Variables.running
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "picking up items")
-                && Variables.VARROCK_EAST_MINE_ZONE.inTheZone()
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
                 && !Inventory.isFull()) {
