@@ -31,7 +31,7 @@ public class Variables {
     public static String mining_method = "Bank";
 
     // Fighting
-    public static FightingNpcs fighting_npc_selected = FightingNpcs.MAN_WOMAN;
+    public static FightingNpcs fighting_npc_selected = FightingNpcs.CHICKEN;
     public static boolean fighting_bury_bones = true;
     public static int[] fighting_item_ids = new int[]{};
 
