@@ -30,8 +30,8 @@ public class Fighting implements Strategy {
     public void execute() {
         victim.interact(Npcs.Option.ATTACK);
         Time.sleep(2000);
-        // Wait for the Player to finish attacking (max 5 seconds)
-        Time.sleep(() -> !Players.getMyPlayer().isInCombat(), 5000);
+        // Wait for the Player to finish attacking (max 30 seconds)
+        Time.sleep(() -> !Players.getMyPlayer().isInCombat(), 30000);
     }
 
     private Npc victim(){

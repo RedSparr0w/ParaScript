@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Npcs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/ThievingNpcs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fighting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/PickupItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/PickupItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" afterDir="false" />
     </list>
@@ -58,8 +58,8 @@
       <recent name="C:\Users\Dan-j\Documents\GitHub\ParaScript" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ParaScript.data.variables" />
       <recent name="ParaScript.strategies" />
+      <recent name="ParaScript.data.variables" />
       <recent name="ParaScript" />
       <recent name="ParaScript.ui" />
       <recent name="ParaScript.data" />

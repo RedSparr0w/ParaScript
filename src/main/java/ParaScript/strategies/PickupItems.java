@@ -4,19 +4,19 @@ import ParaScript.data.Variables;
 import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.GroundItems;
-import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.Players;
-import org.rev317.min.api.methods.SceneObjects;
+import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.GroundItem;
 import org.rev317.min.api.wrappers.SceneObject;
+import org.rev317.min.api.wrappers.Tile;
 
 public class PickupItems implements Strategy {
+    GroundItem[] items;
 
     @Override
     public boolean activate() {
+        items = getItems();
         if (Variables.running
-                && (Variables.getStatus() == "none" || Variables.getStatus() == "picking up items")
+                && items.length > 0
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
                 && !Inventory.isFull()) {
@@ -30,17 +30,24 @@ public class PickupItems implements Strategy {
     @Override
     public void execute() {
         try {
-            GroundItem[] items = GroundItems.getNearest(436, 438, 440);
             for (GroundItem item : items) {
                 item.take();
-                Time.sleep(1500);
+                Time.sleep(() -> item.distanceTo() < 1, 2000);
                 if (Inventory.isFull()){
-                    Variables.setStatus("none");
                     return;
                 }
             }
         } catch (Exception err){
             System.out.println("Pickup items error: ¯\\_(ツ)_/¯");
         }
+    }
+
+    private GroundItem[] getItems(){
+        int[] itemIDs = new int[]{};
+        if (Variables.skill_to_train == Skill.ATTACK){
+            if (Variables.fighting_bury_bones)
+                itemIDs = new int[]{526};
+        }
+        return GroundItems.getNearest(itemIDs);
     }
 }

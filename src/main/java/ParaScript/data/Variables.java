@@ -30,12 +30,13 @@ public class Variables {
     public static Ores mining_ore_selected = Ores.COPPER_TIN;
     public static String mining_method = "Bank";
 
+    // Fighting
+    public static FightingNpcs fighting_npc_selected = FightingNpcs.MAN_WOMAN;
+    public static boolean fighting_bury_bones = true;
+
     // Thieving
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;
     //public static String thieving_method = "None";
-
-    // Fighting
-    public static FightingNpcs fighting_npc_selected = FightingNpcs.MAN_WOMAN;
 
 
     // Used for slave accounts

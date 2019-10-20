@@ -12,10 +12,7 @@ import org.rev317.min.api.methods.Skill;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 public class UI extends JFrame {
     private final ButtonGroup woodcutOptionButtonGroup = new ButtonGroup();
@@ -43,6 +40,7 @@ public class UI extends JFrame {
     private JComboBox fightingNpcSelect = new JComboBox();
     private JLabel lblFightingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField fightingNpcCustomID = new JTextField();
+    private JCheckBox fightingBuryBones = new JCheckBox();
 
     // Thieving
     private JComboBox thievingNpcSelect = new JComboBox();
@@ -335,6 +333,21 @@ public class UI extends JFrame {
         fightingPanel.add(fightingNpcCustomID);
         lblFightingNpcCustomID.setVisible(false);
         fightingNpcCustomID.setVisible(false);
+
+        JLabel lblFightingBuryBones = new JLabel("Collect and bury bones");
+        lblFightingBuryBones.setForeground(Color_WhiteSmoke);
+        lblFightingBuryBones.setBounds(40, 80, 130, 20);
+        fightingPanel.add(lblFightingBuryBones);
+        fightingBuryBones.setBackground(Color_WetAsphalt);
+        fightingBuryBones.setForeground(Color_WhiteSmoke);
+        fightingBuryBones.setBounds(15, 80, 20, 20);
+        fightingBuryBones.setSelected(true);
+        fightingBuryBones.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                Variables.fighting_bury_bones = fightingBuryBones.isSelected();
+            }
+        });
+        fightingPanel.add(fightingBuryBones);
 
         /*
          * Thieving Panel
