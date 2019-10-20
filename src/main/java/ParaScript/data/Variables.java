@@ -36,7 +36,7 @@ public class Variables {
     public static String mining_method = "Bank";
 
     //Thieving
-    public static Npcs thieving_npc_selected = Npcs.MAN;
+    public static Npcs thieving_npc_selected = Npcs.MAN_WOMAN;
     public static String thieving_method = "None";
 
 
