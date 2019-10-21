@@ -327,7 +327,7 @@ public class UI extends JFrame {
                     for (int i = 0; i < sample.length; i++)
                         customIDs[i] = Integer.parseInt(sample[i]);
                     Variables.fighting_npc_selected.setIDs(customIDs);
-                } catch (Exception err) {
+                } catch (Exception ಠ_ಠ) {
                     FightingNpcs.CUSTOM.setIDs(new int[]{0});
                 }
             }
@@ -371,7 +371,7 @@ public class UI extends JFrame {
                     for (int i = 0; i < sample.length; i++)
                         customIDs[i] = Integer.parseInt(sample[i]);
                     Variables.fighting_item_ids = customIDs;
-                } catch (Exception err) {
+                } catch (Exception ಠ_ಠ) {
                     Variables.fighting_item_ids = new int[]{};
                 }
             }
@@ -435,7 +435,7 @@ public class UI extends JFrame {
                     for (int i = 0; i < sample.length; i++)
                         customIDs[i] = Integer.parseInt(sample[i]);
                     Variables.thieving_npc_selected.setIDs(customIDs);
-                } catch (Exception err) {
+                } catch (Exception ಠ_ಠ) {
                     ThievingNpcs.CUSTOM.setIDs(new int[]{0});
                 }
             }

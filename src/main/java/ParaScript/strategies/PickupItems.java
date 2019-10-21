@@ -40,19 +40,23 @@ public class PickupItems implements Strategy {
                     break;
                 }
             }
-        } catch (Exception err){
+        } catch (Exception ಠ_ಠ){
             System.out.println("Pickup items error: ¯\\_(ツ)_/¯");
         }
         Variables.addItemGained(Inventory.getCount(true) - currentItemAmount);
     }
 
     private GroundItem[] getItems(){
+        return GroundItems.getNearest(getItemIDs());
+    }
+
+    private int[] getItemIDs(){
         int[] itemIDs = new int[]{};
         if (Variables.skill_to_train == Skill.ATTACK){
             if (Variables.fighting_bury_bones)
                 itemIDs = new int[]{526}; // TODO: need to add all the other bones
         }
         itemIDs = Methods.combineIntArrays(Variables.fighting_item_ids, itemIDs);
-        return GroundItems.getNearest(itemIDs);
+        return itemIDs;
     }
 }

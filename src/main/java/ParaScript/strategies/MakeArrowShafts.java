@@ -39,7 +39,7 @@ public class MakeArrowShafts implements Strategy {
             Time.sleep(3000);
             //Wait for the Player to chop the Tree
             Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
-        } catch (Exception err) {
+        } catch (Exception ಠ_ಠ) {
             System.out.println("Fletching error: ¯\\_(ツ)_/¯");
         }
     }

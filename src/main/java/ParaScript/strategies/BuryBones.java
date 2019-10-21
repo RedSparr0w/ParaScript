@@ -32,7 +32,7 @@ public class BuryBones implements Strategy {
             Inventory.getItem(527).interact(Items.Option.SECOND);
             Time.sleep(500);
             if (Game.isLoggedIn() && hasBones()) buryBones();
-        } catch (Exception err) {
+        } catch (Exception ಠ_ಠ) {
             System.out.println("Bone burying error: ¯\\_(ツ)_/¯");
         }
     }
