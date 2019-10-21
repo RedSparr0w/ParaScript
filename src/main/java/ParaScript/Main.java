@@ -83,7 +83,7 @@ public class Main extends Script implements MessageListener, Paintable {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 14));
-        g.drawString("2006AIO", 360, 247);
+        g.drawString("2006 AIO", 360, 247);
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString("Status: " + Variables.getStatus(), 360, 270);
         g.drawString("Items(P/H): " + Methods.formatNumber(Variables.itemsGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour(Variables.itemsGained)) + ")", 360, 290);

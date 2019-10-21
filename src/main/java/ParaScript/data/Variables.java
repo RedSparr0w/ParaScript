@@ -6,6 +6,8 @@ import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
 
+import java.util.List;
+
 public class Variables {
     public static final Timer SCRIPT_TIMER = new Timer();
 
@@ -117,6 +119,23 @@ public class Variables {
             new Tile(3287, 3370),
     };
 
+    // Smithing Falador
+    public final static Zone FALADOR_WEST_BANK_ZONE = new Zone(new Tile(2943, 3374), new Tile(2950, 3367));
+
+    public final static Tile[] FALADOR_WEST_BANK_TO_FURNACE = new Tile[] {
+        new Tile(2946, 3368),
+        new Tile(2953, 3378),
+        new Tile(2966, 3377),
+        new Tile(2974, 3369),
+    };
+
+    public final static Tile[] FALADOR_WEST_FURNACE_TO_BANK = new Tile[] {
+        new Tile(2974, 3369, 0),
+        new Tile(2966, 3377, 0),
+        new Tile(2953, 3378, 0),
+        new Tile(2946, 3368, 0),
+    };
+
     public static String getAccountUsername() { return username; }
     public static void setAccountUsername(String i) { username = i; }
 
@@ -135,6 +154,18 @@ public class Variables {
     public static void updateExpGained(){
         if (skill_to_train == null) return;
         expGained = skill_to_train.getExperience() - baseExperience;
+    }
+
+    public static int[] getItemIDs(){
+        if (skill_to_train == null) return new int[]{-1};
+        switch (skill_to_train.getName()){
+            case "Woodcutting":
+                return woodcutting_tree_selected.getIDs();
+            case "Mining":
+                return mining_ore_selected.getIDs();
+            default:
+                return new int[]{-1};
+        }
     }
 
     public static boolean shouldBankItems(){
