@@ -8,8 +8,13 @@ public enum Ores {
     COPPER_TIN("Copper & Tin", new int[]{2090, 2094}, 17.5),
     COPPER("Copper", new int[]{2090}, 17.5),
     TIN("Tin", new int[]{2094}, 17.5),
-    IRON ("Iron", new int[]{2092}, 35),
-    COAL("Coal", new int[]{}, 50);
+    SILVER("Silver", new int[]{2100, 2101, 6945, 6946}, 0),
+    GOLD("Gold", new int[]{2098, 2099, 2609, 2610, 2611, 5768, 5769}, 0),
+    IRON ("Iron", new int[]{2092, 2093}, 35),
+    COAL("Coal", new int[]{2096, 2097}, 50),
+    MITHRIL("Mithril", new int[]{2102, 2103}, 0),
+    ADAMANT("Adamant", new int[]{2104, 2105, 3040, 3273, 5782, 5783}, 0),
+    RUNITE("Runite", new int[]{14859, 14860}, 0);
 
     private String name;
     private int[] ids;
