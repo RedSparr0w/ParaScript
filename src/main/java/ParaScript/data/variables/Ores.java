@@ -14,7 +14,8 @@ public enum Ores {
     COAL("Coal", new int[]{2096, 2097}, 50),
     MITHRIL("Mithril", new int[]{2102, 2103}, 0),
     ADAMANT("Adamant", new int[]{2104, 2105, 3040, 3273, 5782, 5783}, 0),
-    RUNITE("Runite", new int[]{14859, 14860}, 0);
+    RUNITE("Runite", new int[]{14859, 14860}, 0),
+    PURE_ESSENCE("Pure Essence", new int[]{2491}, 0);
 
     private String name;
     private int[] ids;
