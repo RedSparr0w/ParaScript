@@ -148,12 +148,14 @@ public class Variables {
 
     public static void setBaseExp(){
         if (skill_to_train == null) return;
-        baseExperience = skill_to_train.getExperience();
+        if (skill_to_train == Skill.ATTACK) baseExperience = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience();
+        else baseExperience = skill_to_train.getExperience();
     }
 
     public static void updateExpGained(){
         if (skill_to_train == null) return;
-        expGained = skill_to_train.getExperience() - baseExperience;
+        if (skill_to_train == Skill.ATTACK) expGained = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience() - baseExperience;
+        else expGained = skill_to_train.getExperience() - baseExperience;
     }
 
     public static int[] getItemIDs(){
