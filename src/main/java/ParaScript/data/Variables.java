@@ -29,13 +29,14 @@ public class Variables {
     public static String woodcutting_method = "Fletch";
 
     // Mining
-    public static Ores mining_ore_selected = Ores.COPPER_TIN;
+    public static Ores mining_ore_selected = Ores.ESSENCE;
     public static String mining_method = "Bank";
 
     // Fighting
     public static FightingNpcs fighting_npc_selected = FightingNpcs.CHICKEN;
     public static boolean fighting_bury_bones = true;
     public static int[] fighting_item_ids = new int[]{};
+    public static int fighting_minimum_hitpoints = 0;
 
     // Thieving
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;

@@ -39,8 +39,8 @@ public class UI extends JFrame {
     private JLabel lblFightingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField fightingNpcCustomID = new JTextField();
     private JCheckBox fightingBuryBones = new JCheckBox();
-    private JLabel lblFightingItemCustomID = new JLabel("Pickup Item IDs");
     private JTextField fightingItemCustomID = new JTextField();
+    private JTextField fightingMinimumHitpoints = new JTextField();
 
     // Thieving
     private JComboBox thievingNpcSelect = new JComboBox();
@@ -350,6 +350,7 @@ public class UI extends JFrame {
         fightingPanel.add(fightingBuryBones);
 
         // Custom items to pickup
+        JLabel lblFightingItemCustomID = new JLabel("Pickup Item IDs");
         lblFightingItemCustomID.setForeground(Color_WhiteSmoke);
         lblFightingItemCustomID.setBounds(20, 120, 150, 20);
         fightingPanel.add(lblFightingItemCustomID);
@@ -375,6 +376,29 @@ public class UI extends JFrame {
             }
         });
         fightingPanel.add(fightingItemCustomID);
+
+        // Minimum hitpoints to start fighting
+        JLabel lblFightingMinimumHitpoints = new JLabel("Minimum hitpoints");
+        lblFightingMinimumHitpoints.setForeground(Color_WhiteSmoke);
+        lblFightingMinimumHitpoints.setBounds(200, 120, 150, 20);
+        fightingPanel.add(lblFightingMinimumHitpoints);
+        fightingMinimumHitpoints.setBounds(200, 140, 150, 20);
+        fightingMinimumHitpoints.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    Variables.fighting_minimum_hitpoints = Integer.parseInt(fightingMinimumHitpoints.getText());
+                } catch (Exception ಠ_ಠ) {
+                    Variables.fighting_minimum_hitpoints = 0;
+                }
+            }
+        });
+        fightingPanel.add(fightingMinimumHitpoints);
 
         /*
          * Thieving Panel

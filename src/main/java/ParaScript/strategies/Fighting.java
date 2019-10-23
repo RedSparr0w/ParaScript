@@ -7,6 +7,7 @@ import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.wrappers.Npc;
+import org.rev317.min.api.wrappers.Player;
 
 public class Fighting implements Strategy {
     private Npc victim;
@@ -14,11 +15,13 @@ public class Fighting implements Strategy {
     @Override
     public boolean activate() {
         victim = victim(); // set the local Variable
+        Player myPlayer = Players.getMyPlayer();
         if (Variables.running
                 && victim != null
-                && !Players.getMyPlayer().isInCombat()
-                && Players.getMyPlayer().getAnimation() == -1
-                && !Inventory.isFull()) {
+                && !myPlayer.isInCombat()
+                && myPlayer.getAnimation() == -1
+                && !Inventory.isFull()
+                && myPlayer.getHealth() > Variables.fighting_minimum_hitpoints) {
             Variables.setStatus("fighting");
             return true;
         }
