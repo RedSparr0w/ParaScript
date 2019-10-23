@@ -5,6 +5,7 @@ import ParaScript.strategies.*;
 import ParaScript.ui.UI;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.api.utils.Time;
+import org.parabot.environment.api.utils.Timer;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.parabot.environment.scripts.Category;
@@ -21,6 +22,7 @@ public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
     private UI ui = new UI();
+    public static Timer SCRIPT_TIMER;
 
     @Override
     public boolean onExecute() {
@@ -28,6 +30,8 @@ public class Main extends Script implements MessageListener, Paintable {
         while (!Variables.running) {
             Time.sleep(300);
         }
+
+        SCRIPT_TIMER = new Timer();
 
         Variables.setBaseExp();
 
@@ -86,9 +90,10 @@ public class Main extends Script implements MessageListener, Paintable {
         g.drawString("2006 AIO", 360, 247);
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString("Status: " + Variables.getStatus(), 360, 270);
-        g.drawString("Items(P/H): " + Methods.formatNumber(Variables.itemsGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour(Variables.itemsGained)) + ")", 360, 290);
-        g.drawString("EXP(P/H): " + Methods.formatNumber((int) Variables.expGained) + "(" + Methods.formatNumber(Variables.SCRIPT_TIMER.getPerHour((int) Variables.expGained)) + ")", 360, 310);
-        g.drawString("Runtime: " + Variables.SCRIPT_TIMER.toString(), 360, 330);
+        if (SCRIPT_TIMER == null) return;
+        g.drawString("Items(P/H): " + Methods.formatNumber(Variables.items_gained) + "(" + Methods.formatNumber(SCRIPT_TIMER.getPerHour(Variables.items_gained)) + ")", 360, 290);
+        g.drawString("EXP(P/H): " + Methods.formatNumber((int) Variables.exp_gained) + "(" + Methods.formatNumber(SCRIPT_TIMER.getPerHour((int) Variables.exp_gained)) + ")", 360, 310);
+        g.drawString("Runtime: " + SCRIPT_TIMER.toString(), 360, 330);
 
     }
 

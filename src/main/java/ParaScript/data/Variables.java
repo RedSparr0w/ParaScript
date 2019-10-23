@@ -6,16 +6,12 @@ import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
 
-import java.util.List;
-
 public class Variables {
-    public static final Timer SCRIPT_TIMER = new Timer();
-
     public static boolean running = false;
-    private static String currentStatus = "none";
-    public static int itemsGained = 0;
-    public static double baseExperience = 0;
-    public static double expGained = 0;
+    private static String current_status = "none";
+    public static int items_gained = 0;
+    public static double base_experience = 0;
+    public static double exp_gained = 0;
 
     // Login Panel
     private static String username = "";
@@ -50,11 +46,11 @@ public class Variables {
     public static TilePath pathToWalk;
 
     public static String getStatus() {
-        return currentStatus;
+        return current_status;
     }
 
     public static void setStatus(String i) {
-        currentStatus = i;
+        current_status = i;
     }
 
     public final static Zone LUMBRIDGE_NORMAL_TREE_ZONE = new Zone(new Tile(3140, 3260), new Tile(3206, 3206));
@@ -144,19 +140,19 @@ public class Variables {
     public static void setAccountPassword(String i) { password = i; }
 
     public static void addItemGained(int amount){
-        itemsGained += amount;
+        items_gained += amount;
     }
 
     public static void setBaseExp(){
         if (skill_to_train == null) return;
-        if (skill_to_train == Skill.ATTACK) baseExperience = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience();
-        else baseExperience = skill_to_train.getExperience();
+        if (skill_to_train == Skill.ATTACK) base_experience = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience();
+        else base_experience = skill_to_train.getExperience();
     }
 
     public static void updateExpGained(){
         if (skill_to_train == null) return;
-        if (skill_to_train == Skill.ATTACK) expGained = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience() - baseExperience;
-        else expGained = skill_to_train.getExperience() - baseExperience;
+        if (skill_to_train == Skill.ATTACK) exp_gained = Skill.ATTACK.getExperience() + Skill.STRENGTH.getExperience() + Skill.DEFENSE.getExperience() + Skill.HITPOINTS.getExperience() + Skill.RANGE.getExperience() + Skill.MAGIC.getExperience() + Skill.PRAYER.getExperience() - base_experience;
+        else exp_gained = skill_to_train.getExperience() - base_experience;
     }
 
     public static int[] getItemIDs(){
