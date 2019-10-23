@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="14d0b690-21f2-4a9c-b8cf-803e9cc87ab5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Ores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Ores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Trees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/MakeArrowShafts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/MakeArrowShafts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Mine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Mine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/ui/UI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
