@@ -19,7 +19,7 @@ public enum Ores {
     RUNE("Rune", new int[] { 14859, 14860, 2106, 2107 }, 85, 125, 20, 166, new int[] { 451 }),
     GRANITE("Granite", new int[] { 10947 }, 45, 75, 10, 10, new int[] { 6979, 6981, 6983 }),
     SANDSTONE("Sandstone", new int[] { 10946 }, 35, 60, 5, 5, new int[] { 6971, 6973, 6975, 6977 }),
-    GEM("Gem", new int[] {2111}, 40, 65, 6, 120, new int[] {1});
+    GEM("Gem", new int[] {2111}, 40, 65, 6, 120, new int[] {});
 
     private final String name;
     private final int levelReq, mineTimer, respawnTimer, xp;

@@ -126,6 +126,7 @@ public class UI extends JFrame {
                 Skill.MINING.getName(),
                 Skill.ATTACK.getName(),
                 Skill.THIEVING.getName(),
+                Skill.FISHING.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
@@ -468,7 +469,9 @@ public class UI extends JFrame {
 
         /*
          * Slave Panel
-         */
+         *
+         * DISABLED FOR NOW
+
         JPanel slavePanel = new JPanel();
         slavePanel.setForeground(Color_WhiteSmoke);
         slavePanel.setBackground(Color_WetAsphalt);
@@ -488,6 +491,7 @@ public class UI extends JFrame {
                 Variables.slaveMaster = slaveMaster.getText();
             }
         });
+        */
 
         JButton start = new JButton("START");
         start.addActionListener(new ActionListener() {

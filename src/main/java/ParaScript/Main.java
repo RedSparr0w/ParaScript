@@ -55,6 +55,9 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new BuryBones());
             strategies.add(new Fighting());
         }
+        if(Variables.skill_to_train == Skill.FISHING) {
+            strategies.add(new Fish());
+        }
         if(Variables.skill_to_train == null) {
             strategies.add(new Bank());
             strategies.add(new Walk());
@@ -101,6 +104,7 @@ public class Main extends Script implements MessageListener, Paintable {
         switch (message.getType()) {
             case 0:
                 if (message.getMessage().startsWith("You manage to ") || // woodcutting, mining
+                    message.getMessage().startsWith("You catch some") || // fishing
                     message.getMessage().startsWith("You pick the ")) {  // pickpockets
                         Variables.addItemGained(1);
                         Variables.updateExpGained();
