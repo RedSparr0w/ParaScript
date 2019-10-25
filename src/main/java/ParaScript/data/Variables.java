@@ -2,6 +2,7 @@ package ParaScript.data;
 
 import ParaScript.data.variables.*;
 import org.parabot.environment.api.utils.Timer;
+import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
@@ -38,6 +39,8 @@ public class Variables {
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;
     //public static String thieving_method = "None";
 
+    // Fishing
+    public static Npcs.Option fishing_type_selected = Npcs.Option.NET;
 
     // Used for slave accounts
     public static String slaveMaster = "";

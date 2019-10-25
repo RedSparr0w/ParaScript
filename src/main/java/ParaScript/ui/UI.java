@@ -3,6 +3,7 @@ package ParaScript.ui;
 import ParaScript.data.variables.*;
 import ParaScript.data.Variables;
 import org.rev317.min.api.methods.Game;
+import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Player;
@@ -46,6 +47,9 @@ public class UI extends JFrame {
     private JComboBox thievingNpcSelect = new JComboBox();
     private JLabel lblThievingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField thievingNpcCustomID = new JTextField();
+
+    // Fishing
+    private JComboBox fishingTypeSelect = new JComboBox();
 
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
@@ -466,6 +470,39 @@ public class UI extends JFrame {
         thievingPanel.add(thievingNpcCustomID);
         lblThievingNpcCustomID.setVisible(false);
         thievingNpcCustomID.setVisible(false);
+
+        /*
+         * Fishing Panel
+         */
+
+        JPanel fishingPanel = new JPanel();
+        fishingPanel.setForeground(Color_WhiteSmoke);
+        fishingPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Fishing", fishingPanel);
+        fishingPanel.setLayout(null);
+
+        // Select which npc should be our victim
+        JLabel lblFishingTypeSelect = new JLabel("Fishing Type");
+        lblFishingTypeSelect.setForeground(Color_WhiteSmoke);
+        lblFishingTypeSelect.setBounds(20, 20, 73, 20);
+        fishingPanel.add(lblFishingTypeSelect);
+        fishingTypeSelect.setModel(new DefaultComboBoxModel(new String[]{
+                Npcs.Option.NET.name(),
+                Npcs.Option.BAIT.name(),
+                Npcs.Option.CAGE.name(),
+                Npcs.Option.HARPOON.name(),
+        }));
+        fishingTypeSelect.setBounds(20, 40, 150, 20);
+        fishingTypeSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Npcs.Option option : Npcs.Option.values()) {
+                    if (option.name().equalsIgnoreCase(fishingTypeSelect.getSelectedItem().toString())) {
+                        Variables.fishing_type_selected = option;
+                    }
+                }
+            }
+        });
+        fishingPanel.add(fishingTypeSelect);
 
         /*
          * Slave Panel

@@ -9,6 +9,7 @@ import org.rev317.min.api.wrappers.SceneObject;
 
 public class Fish implements Strategy {
     private Npc fishingSpot;
+    private int[] items = new int[]{317, 321};
 
     @Override
     public boolean activate() {
@@ -28,9 +29,10 @@ public class Fish implements Strategy {
     @Override
     public void execute() {
         try {
-            fishingSpot.interact(Npcs.Option.NET);
+            fishingSpot.interact(Variables.fishing_type_selected);
             Time.sleep(1000);
-            Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 30000);
+            // Wait for the Player to finish fishing (max 60 seconds)
+            Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 60000);
         } catch (Exception err){
             System.out.println("Fishing error: ¯\\_(ツ)_/¯");
         }
