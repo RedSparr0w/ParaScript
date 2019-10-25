@@ -46,7 +46,7 @@ public class Fighting implements Strategy {
                     return victim;
                 }
             }
-        } catch (Exception err){}
+        } catch (Exception ಠ_ಠ){}
         return null;
     }
 }

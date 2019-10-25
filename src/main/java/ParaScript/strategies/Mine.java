@@ -39,7 +39,7 @@ public class Mine implements Strategy {
             ore.interact(SceneObjects.Option.MINE);
             Time.sleep(1000);
             Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
-        } catch (Exception err){
+        } catch (Exception ಠ_ಠ){
             System.out.println("Mining error: ¯\\_(ツ)_/¯");
         }
     }
