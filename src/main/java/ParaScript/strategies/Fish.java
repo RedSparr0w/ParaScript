@@ -33,10 +33,6 @@ public class Fish implements Strategy {
                 if (Inventory.getCount(441) >= 1) Inventory.getItem(441).interact(Items.Option.DROP);
             }
 
-            for (int item_id: items)
-                if (Inventory.getItem(item_id + 1) != null)
-                    Menu.sendAction(431,  item_id, Inventory.getItem(item_id + 1).getSlot(), 5064, 3);
-
             fishingSpot.interact(Variables.fishing_type_selected);
             Time.sleep(1000);
 
@@ -48,10 +44,12 @@ public class Fish implements Strategy {
     }
 
     private Npc fishingSpot(){
-        for(Npc spot : Npcs.getNearest(316)){
-            if (spot != null)
-                return spot;
-        }
+        try {
+            for (Npc spot : Npcs.getNearest(316)) {
+                if (spot != null)
+                    return spot;
+            }
+        } catch (Exception ಠ_ಠ){}
         return null;
     }
 }
