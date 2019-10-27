@@ -32,14 +32,17 @@ public class Fish implements Strategy {
             if (Variables.shouldDropItems()) {
                 if (Inventory.getCount(441) >= 1) Inventory.getItem(441).interact(Items.Option.DROP);
             }
+
             for (int item_id: items)
                 if (Inventory.getItem(item_id + 1) != null)
                     Menu.sendAction(431,  item_id, Inventory.getItem(item_id + 1).getSlot(), 5064, 3);
+
             fishingSpot.interact(Variables.fishing_type_selected);
             Time.sleep(1000);
+
             // Wait for the Player to finish fishing (max 60 seconds)
             Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 60000);
-        } catch (Exception err){
+        } catch (Exception ಠ_ಠ){
             System.out.println("Fishing error: ¯\\_(ツ)_/¯");
         }
     }

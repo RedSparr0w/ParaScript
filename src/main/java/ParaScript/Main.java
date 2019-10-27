@@ -35,6 +35,7 @@ public class Main extends Script implements MessageListener, Paintable {
 
         Variables.setBaseExp();
 
+        strategies.add(new UpdateExperience());
         strategies.add(new ScriptState());
         if(Variables.skill_to_train == Skill.WOODCUTTING) {
             strategies.add(new MakeArrowShafts());

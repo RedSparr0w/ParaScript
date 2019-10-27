@@ -13,6 +13,7 @@ public class Variables {
     public static int items_gained = 0;
     public static double base_experience = 0;
     public static double exp_gained = 0;
+    public static int update_experience_tick = 0;
 
     // Login Panel
     private static String username = "";
