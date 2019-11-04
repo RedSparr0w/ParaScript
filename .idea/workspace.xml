@@ -84,7 +84,7 @@
   <component name="RunManager">
     <configuration default="true" type="JarApplication">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.7" />
       <method v="2" />
     </configuration>
   </component>
