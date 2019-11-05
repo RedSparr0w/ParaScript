@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d0b690-21f2-4a9c-b8cf-803e9cc87ab5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/MakeArrowShafts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/MakeArrowShafts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/PickupItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/strategies/PickupItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParaScript.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ParaScript.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaScript/data/variables/Trees.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,9 +43,9 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="parascript" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../2006rebotted" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.36551723" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
