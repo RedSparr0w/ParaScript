@@ -3,13 +3,16 @@ package ParaScript;
 import ParaScript.data.Variables;
 import ParaScript.strategies.*;
 import ParaScript.ui.UI;
+import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.api.utils.Timer;
+import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.ScriptManifest;
+import org.rev317.min.accessors.Client;
 import org.rev317.min.api.events.MessageEvent;
 import org.rev317.min.api.events.listeners.MessageListener;
 import org.rev317.min.api.methods.Skill;
@@ -17,7 +20,7 @@ import org.rev317.min.api.methods.Skill;
 import java.awt.*;
 import java.util.ArrayList;
 
-@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1)
+@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1.2)
 public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
@@ -66,6 +69,9 @@ public class Main extends Script implements MessageListener, Paintable {
         }
         strategies.add(new HandleLogin());
         provide(strategies);
+
+        Keyboard.getInstance().sendKeys("Training " + Variables.skill_to_train.getName() + ". Drop items? " + !Variables.shouldBankItems());
+
         return true;
     }
 

@@ -15,7 +15,7 @@ public class Bank implements Strategy {
         return Variables.running
                 && Game.isLoggedIn()
                 && Variables.shouldBankItems()
-                && (Variables.getStatus() == "none" || Variables.getStatus() == "banking items")
+                && (Variables.getStatus().equals("none") || Variables.getStatus().equals("banking items"))
                 && Inventory.isFull();
     }
 
@@ -32,7 +32,13 @@ public class Bank implements Strategy {
     }
 
     public void depositItems() {
-        Keyboard.getInstance().sendKeys("::bank", true);
+        Npc banker = Npcs.getClosest(494);
+        if (banker != null)
+        {
+            banker.interact(Npcs.Option.BANK);
+        } else {
+            Keyboard.getInstance().sendKeys("I can't find the banker!");
+        }
         Time.sleep(3000);
         if (Game.getOpenInterfaceId() == 5292) {
             if (Variables.skill_to_train == Skill.MINING)

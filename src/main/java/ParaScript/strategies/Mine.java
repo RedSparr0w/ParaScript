@@ -3,6 +3,7 @@ package ParaScript.strategies;
 import ParaScript.data.Variables;
 import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
+import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Items;
@@ -18,11 +19,12 @@ public class Mine implements Strategy {
         ore = ore(); // set the local Variable
         if (Variables.running
                 && ore != null
-                && (Variables.getStatus() == "none" || Variables.getStatus() == "mining")
+                && (Variables.getStatus().equals("none") || Variables.getStatus().equals("mining"))
                 && Variables.VARROCK_EAST_MINE_ZONE.inTheZone()
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
                 && !Inventory.isFull()) {
+            Keyboard.getInstance().sendKeys("Mining!");
             Variables.setStatus("mining");
             return true;
         }
@@ -42,6 +44,7 @@ public class Mine implements Strategy {
         } catch (Exception ಠ_ಠ){
             System.out.println("Mining error: ¯\\_(ツ)_/¯");
         }
+        Time.sleep(1000);
     }
 
     private SceneObject ore(){
