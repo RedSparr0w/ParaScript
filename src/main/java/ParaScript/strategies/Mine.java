@@ -24,7 +24,6 @@ public class Mine implements Strategy {
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
                 && !Inventory.isFull()) {
-            Keyboard.getInstance().sendKeys("Mining!");
             Variables.setStatus("mining");
             return true;
         }
