@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <config>
-    <jars basedir="C:/Users/Dan-j/IdeaProjects/ParaScript/target/">
-        <jar in="1000205.jar" out="/home/ci/jars/1000205.jar"/>
+    <jars basedir="/usr/src/build/target/">
+        <jar in="ParaScript.jar" out="/home/ci/jars/ParaScript.jar"/>
     </jars>
 
     <classpath basedir="/home/ci/allatori/libs">

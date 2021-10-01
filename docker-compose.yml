@@ -1,0 +1,11 @@
+
+version: "3"
+services:
+  maven-build:
+    image: maven:3.8.2-jdk-8
+    container_name: maven-build
+    command: ["mvn", "-B",  "clean", "install"]
+    volumes:
+      - ./:/usr/src/build
+    working_dir: /usr/src/build
+    restart: "no"
