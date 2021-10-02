@@ -1,7 +1,6 @@
 package ParaScript.data;
 
 import ParaScript.data.variables.*;
-import org.parabot.environment.api.utils.Timer;
 import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
