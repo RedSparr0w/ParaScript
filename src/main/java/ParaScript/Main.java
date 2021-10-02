@@ -110,9 +110,9 @@ public class Main extends Script implements MessageListener, Paintable {
     public void messageReceived(MessageEvent message) {
         switch (message.getType()) {
             case 0:
-                if (message.getMessage().startsWith("You manage to ") || // woodcutting, mining
+                if (message.getMessage().startsWith("You manage to") || // woodcutting, mining
                     message.getMessage().startsWith("You catch some") || // fishing
-                    message.getMessage().startsWith("You pick the ")) {  // pickpockets
+                    message.getMessage().startsWith("You pick the")) {  // pickpockets
                         Variables.addItemGained(1);
                         Variables.updateExpGained();
                 }

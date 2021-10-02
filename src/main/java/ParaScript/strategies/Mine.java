@@ -1,9 +1,7 @@
 package ParaScript.strategies;
 
 import ParaScript.data.Variables;
-import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
-import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Items;

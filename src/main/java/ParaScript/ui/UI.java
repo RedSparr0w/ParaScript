@@ -6,7 +6,6 @@ import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Players;
 import org.rev317.min.api.methods.Skill;
-import org.rev317.min.api.wrappers.Player;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

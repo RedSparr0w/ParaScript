@@ -1,7 +1,6 @@
 package ParaScript.strategies;
 
 import ParaScript.data.Variables;
-import ParaScript.data.variables.Trees;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;

@@ -2,13 +2,10 @@ package ParaScript.strategies;
 
 import ParaScript.Methods;
 import ParaScript.data.Variables;
-import ParaScript.data.variables.Ores;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.GroundItem;
-import org.rev317.min.api.wrappers.SceneObject;
-import org.rev317.min.api.wrappers.Tile;
 
 public class PickupItems implements Strategy {
     GroundItem[] items;

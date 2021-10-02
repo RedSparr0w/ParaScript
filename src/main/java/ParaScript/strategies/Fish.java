@@ -5,7 +5,6 @@ import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Npc;
-import org.rev317.min.api.wrappers.SceneObject;
 
 public class Fish implements Strategy {
     private Npc fishingSpot;
