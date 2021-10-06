@@ -8,7 +8,6 @@ import org.rev317.min.api.wrappers.Npc;
 
 public class Fish implements Strategy {
     private Npc fishingSpot;
-    private int[] items = new int[]{317, 321};
 
     @Override
     public boolean activate() {
