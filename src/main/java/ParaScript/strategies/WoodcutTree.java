@@ -5,7 +5,6 @@ import ParaScript.data.variables.Trees;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
-import org.rev317.min.api.wrappers.Item;
 import org.rev317.min.api.wrappers.SceneObject;
 
 public class WoodcutTree implements Strategy {
