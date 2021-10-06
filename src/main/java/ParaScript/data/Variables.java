@@ -177,6 +177,8 @@ public class Variables {
                 return new int[]{woodcutting_tree_selected.getItemID()};
             case "Mining":
                 return mining_rock_selected.getItemID();
+            case "Fishing":
+                return fishing_spot_selected.getItemIDs();
             case "Attack":
                 return fighting_item_ids;
             default:

@@ -50,6 +50,10 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Bank());
             strategies.add(new Walk());
         }
+        if(Variables.skill_to_train == Skill.SMITHING) {
+            strategies.add(new Smelt());
+            strategies.add(new BankSmithing());
+        }
         if(Variables.skill_to_train == Skill.THIEVING) {
             strategies.add(new Thieving());
         }

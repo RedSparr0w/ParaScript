@@ -17,7 +17,8 @@ public class Fish implements Strategy {
                 && fishingSpot != null
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "fishing")
                 && !Players.getMyPlayer().isInCombat()
-                && Players.getMyPlayer().getAnimation() == -1) {
+                && Players.getMyPlayer().getAnimation() == -1
+                && !Inventory.isFull()) {
             Variables.setStatus("fishing");
             return true;
         }
@@ -28,11 +29,7 @@ public class Fish implements Strategy {
     @Override
     public void execute() {
         try {
-            if (Variables.shouldDropItems()) {
-                if (Inventory.getCount(441) >= 1) Inventory.getItem(441).interact(Items.Option.DROP);
-            }
-
-            fishingSpot.interact(Variables.fishing_type_selected);
+            fishingSpot.interact(Variables.fishing_spot_selected.actionType);
             Time.sleep(1000);
 
             // Wait for the Player to finish fishing (max 60 seconds)
@@ -44,7 +41,7 @@ public class Fish implements Strategy {
 
     private Npc fishingSpot(){
         try {
-            for (Npc spot : Npcs.getNearest(316)) {
+            for(Npc spot : Npcs.getNearest(Variables.fishing_spot_selected.getIDs())){
                 if (spot != null)
                     return spot;
             }
