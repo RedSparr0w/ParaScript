@@ -19,7 +19,8 @@ public class WoodcutTree implements Strategy {
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "woodcutting")
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
-                && !Inventory.isFull()) {
+                && !Inventory.isFull()
+            ) {
             Variables.setStatus("woodcutting");
             return true;
         }
