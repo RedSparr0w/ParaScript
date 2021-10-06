@@ -7,6 +7,7 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Npc;
 import org.rev317.min.api.wrappers.TilePath;
+import org.rev317.min.api.wrappers.Item;
 
 public class Bank implements Strategy {
 
@@ -15,7 +16,7 @@ public class Bank implements Strategy {
         return Variables.running
                 && Game.isLoggedIn()
                 && Variables.shouldBankItems()
-                && (Variables.getStatus().equals("none") || Variables.getStatus().equals("banking items"))
+                && (Variables.getStatus() == "none" || Variables.getStatus() == "banking items")
                 && Inventory.isFull();
     }
 
