@@ -2,10 +2,9 @@ package ParaScript.ui;
 
 import ParaScript.data.variables.*;
 import ParaScript.data.Variables;
-import org.rev317.min.api.methods.Game;
-import org.rev317.min.api.methods.Npcs;
-import org.rev317.min.api.methods.Players;
-import org.rev317.min.api.methods.Skill;
+import ParaScript.strategies.UpdateBank;
+import org.rev317.min.api.methods.*;
+import org.rev317.min.api.methods.Menu;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -31,16 +30,23 @@ public class UI extends JFrame {
     private JCheckBox birdsNest = new JCheckBox();
 
     // Mining
-    private JComboBox oreSelect = new JComboBox();
+    private JComboBox rockSelect = new JComboBox();
     private JComboBox miningMethod = new JComboBox();
+
+    // Smithing
+    private JComboBox barSelect = new JComboBox();
 
     // Fighting
     private JComboBox fightingNpcSelect = new JComboBox();
     private JLabel lblFightingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField fightingNpcCustomID = new JTextField();
     private JCheckBox fightingBuryBones = new JCheckBox();
+    private JCheckBox fightingLoadCannon = new JCheckBox();
+    private JTextField returnPositionCoords = new JTextField();
     private JTextField fightingItemCustomID = new JTextField();
     private JTextField fightingMinimumHitpoints = new JTextField();
+    private JTextField fightingFoodToEat = new JTextField();
+    private JTextField fightingFoodHealsAmount = new JTextField();
 
     // Thieving
     private JComboBox thievingNpcSelect = new JComboBox();
@@ -56,6 +62,7 @@ public class UI extends JFrame {
     private Color Color_WhiteSmoke = new Color(245, 245, 245);
     private Color Color_Emerald = new Color(46, 204, 113);
     private Color Color_Alizarin = new Color(231, 76, 60);
+    private Color Color_BelizeHole = new Color(41, 128, 185);
 
     public UI() {
         setTitle("2006 AIO");
@@ -125,11 +132,13 @@ public class UI extends JFrame {
         lblSkillToTrain.setBounds(20, 20, 73, 20);
         settingsPanel.add(lblSkillToTrain);
         skillSelect.setModel(new DefaultComboBoxModel(new String[]{
+                Skill.ATTACK.getName(),
                 Skill.WOODCUTTING.getName(),
                 Skill.MINING.getName(),
-                Skill.ATTACK.getName(),
+                Skill.SMITHING.getName(),
                 Skill.THIEVING.getName(),
                 Skill.FISHING.getName(),
+                Skill.CRAFTING.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
@@ -168,6 +177,7 @@ public class UI extends JFrame {
                 for (Trees tree : Trees.values()) {
                     if (tree.getName().equalsIgnoreCase(treeSelect.getSelectedItem().toString())) {
                         Variables.woodcutting_tree_selected = tree;
+                        Variables.woodcutting_tree_selected.reset();
                     }
                 }
             }
@@ -238,22 +248,23 @@ public class UI extends JFrame {
         miningPanel.setLayout(null);
 
         // Select which ore to mine
-        JLabel lblOre = new JLabel("Ore");
-        lblOre.setForeground(Color_WhiteSmoke);
-        lblOre.setBounds(20, 20, 73, 20);
-        miningPanel.add(lblOre);
-        oreSelect.setModel(new DefaultComboBoxModel(Ores.toStringArray()));
-        oreSelect.setBounds(20, 40, 150, 20);
-        oreSelect.addActionListener (new ActionListener () {
+        JLabel lblRock = new JLabel("Rock");
+        lblRock.setForeground(Color_WhiteSmoke);
+        lblRock.setBounds(20, 20, 73, 20);
+        miningPanel.add(lblRock);
+        rockSelect.setModel(new DefaultComboBoxModel(Rocks.toStringArray()));
+        rockSelect.setBounds(20, 40, 150, 20);
+        rockSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                for (Ores ore : Ores.values()) {
-                    if (ore.getName().equalsIgnoreCase(oreSelect.getSelectedItem().toString())) {
-                        Variables.mining_ore_selected = ore;
+                for (Rocks rock : Rocks.values()) {
+                    if (rock.getName().equalsIgnoreCase(rockSelect.getSelectedItem().toString())) {
+                        Variables.mining_rock_selected = rock;
+                        Variables.mining_rock_selected.reset();
                     }
                 }
             }
         });
-        miningPanel.add(oreSelect);
+        miningPanel.add(rockSelect);
 
         // What should we do with our ores
         JLabel lblMiningMethod = new JLabel("Method");
@@ -273,6 +284,34 @@ public class UI extends JFrame {
         miningPanel.add(miningMethod);
 
         /*
+         * Smithing Panel
+         */
+
+        JPanel smithingPanel = new JPanel();
+        smithingPanel.setForeground(Color_WhiteSmoke);
+        smithingPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Smithing", null, smithingPanel, null);
+        smithingPanel.setLayout(null);
+
+        // Select which ore to mine
+        JLabel lblBar = new JLabel("Bar");
+        lblBar.setForeground(Color_WhiteSmoke);
+        lblBar.setBounds(20, 20, 73, 20);
+        smithingPanel.add(lblBar);
+        barSelect.setModel(new DefaultComboBoxModel(Bars.toStringArray()));
+        barSelect.setBounds(20, 40, 150, 20);
+        barSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                for (Bars bar : Bars.values()) {
+                    if (bar.getName().equalsIgnoreCase(barSelect.getSelectedItem().toString())) {
+                        Variables.smithing_bar_selected = bar;
+                    }
+                }
+            }
+        });
+        smithingPanel.add(barSelect);
+
+        /*
          * Fighting Panel
          */
 
@@ -285,10 +324,10 @@ public class UI extends JFrame {
         // Select which npc should be our victim
         JLabel lblFightingNpc = new JLabel("NPC");
         lblFightingNpc.setForeground(Color_WhiteSmoke);
-        lblFightingNpc.setBounds(20, 20, 73, 20);
+        lblFightingNpc.setBounds(20, 0, 73, 20);
         fightingPanel.add(lblFightingNpc);
         fightingNpcSelect.setModel(new DefaultComboBoxModel(FightingNpcs.toStringArray()));
-        fightingNpcSelect.setBounds(20, 40, 150, 20);
+        fightingNpcSelect.setBounds(20, 20, 150, 20);
         fightingNpcSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
                 for (FightingNpcs npc : FightingNpcs.values()) {
@@ -311,9 +350,9 @@ public class UI extends JFrame {
 
         // Custom npc id to attack
         lblFightingNpcCustomID.setForeground(Color_WhiteSmoke);
-        lblFightingNpcCustomID.setBounds(200, 20, 150, 20);
+        lblFightingNpcCustomID.setBounds(200, 0, 150, 20);
         fightingPanel.add(lblFightingNpcCustomID);
-        fightingNpcCustomID.setBounds(200, 40, 150, 20);
+        fightingNpcCustomID.setBounds(200, 20, 150, 20);
         fightingNpcCustomID.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -328,9 +367,9 @@ public class UI extends JFrame {
 
                     for (int i = 0; i < sample.length; i++)
                         customIDs[i] = Integer.parseInt(sample[i]);
-                    Variables.fighting_npc_selected.setIDs(customIDs);
+                    FightingNpcs.CUSTOM.setIDs(customIDs);
                 } catch (Exception ಠ_ಠ) {
-                    FightingNpcs.CUSTOM.setIDs(new int[]{0});
+                    FightingNpcs.CUSTOM.setIDs(new int[]{});
                 }
             }
         });
@@ -338,13 +377,30 @@ public class UI extends JFrame {
         lblFightingNpcCustomID.setVisible(false);
         fightingNpcCustomID.setVisible(false);
 
+        // Should we collect and bury our bones
+        JLabel lblFightingLoadCannon = new JLabel("Load cannon");
+        lblFightingLoadCannon.setForeground(Color_WhiteSmoke);
+        lblFightingLoadCannon.setBounds(40, 40, 130, 20);
+        fightingPanel.add(lblFightingLoadCannon);
+        fightingLoadCannon.setBackground(Color_WetAsphalt);
+        fightingLoadCannon.setForeground(Color_WhiteSmoke);
+        fightingLoadCannon.setBounds(15, 40, 20, 20);
+        fightingLoadCannon.setSelected(false);
+        fightingLoadCannon.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                Variables.load_cannon = fightingLoadCannon.isSelected();
+            }
+        });
+        fightingPanel.add(fightingLoadCannon);
+
+        // Should we collect and bury our bones
         JLabel lblFightingBuryBones = new JLabel("Collect and bury bones");
         lblFightingBuryBones.setForeground(Color_WhiteSmoke);
-        lblFightingBuryBones.setBounds(40, 80, 130, 20);
+        lblFightingBuryBones.setBounds(40, 60, 130, 20);
         fightingPanel.add(lblFightingBuryBones);
         fightingBuryBones.setBackground(Color_WetAsphalt);
         fightingBuryBones.setForeground(Color_WhiteSmoke);
-        fightingBuryBones.setBounds(15, 80, 20, 20);
+        fightingBuryBones.setBounds(15, 60, 20, 20);
         fightingBuryBones.setSelected(true);
         fightingBuryBones.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -353,12 +409,40 @@ public class UI extends JFrame {
         });
         fightingPanel.add(fightingBuryBones);
 
+        // Should we hold a position (aggressive npcs) return after collecting items
+        JLabel lblReturnPosition = new JLabel("Return Position");
+        lblReturnPosition.setForeground(Color_WhiteSmoke);
+        lblReturnPosition.setBounds(200, 40, 150, 20);
+        fightingPanel.add(lblReturnPosition);
+        returnPositionCoords.setBounds(200, 60, 150, 20);
+        returnPositionCoords.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    String[] sample = returnPositionCoords.getText().split("(,|;)\\s*");
+                    int[] coords = new int[sample.length];
+
+                    for (int i = 0; i < sample.length; i++)
+                        coords[i] = Integer.parseInt(sample[i]);
+                    Variables.return_to_coords = coords;
+                } catch (Exception ಠ_ಠ) {
+                    Variables.return_to_coords = new int[]{};
+                }
+            }
+        });
+        fightingPanel.add(returnPositionCoords);
+
         // Custom items to pickup
         JLabel lblFightingItemCustomID = new JLabel("Pickup Item IDs");
         lblFightingItemCustomID.setForeground(Color_WhiteSmoke);
-        lblFightingItemCustomID.setBounds(20, 120, 150, 20);
+        lblFightingItemCustomID.setBounds(20, 80, 150, 20);
         fightingPanel.add(lblFightingItemCustomID);
-        fightingItemCustomID.setBounds(20, 140, 150, 20);
+        fightingItemCustomID.setBounds(20, 100, 150, 20);
         fightingItemCustomID.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -382,11 +466,11 @@ public class UI extends JFrame {
         fightingPanel.add(fightingItemCustomID);
 
         // Minimum hitpoints to start fighting
-        JLabel lblFightingMinimumHitpoints = new JLabel("Minimum hitpoints");
+        JLabel lblFightingMinimumHitpoints = new JLabel("Minimum hitpoints to fight");
         lblFightingMinimumHitpoints.setForeground(Color_WhiteSmoke);
-        lblFightingMinimumHitpoints.setBounds(200, 120, 150, 20);
+        lblFightingMinimumHitpoints.setBounds(200, 80, 150, 20);
         fightingPanel.add(lblFightingMinimumHitpoints);
-        fightingMinimumHitpoints.setBounds(200, 140, 150, 20);
+        fightingMinimumHitpoints.setBounds(200, 100, 150, 20);
         fightingMinimumHitpoints.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -398,11 +482,57 @@ public class UI extends JFrame {
                 try {
                     Variables.fighting_minimum_hitpoints = Integer.parseInt(fightingMinimumHitpoints.getText());
                 } catch (Exception ಠ_ಠ) {
-                    Variables.fighting_minimum_hitpoints = 0;
+                    Variables.fighting_minimum_hitpoints = -1;
                 }
             }
         });
         fightingPanel.add(fightingMinimumHitpoints);
+
+        // Food to eat when health is low
+        JLabel lblFightingFoodToEat = new JLabel("Food ID to eat");
+        lblFightingFoodToEat.setForeground(Color_WhiteSmoke);
+        lblFightingFoodToEat.setBounds(20, 120, 150, 20);
+        fightingPanel.add(lblFightingFoodToEat);
+        fightingFoodToEat.setBounds(20, 140, 150, 20);
+        fightingFoodToEat.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    Variables.fighting_food_to_eat = Integer.parseInt(fightingFoodToEat.getText());
+                } catch (Exception ಠ_ಠ) {
+                    Variables.fighting_food_to_eat = -1;
+                }
+            }
+        });
+        fightingPanel.add(fightingFoodToEat);
+
+        // How much the food heals for
+        JLabel lblFightingFoodHealsAmount = new JLabel("Food heals amount");
+        lblFightingFoodHealsAmount.setForeground(Color_WhiteSmoke);
+        lblFightingFoodHealsAmount.setBounds(200, 120, 150, 20);
+        fightingPanel.add(lblFightingFoodHealsAmount);
+        fightingFoodHealsAmount.setBounds(200, 140, 150, 20);
+        fightingFoodHealsAmount.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // we don't need to do anything here
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+                    Variables.fighting_food_heals_amount = Integer.parseInt(fightingFoodHealsAmount.getText());
+                } catch (Exception ಠ_ಠ) {
+                    Variables.fighting_food_heals_amount = 20;
+                }
+            }
+        });
+        fightingPanel.add(fightingFoodHealsAmount);
 
         /*
          * Thieving Panel
@@ -480,23 +610,18 @@ public class UI extends JFrame {
         tabbedPane.addTab("Fishing", fishingPanel);
         fishingPanel.setLayout(null);
 
-        // Select which npc should be our victim
+        // Select our fishing type
         JLabel lblFishingTypeSelect = new JLabel("Fishing Type");
         lblFishingTypeSelect.setForeground(Color_WhiteSmoke);
         lblFishingTypeSelect.setBounds(20, 20, 73, 20);
         fishingPanel.add(lblFishingTypeSelect);
-        fishingTypeSelect.setModel(new DefaultComboBoxModel(new String[]{
-                Npcs.Option.NET.name(),
-                Npcs.Option.BAIT.name(),
-                Npcs.Option.CAGE.name(),
-                Npcs.Option.HARPOON.name(),
-        }));
+        fishingTypeSelect.setModel(new DefaultComboBoxModel(FishingSpots.toStringArray()));
         fishingTypeSelect.setBounds(20, 40, 150, 20);
         fishingTypeSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                for (Npcs.Option option : Npcs.Option.values()) {
-                    if (option.name().equalsIgnoreCase(fishingTypeSelect.getSelectedItem().toString())) {
-                        Variables.fishing_type_selected = option;
+                for (FishingSpots fishingSpot : FishingSpots.values()) {
+                    if (fishingSpot.name().equalsIgnoreCase(fishingTypeSelect.getSelectedItem().toString())) {
+                        Variables.fishing_spot_selected = fishingSpot;
                     }
                 }
             }
@@ -524,7 +649,7 @@ public class UI extends JFrame {
         slavePanel.add(slaveMaster);
         slaveMaster.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
-                Variables.slaveMaster = slaveMaster.getText();
+                Variables.slave_master = slaveMaster.getText();
             }
         });
         */
@@ -536,29 +661,7 @@ public class UI extends JFrame {
                     Variables.setAccountUsername(username.getText());
                     Variables.setAccountPassword(password.getText());
                 }
-                /*
-                for (Location loc : Location.values()) {
-                    if (loc.getName().equalsIgnoreCase(location.getSelectedItem().toString())) {
-                        Variables.setLocation(loc);
-                    }
-                }
-                for (Tree selectedTree : Tree.values()) {
-                    if (selectedTree.getName().equalsIgnoreCase(treeSelect.getSelectedItem().toString())) {
-                        Variables.setTree(selectedTree);
-                        System.out.println(selectedTree.getName());
-                    }
-                }
-                if (drop.isSelected()) {
-                    Variables.setDrop(true);
-                }
-                if (bank.isSelected()) {
-                    Variables.setBanking(true);
-                }
-                if (birdsNest.isSelected()) {
-                    Variables.setPickupBirdNests(true);
-                }
-                dispose();
-                */
+                Variables.bank_items = UpdateBank.loadBankFile();
                 Variables.running = !Variables.running;
                 start.setText(Variables.running ? "PAUSE" : "START");
                 start.setBackground(Variables.running ? Color_Alizarin : Color_Emerald);
@@ -566,7 +669,6 @@ public class UI extends JFrame {
         });
         start.setBackground(Color_Emerald);
         start.setForeground(Color_MidnightBlue);
-        // these next two lines do the magic..
         start.setContentAreaFilled(false);
         start.setOpaque(true);
         start.setBounds(20, 220, 360, 40);

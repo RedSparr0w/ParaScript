@@ -6,24 +6,27 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.wrappers.Character;
 import org.rev317.min.api.wrappers.Npc;
 import org.rev317.min.api.wrappers.Player;
 
 public class Fighting implements Strategy {
     private Npc victim;
+    private Player myPlayer;
 
     @Override
     public boolean activate() {
-        victim = victim(); // set the local Variable
-        Player myPlayer = Players.getMyPlayer();
+        myPlayer = Players.getMyPlayer();
         if (Variables.running
-                && victim != null
                 && !myPlayer.isInCombat()
-                && myPlayer.getAnimation() == -1
+                //&& (myPlayer.getInteractingCharacter() == null || myPlayer.getInteractingCharacter().getIndex() <= 0)
                 && !Inventory.isFull()
-                && myPlayer.getHealth() > Variables.fighting_minimum_hitpoints) {
-            Variables.setStatus("fighting");
-            return true;
+                && (myPlayer.getHealth() <= 0 || myPlayer.getHealth() > Variables.fighting_minimum_hitpoints)) {
+            victim = victim(); // set the local Variable
+            if (victim != null) {
+                Variables.setStatus("fighting");
+                return true;
+            }
         }
         Variables.setStatus("none");
         return false;
@@ -33,8 +36,8 @@ public class Fighting implements Strategy {
     public void execute() {
         victim.interact(Npcs.Option.ATTACK);
         Time.sleep(2000);
-        // Wait for the Player to finish attacking (max 30 seconds)
-        Time.sleep(() -> !Players.getMyPlayer().isInCombat(), 30000);
+        // Wait for the Player to finish attacking (max 3 seconds)
+        Time.sleep(() -> !Players.getMyPlayer().isInCombat(), 3000);
         Variables.updateExpGained();
     }
 
@@ -42,8 +45,10 @@ public class Fighting implements Strategy {
         try {
             int[] npc_to_thieve = Variables.fighting_npc_selected.getIDs();
             for (Npc victim : Npcs.getNearest(npc_to_thieve)) {
-                if (victim != null) {
-                    return victim;
+                Character interactingPlayer = victim.getInteractingCharacter();
+                if (victim != null && (interactingPlayer == null || interactingPlayer.getIndex() <= 0 || interactingPlayer.getIndex() == myPlayer.getIndex())) {
+                    if (!Variables.load_cannon || victim.distanceTo() <= 1)
+                        return victim;
                 }
             }
         } catch (Exception ಠ_ಠ){}
