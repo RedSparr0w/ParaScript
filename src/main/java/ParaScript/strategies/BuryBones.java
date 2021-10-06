@@ -4,6 +4,7 @@ import ParaScript.data.Variables;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
+import org.rev317.min.api.wrappers.Item;
 
 public class BuryBones implements Strategy {
 
@@ -12,9 +13,9 @@ public class BuryBones implements Strategy {
         if (Variables.running
                 && Variables.fighting_bury_bones
                 && hasBones()
-                && !Players.getMyPlayer().isInCombat()
-                && Players.getMyPlayer().getAnimation() == -1
-                && Inventory.isFull()) {
+                // && !Players.getMyPlayer().isInCombat()
+                // && Inventory.isFull()
+        ) {
             Variables.setStatus("burying bones");
             return true;
         }
@@ -53,6 +54,7 @@ public class BuryBones implements Strategy {
     }
 
     public static int[] getBoneIds(){
-        return new int[]{526, 528, 530, 532, 534, 536, 2859, 3125, 3127, 3179, 3180, 3181, 3182, 3183, 3185, 3186, 3187, 4812, 6729, 6812}; // TODO: need to check if all are bones
+        // TODO: need to check if all are buryable bones
+        return new int[]{526, 528, 530, 532, 534, 536, 2859, 3125, 3127, 3179, 3180, 3181, 3182, 3183, 3185, 3186, 3187, 4812, 6729, 6812};
     }
 }
