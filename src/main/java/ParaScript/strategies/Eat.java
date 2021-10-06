@@ -14,7 +14,6 @@ public class Eat implements Strategy {
         if (Variables.running
                 && hasRequiredItems()
                 && currentHealth > 0
-                && Players.getMyPlayer().isInCombat()
                 && currentHealth <= (Skill.HITPOINTS.getRealLevel() - Variables.fighting_food_heals_amount)
         ) {
             Variables.setStatus("eating food");
@@ -28,7 +27,7 @@ public class Eat implements Strategy {
     public void execute() {
         try {
             Inventory.getItem(Variables.fighting_food_to_eat + 1).interact(Items.Option.CONSUME);
-            Time.sleep(() -> Players.getMyPlayer().getHealth() != currentHealth || !Players.getMyPlayer().isInCombat(), 8000);
+            Time.sleep(() -> Players.getMyPlayer().getHealth() != currentHealth, 5000);
             Variables.setStatus("none");
         } catch (Exception ಠ_ಠ) {
             System.out.println("Eating error: ¯\\_(ツ)_/¯");
