@@ -38,8 +38,8 @@ public class WoodcutTree implements Strategy {
             }
             // 502, rock_hash, local_x, local_y, 4
             Menu.sendAction(502, myTree.hash, myTree.x, myTree.y, 3);
-            // Wait 1.5 seconds for the player to reach the tree
-            Time.sleep(1500);
+            // Wait 1 seconds for the player to reach the tree
+            Time.sleep(1000);
             // Sleep until player is cutting the tree for a maximum of 2 seconds
             Time.sleep(() -> Players.getMyPlayer().getAnimation() != -1, 2000);
             // Sleep until not woodcutting for a maximum of 10 seconds
