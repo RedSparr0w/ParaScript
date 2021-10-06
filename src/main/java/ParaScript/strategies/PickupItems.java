@@ -6,9 +6,7 @@ import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.GroundItem;
-import org.rev317.min.api.wrappers.Item;
 import org.rev317.min.api.wrappers.Player;
-import org.rev317.min.api.wrappers.Tile;
 
 import java.util.ArrayList;
 
