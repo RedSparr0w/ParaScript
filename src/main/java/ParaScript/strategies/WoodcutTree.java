@@ -40,9 +40,7 @@ public class WoodcutTree implements Strategy {
         int[] tree_to_cut = Variables.woodcutting_tree_selected.getIDs();
         for(SceneObject tree : SceneObjects.getNearest(tree_to_cut)){
             if(tree != null){
-                if(Variables.LUMBRIDGE_NORMAL_TREE_ZONE.inTheZoneObject(tree)) {
-                    return tree;
-                }
+                return tree;
             }
         }
         return null;
