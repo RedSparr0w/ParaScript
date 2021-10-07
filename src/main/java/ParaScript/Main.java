@@ -42,7 +42,7 @@ public class Main extends Script implements MessageListener, Paintable {
         //     strategies.add(new Crafting());
         // }
         if(Variables.skill_to_train == Skill.WOODCUTTING) {
-            strategies.add(new MakeArrowShafts());
+            strategies.add(new Fletch());
             strategies.add(new WoodcutTree());
         }
         if(Variables.skill_to_train == Skill.MINING) {
