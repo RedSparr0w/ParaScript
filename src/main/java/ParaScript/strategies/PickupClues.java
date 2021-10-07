@@ -1,13 +1,10 @@
 package ParaScript.strategies;
 
-import ParaScript.Methods;
 import ParaScript.data.Variables;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.GroundItems;
 import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.Players;
-import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.GroundItem;
 
 import java.util.ArrayList;
@@ -36,6 +33,7 @@ public class PickupClues implements Strategy {
             for (GroundItem item : items) {
                 item.take();
                 Time.sleep(500);
+                // 10 seconds or distance * 1 seconds
                 int timeout = Math.min(10000, item.distanceTo() * 1000);
                 Time.sleep(() -> item.distanceTo() < 1, timeout);
                 if (Inventory.isFull()){
