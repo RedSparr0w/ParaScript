@@ -32,9 +32,10 @@ public class Drop implements Strategy {
 
     // Return the item id + 1 (odd way inventory items are handled)
     public int[] inventoryItemIDs(int[] itemIDs) {
+        int[] items = new int[itemIDs.length];
         for(int i = 0; i < itemIDs.length; i++) {
-            ++itemIDs[i];
+            items[i] = itemIDs[i] + 1;
         }
-        return itemIDs;
+        return items;
     }
 }
