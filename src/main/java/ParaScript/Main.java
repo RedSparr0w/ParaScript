@@ -35,9 +35,12 @@ public class Main extends Script implements MessageListener, Paintable {
 
         Variables.setBaseExp();
 
+        // These strategies should always be running
         strategies.add(new UpdateBank());
         strategies.add(new UpdateExperience());
         strategies.add(new ScriptState());
+        strategies.add(new Drop());
+
         // if(Variables.skill_to_train == Skill.CRAFTING) {
         //     strategies.add(new Crafting());
         // }
