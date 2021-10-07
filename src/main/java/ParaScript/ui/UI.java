@@ -135,10 +135,10 @@ public class UI extends JFrame {
                 Skill.ATTACK.getName(),
                 Skill.WOODCUTTING.getName(),
                 Skill.MINING.getName(),
-                Skill.SMITHING.getName(),
+                // Skill.SMITHING.getName(),
                 Skill.THIEVING.getName(),
                 Skill.FISHING.getName(),
-                Skill.CRAFTING.getName(),
+                // Skill.CRAFTING.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);
@@ -283,33 +283,33 @@ public class UI extends JFrame {
         });
         miningPanel.add(miningMethod);
 
-        /*
-         * Smithing Panel
-         */
+        // /*
+        //  * Smithing Panel
+        //  */
 
-        JPanel smithingPanel = new JPanel();
-        smithingPanel.setForeground(Color_WhiteSmoke);
-        smithingPanel.setBackground(Color_WetAsphalt);
-        tabbedPane.addTab("Smithing", null, smithingPanel, null);
-        smithingPanel.setLayout(null);
+        // JPanel smithingPanel = new JPanel();
+        // smithingPanel.setForeground(Color_WhiteSmoke);
+        // smithingPanel.setBackground(Color_WetAsphalt);
+        // tabbedPane.addTab("Smithing", null, smithingPanel, null);
+        // smithingPanel.setLayout(null);
 
-        // Select which ore to mine
-        JLabel lblBar = new JLabel("Bar");
-        lblBar.setForeground(Color_WhiteSmoke);
-        lblBar.setBounds(20, 20, 73, 20);
-        smithingPanel.add(lblBar);
-        barSelect.setModel(new DefaultComboBoxModel(Bars.toStringArray()));
-        barSelect.setBounds(20, 40, 150, 20);
-        barSelect.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                for (Bars bar : Bars.values()) {
-                    if (bar.getName().equalsIgnoreCase(barSelect.getSelectedItem().toString())) {
-                        Variables.smithing_bar_selected = bar;
-                    }
-                }
-            }
-        });
-        smithingPanel.add(barSelect);
+        // // Select which ore to smelt
+        // JLabel lblBar = new JLabel("Bar");
+        // lblBar.setForeground(Color_WhiteSmoke);
+        // lblBar.setBounds(20, 20, 73, 20);
+        // smithingPanel.add(lblBar);
+        // barSelect.setModel(new DefaultComboBoxModel(Bars.toStringArray()));
+        // barSelect.setBounds(20, 40, 150, 20);
+        // barSelect.addActionListener (new ActionListener () {
+        //     public void actionPerformed(ActionEvent e) {
+        //         for (Bars bar : Bars.values()) {
+        //             if (bar.getName().equalsIgnoreCase(barSelect.getSelectedItem().toString())) {
+        //                 Variables.smithing_bar_selected = bar;
+        //             }
+        //         }
+        //     }
+        // });
+        // smithingPanel.add(barSelect);
 
         /*
          * Fighting Panel
