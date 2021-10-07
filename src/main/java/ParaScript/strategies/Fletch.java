@@ -13,7 +13,7 @@ public class Fletch implements Strategy {
     @Override
     public boolean activate() {
         if (Variables.running
-                && Variables.woodcutting_method.equalsIgnoreCase("Fletch")
+                && Variables.shouldFletchItems()
                 && hasRequiredItems()
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "making arrow shafts")
                 && !Players.getMyPlayer().isInCombat()
