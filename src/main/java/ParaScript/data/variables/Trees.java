@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Trees {
-    NORMAL("Normal", new int[]{1276, 1277, 1278, 1279, 1280}, 1512),
-    OAK("Oak", new int[]{1281}, 1522),
-    WILLOW ("Willow", new int[]{1308, 5551, 5552, 5553}, 1520),
-    MAPLE("Maple", new int[]{1307}, 1518),
-    YEW("Yew", new int[]{1309}, 1516),
-    MAGIC("Magic", new int[]{1306}, 1514);
+    NORMAL("Normal", new int[]{1276, 1277, 1278, 1279, 1280}, 1511),
+    OAK("Oak", new int[]{1281}, 1521),
+    WILLOW ("Willow", new int[]{1308, 5551, 5552, 5553}, 1519),
+    MAPLE("Maple", new int[]{1307}, 1517),
+    YEW("Yew", new int[]{1309}, 1515),
+    MAGIC("Magic", new int[]{1306}, 1513);
 
     private String name;
     private int[] ids;

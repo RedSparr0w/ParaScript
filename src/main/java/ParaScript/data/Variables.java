@@ -1,6 +1,7 @@
 package ParaScript.data;
 
 import ParaScript.DesktopTray;
+import ParaScript.Methods;
 import ParaScript.data.variables.*;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
@@ -177,7 +178,8 @@ public class Variables {
             case "Woodcutting":
                 return new int[]{woodcutting_tree_selected.getItemID()};
             case "Mining":
-                return mining_rock_selected.getItemID();
+                // Include the gems array as mining will sometimes drop gems
+                return Methods.combineIntArrays(mining_rock_selected.getItemID(), Rocks.GEM.getItemID());
             case "Fishing":
                 return fishing_spot_selected.getItemIDs();
             case "Attack":

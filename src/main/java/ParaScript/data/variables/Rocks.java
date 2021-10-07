@@ -29,7 +29,7 @@ public enum Rocks {
     public int x = 0;
     public int y = 0;
 
-    Rocks(final String name, final int[] objectId, final int levelReq, final int xp, final int mineTimer, final int respawnTimer, final int... oreIds) {
+    Rocks(final String name, final int[] objectId, final int levelReq, final int xp, final int mineTimer, final int respawnTimer, final int[] oreIds) {
         this.name = name;
         this.objectId = objectId;
         this.levelReq = levelReq;

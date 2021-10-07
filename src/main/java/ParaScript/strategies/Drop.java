@@ -12,7 +12,7 @@ public class Drop implements Strategy {
 
     @Override
     public boolean activate() {
-        items = Inventory.getItems(Variables.getItemIDs());
+        items = Inventory.getItems(inventoryItemIDs(Variables.getItemIDs()));
         return Variables.running
                 && Game.isLoggedIn()
                 && Variables.shouldDropItems()
@@ -28,5 +28,13 @@ public class Drop implements Strategy {
                 Time.sleep(1000);
             }
         }
+    }
+
+    // Return the item id + 1 (odd way inventory items are handled)
+    public int[] inventoryItemIDs(int[] itemIDs) {
+        for(int i = 0; i < itemIDs.length; i++) {
+            ++itemIDs[i];
+        }
+        return itemIDs;
     }
 }
