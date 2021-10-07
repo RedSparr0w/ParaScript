@@ -3,16 +3,13 @@ package ParaScript;
 import ParaScript.data.Variables;
 import ParaScript.strategies.*;
 import ParaScript.ui.UI;
-import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.api.utils.Timer;
-import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.ScriptManifest;
-import org.rev317.min.accessors.Client;
 import org.rev317.min.api.events.MessageEvent;
 import org.rev317.min.api.events.listeners.MessageListener;
 import org.rev317.min.api.methods.Skill;
@@ -20,7 +17,7 @@ import org.rev317.min.api.methods.Skill;
 import java.awt.*;
 import java.util.ArrayList;
 
-@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1.2)
+@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1.3)
 public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
@@ -38,26 +35,42 @@ public class Main extends Script implements MessageListener, Paintable {
 
         Variables.setBaseExp();
 
+        // These strategies should always be running
+        strategies.add(new UpdateBank());
         strategies.add(new UpdateExperience());
         strategies.add(new ScriptState());
+
+        // if(Variables.skill_to_train == Skill.CRAFTING) {
+        //     strategies.add(new Crafting());
+        // }
         if(Variables.skill_to_train == Skill.WOODCUTTING) {
-            strategies.add(new MakeArrowShafts());
+            strategies.add(new Fletch());
             strategies.add(new WoodcutTree());
         }
         if(Variables.skill_to_train == Skill.MINING) {
             strategies.add(new Mine());
-            strategies.add(new Bank());
-            strategies.add(new Walk());
+            // strategies.add(new Bank());
+            // strategies.add(new Walk());
         }
+        // if(Variables.skill_to_train == Skill.SMITHING) {
+        //     strategies.add(new Smelt());
+        //     strategies.add(new BankSmithing());
+        // }
         if(Variables.skill_to_train == Skill.THIEVING) {
             strategies.add(new Thieving());
         }
         if(Variables.skill_to_train == Skill.ATTACK) {
             // Activate auto retaliate
             org.rev317.min.api.methods.Menu.clickButton(150);
+            strategies.add(new Eat());
+            strategies.add(new PickupClues());
             strategies.add(new PickupItems());
             strategies.add(new BuryBones());
+            strategies.add(new FightingReturnToCoords());
+            strategies.add(new LoadCannon());
             strategies.add(new Fighting());
+            // strategies.add(new Bank());
+            // strategies.add(new Walk());
         }
         if(Variables.skill_to_train == Skill.FISHING) {
             strategies.add(new Fish());
@@ -67,18 +80,19 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Walk());
             strategies.add(new PickupItems());
         }
+        
+        // These strategies should always be running
+        strategies.add(new Drop());
         strategies.add(new HandleLogin());
         provide(strategies);
-
-        Keyboard.getInstance().sendKeys("Training " + Variables.skill_to_train.getName() + ". Drop items? " + !Variables.shouldBankItems());
-
         return true;
     }
 
     @Override
     public void onFinish() {
+        Variables.desktopTray.removeTray();
         ui.dispose();
-        System.out.println("Script Stopped");
+        System.out.println("2006 AIO Script Stopped");
     }
 
     @Override
@@ -104,25 +118,30 @@ public class Main extends Script implements MessageListener, Paintable {
         g.drawString("Items(P/H): " + Methods.formatNumber(Variables.items_gained) + "(" + Methods.formatNumber(SCRIPT_TIMER.getPerHour(Variables.items_gained)) + ")", 360, 290);
         g.drawString("EXP(P/H): " + Methods.formatNumber((int) Variables.exp_gained) + "(" + Methods.formatNumber(SCRIPT_TIMER.getPerHour((int) Variables.exp_gained)) + ")", 360, 310);
         g.drawString("Runtime: " + SCRIPT_TIMER.toString(), 360, 330);
-
     }
 
     public void messageReceived(MessageEvent message) {
         switch (message.getType()) {
             case 0:
-                if (message.getMessage().startsWith("You manage to") || // woodcutting, mining
-                    message.getMessage().startsWith("You catch some") || // fishing
-                    message.getMessage().startsWith("You pick the")) {  // pickpockets
+                if (message.getMessage().startsWith("You manage to ")   // Woodcutting, Mining
+                    || message.getMessage().startsWith("You catch ")    // Fishing
+                    || message.getMessage().startsWith("You receive a") // Smelting
+                    || message.getMessage().startsWith("You pick the ") // Pickpocketing
+                    ) {
                         Variables.addItemGained(1);
                         Variables.updateExpGained();
                 }
-                if (message.getMessage().startsWith("Congratulations, you advanced a")) {
+                if (message.getMessage().startsWith("Congratulations, you've advanced a level")) {
+                    Variables.desktopTray.displayNotification(Variables.getAccountUsername() + " | Level up!", message.getMessage());
                     // add in level up to paint
+                }
+                if (message.getMessage().startsWith("You completed your slayer task")) {
+                    Variables.desktopTray.displayNotification(Variables.getAccountUsername() + " | Slayer task complete!", message.getMessage());
                 }
                 break;
             case 4:
                 if(Variables.skill_to_train == null) {
-                    if (message.getMessage().startsWith(Variables.slaveMaster.toLowerCase() + " wishes to trade with you")) {
+                    if (message.getMessage().startsWith(Variables.slave_master.toLowerCase() + " wishes to trade with you")) {
                         // accept trade
                         // take items, give items if smithing or similar
                         // goto bank, deposit/withdraw items

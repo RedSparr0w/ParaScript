@@ -1,49 +1,64 @@
 package ParaScript.data;
 
+import ParaScript.DesktopTray;
+import ParaScript.Methods;
 import ParaScript.data.variables.*;
-import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.Tile;
 import org.rev317.min.api.wrappers.TilePath;
 
 public class Variables {
     public static boolean running = false;
-    private static String current_status = "none";
+    private static String current_status = "-----";
     public static int items_gained = 0;
     public static double base_experience = 0;
     public static double exp_gained = 0;
     public static int update_experience_tick = 0;
+
+    public static DesktopTray desktopTray = new DesktopTray();
 
     // Login Panel
     private static String username = "";
     private static String password = "";
 
     // Settings Panel
-    public static Skill skill_to_train = Skill.WOODCUTTING;
+    public static Skill skill_to_train = Skill.ATTACK;
 
     // Woodcutting
     public static Trees woodcutting_tree_selected = Trees.NORMAL;
     public static String woodcutting_method = "Fletch";
 
     // Mining
-    public static Ores mining_ore_selected = Ores.ESSENCE;
-    public static String mining_method = "Bank";
+    public static Rocks mining_rock_selected = Rocks.ESSENCE;
+    public static String mining_method = "Drop";
+
+    // Smithing
+    public static Bars smithing_bar_selected = Bars.BRONZE;
+    public static String smithing_method = "Drop";
 
     // Fighting
     public static FightingNpcs fighting_npc_selected = FightingNpcs.CHICKEN;
     public static boolean fighting_bury_bones = true;
+    public static boolean load_cannon = false;
+    public static int[] return_to_coords = new int[]{};
     public static int[] fighting_item_ids = new int[]{};
-    public static int fighting_minimum_hitpoints = 0;
+    public static int fighting_minimum_hitpoints = -1;
+    public static int fighting_food_to_eat = -1;
+    public static int fighting_food_heals_amount = 20;
 
     // Thieving
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;
-    //public static String thieving_method = "None";
+    public static String thieving_method = "Drop";
 
     // Fishing
-    public static Npcs.Option fishing_type_selected = Npcs.Option.NET;
+    public static FishingSpots fishing_spot_selected = FishingSpots.NET;
+    public static String fishing_method = "Drop";
+
+    // Banking
+    public static int[] bank_items = new int[]{};
 
     // Used for slave accounts
-    public static String slaveMaster = "";
+    public static String slave_master = "";
 
     // Used to walk places
     public static TilePath pathToWalk;
@@ -59,7 +74,6 @@ public class Variables {
     public final static Zone LUMBRIDGE_NORMAL_TREE_ZONE = new Zone(new Tile(3140, 3260), new Tile(3206, 3206));
 
     // Mining Varrock
-
     public final static Zone VARROCK_EAST_BANK_ZONE = new Zone(new Tile(3250, 3424), new Tile(3257, 3416));
     public final static Zone VARROCK_EAST_MINE_ZONE = new Zone(new Tile(3276, 3375), new Tile(3298, 3354));
 
@@ -162,9 +176,14 @@ public class Variables {
         if (skill_to_train == null) return new int[]{-1};
         switch (skill_to_train.getName()){
             case "Woodcutting":
-                return woodcutting_tree_selected.getIDs();
+                return new int[]{woodcutting_tree_selected.getItemID()};
             case "Mining":
-                return mining_ore_selected.getIDs();
+                // Include the gems array as mining will sometimes drop gems
+                return Methods.combineIntArrays(mining_rock_selected.getItemID(), Rocks.GEM.getItemID());
+            case "Fishing":
+                return fishing_spot_selected.getItemIDs();
+            case "Attack":
+                return fighting_item_ids;
             default:
                 return new int[]{-1};
         }
@@ -177,6 +196,8 @@ public class Variables {
                 return woodcutting_method.equalsIgnoreCase("Bank");
             case "Mining":
                 return mining_method.equalsIgnoreCase("Bank");
+            case "Smithing":
+                return smithing_method.equalsIgnoreCase("Bank");
             default:
                 return true;
         }
@@ -189,6 +210,10 @@ public class Variables {
                 return woodcutting_method.equalsIgnoreCase("Drop");
             case "Mining":
                 return mining_method.equalsIgnoreCase("Drop");
+            case "Fishing":
+                return fishing_method.equalsIgnoreCase("Drop");
+            case "Thieving":
+                return thieving_method.equalsIgnoreCase("Drop");
             default:
                 return false;
         }

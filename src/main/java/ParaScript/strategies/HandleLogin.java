@@ -31,37 +31,38 @@ public class HandleLogin implements Strategy {
         }
         if (!Game.isLoggedIn()) {
             if(Variables.getAccountPassword() != null && Variables.getAccountUsername() != null) {
-                if(!typed) {
-                    Mouse.getInstance().click(point);
-                    Time.sleep(1000);
-                    clearInput();
-                    Keyboard.getInstance().sendKeys(Variables.getAccountUsername());
-                    Time.sleep(2000);
+                Game.login(Variables.getAccountUsername(), Variables.getAccountPassword());
+                // if(!typed) {
+                //     Mouse.getInstance().click(point);
+                //     Time.sleep(1000);
+                //     clearInput();
+                //     Keyboard.getInstance().sendKeys(Variables.getAccountUsername());
+                //     Time.sleep(2000);
 
-                    clearInput();
-                    // Checking again so people don't type their passwords ingame.
-                    if(!Game.isLoggedIn()) {
-                        Keyboard.getInstance().sendKeys(Variables.getAccountPassword());
-                    }
+                //     clearInput();
+                //     // Checking again so people don't type their passwords ingame.
+                //     if(!Game.isLoggedIn()) {
+                //         Keyboard.getInstance().sendKeys(Variables.getAccountPassword());
+                //     }
 
-                    typed = true;
-                }
+                //     typed = true;
+                // }
             }
 
-            if(typed) {
-                Time.sleep(new SleepCondition() {
-                    @Override
-                    public boolean isValid() {
-                        return Game.isLoggedIn();
-                    }
-                }, 5000);
-                Mouse.getInstance().click(point);
-                Time.sleep(1000);
-                Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
-                Time.sleep(1000);
-                Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
-                Variables.setStatus("none");
-            }
+            // if(typed) {
+            //     Time.sleep(new SleepCondition() {
+            //         @Override
+            //         public boolean isValid() {
+            //             return Game.isLoggedIn();
+            //         }
+            //     }, 5000);
+            //     Mouse.getInstance().click(point);
+            //     Time.sleep(1000);
+            //     Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
+            //     Time.sleep(1000);
+            //     Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
+            //     Variables.setStatus("none");
+            // }
         }
     }
 

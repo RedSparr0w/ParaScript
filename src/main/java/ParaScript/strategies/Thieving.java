@@ -6,7 +6,9 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Npcs;
 import org.rev317.min.api.methods.Players;
+import org.rev317.min.api.methods.SceneObjects;
 import org.rev317.min.api.wrappers.Npc;
+import org.rev317.min.api.wrappers.SceneObject;
 
 public class Thieving implements Strategy {
     private Npc victim;

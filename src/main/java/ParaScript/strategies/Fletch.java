@@ -8,11 +8,12 @@ import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Items;
 import org.rev317.min.api.methods.Players;
 
-public class MakeArrowShafts implements Strategy {
-
+public class Fletch implements Strategy {
+    // TODO: Handle fletching other items such as shortbows, longbows etc
     @Override
     public boolean activate() {
         if (Variables.running
+                && Variables.shouldFletchItems()
                 && hasRequiredItems()
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "making arrow shafts")
                 && !Players.getMyPlayer().isInCombat()

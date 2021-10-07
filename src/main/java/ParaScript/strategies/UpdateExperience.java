@@ -8,7 +8,7 @@ public class UpdateExperience implements Strategy {
 
     @Override
     public boolean activate() {
-        if (++Variables.update_experience_tick >= 1000) {
+        if (++Variables.update_experience_tick >= 2000) {
             return true;
         }
         return false;

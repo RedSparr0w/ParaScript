@@ -1,11 +1,10 @@
 package ParaScript.strategies;
 
 import ParaScript.data.Variables;
+import ParaScript.data.variables.Trees;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.Players;
-import org.rev317.min.api.methods.SceneObjects;
+import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.SceneObject;
 
 public class WoodcutTree implements Strategy {
@@ -19,7 +18,8 @@ public class WoodcutTree implements Strategy {
                 && (Variables.getStatus() == "none" || Variables.getStatus() == "woodcutting")
                 && !Players.getMyPlayer().isInCombat()
                 && Players.getMyPlayer().getAnimation() == -1
-                && !Inventory.isFull()) {
+                && !Inventory.isFull()
+            ) {
             Variables.setStatus("woodcutting");
             return true;
         }
@@ -29,19 +29,31 @@ public class WoodcutTree implements Strategy {
 
     @Override
     public void execute() {
-        tree.interact(SceneObjects.Option.CHOP_DOWN);
-        Time.sleep(1000);
-        //Wait for the Player to chop the Tree
-        Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 3000);
+        try {
+            Trees myTree = Variables.woodcutting_tree_selected;
+            if (myTree.hash == 0) {
+                myTree.hash = tree.getHash();
+                myTree.x = tree.getLocalRegionX();
+                myTree.y = tree.getLocalRegionY();
+            }
+            // 502, rock_hash, local_x, local_y, 4
+            Menu.sendAction(502, myTree.hash, myTree.x, myTree.y, 3);
+            // Wait 1 seconds for the player to reach the tree
+            Time.sleep(1000);
+            // Sleep until player is cutting the tree for a maximum of 2 seconds
+            Time.sleep(() -> Players.getMyPlayer().getAnimation() != -1, 2000);
+            // Sleep until not woodcutting for a maximum of 10 seconds
+            Time.sleep(() -> Players.getMyPlayer().getAnimation() == -1, 10000);
+        } catch (Exception err){
+            System.out.println("Woodcutting error: ¯\\_(ツ)_/¯");
+        }
     }
 
     private SceneObject tree(){
         int[] tree_to_cut = Variables.woodcutting_tree_selected.getIDs();
         for(SceneObject tree : SceneObjects.getNearest(tree_to_cut)){
             if(tree != null){
-                if(Variables.LUMBRIDGE_NORMAL_TREE_ZONE.inTheZoneObject(tree)) {
-                    return tree;
-                }
+                return tree;
             }
         }
         return null;
