@@ -49,8 +49,8 @@ public class Main extends Script implements MessageListener, Paintable {
         }
         if(Variables.skill_to_train == Skill.MINING) {
             strategies.add(new Mine());
-            strategies.add(new Bank());
-            strategies.add(new Walk());
+            // strategies.add(new Bank());
+            // strategies.add(new Walk());
         }
         // if(Variables.skill_to_train == Skill.SMITHING) {
         //     strategies.add(new Smelt());
@@ -69,6 +69,8 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new FightingReturnToCoords());
             strategies.add(new LoadCannon());
             strategies.add(new Fighting());
+            // strategies.add(new Bank());
+            // strategies.add(new Walk());
         }
         if(Variables.skill_to_train == Skill.FISHING) {
             strategies.add(new Fish());

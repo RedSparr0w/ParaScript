@@ -30,11 +30,11 @@ public class Variables {
 
     // Mining
     public static Rocks mining_rock_selected = Rocks.ESSENCE;
-    public static String mining_method = "Bank";
+    public static String mining_method = "Drop";
 
     // Smithing
     public static Bars smithing_bar_selected = Bars.BRONZE;
-    public static String smithing_method = "Bank";
+    public static String smithing_method = "Drop";
 
     // Fighting
     public static FightingNpcs fighting_npc_selected = FightingNpcs.CHICKEN;

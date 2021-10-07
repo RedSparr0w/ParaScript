@@ -193,7 +193,7 @@ public class UI extends JFrame {
         woodcuttingPanel.add(lblWoodcuttingMethod);
         woodcuttingMethod.setModel(new DefaultComboBoxModel(new String[]{
                 "Fletch",
-                "Bank",
+                // "Bank",
                 "Drop",
         }));
         woodcuttingMethod.setBounds(20, 80, 150, 20);
@@ -274,7 +274,7 @@ public class UI extends JFrame {
         lblMiningMethod.setBounds(20, 60, 150, 20);
         miningPanel.add(lblMiningMethod);
         miningMethod.setModel(new DefaultComboBoxModel(new String[]{
-                "Bank",
+                // "Bank",
                 "Drop",
         }));
         miningMethod.setBounds(20, 80, 150, 20);
