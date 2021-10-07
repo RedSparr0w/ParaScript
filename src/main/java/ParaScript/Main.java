@@ -38,9 +38,9 @@ public class Main extends Script implements MessageListener, Paintable {
         strategies.add(new UpdateBank());
         strategies.add(new UpdateExperience());
         strategies.add(new ScriptState());
-        if(Variables.skill_to_train == Skill.CRAFTING) {
-            strategies.add(new Crafting());
-        }
+        // if(Variables.skill_to_train == Skill.CRAFTING) {
+        //     strategies.add(new Crafting());
+        // }
         if(Variables.skill_to_train == Skill.WOODCUTTING) {
             strategies.add(new MakeArrowShafts());
             strategies.add(new WoodcutTree());
@@ -50,10 +50,10 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Bank());
             strategies.add(new Walk());
         }
-        if(Variables.skill_to_train == Skill.SMITHING) {
-            strategies.add(new Smelt());
-            strategies.add(new BankSmithing());
-        }
+        // if(Variables.skill_to_train == Skill.SMITHING) {
+        //     strategies.add(new Smelt());
+        //     strategies.add(new BankSmithing());
+        // }
         if(Variables.skill_to_train == Skill.THIEVING) {
             strategies.add(new Thieving());
         }
@@ -78,9 +78,6 @@ public class Main extends Script implements MessageListener, Paintable {
         }
         strategies.add(new HandleLogin());
         provide(strategies);
-
-        Keyboard.getInstance().sendKeys("Training " + Variables.skill_to_train.getName() + ". Drop items? " + !Variables.shouldBankItems());
-
         return true;
     }
 
