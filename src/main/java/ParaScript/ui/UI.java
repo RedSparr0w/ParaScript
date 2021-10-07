@@ -411,7 +411,7 @@ public class UI extends JFrame {
         });
         fightingPanel.add(fightingBuryBones);
 
-        // Should we hold a position (aggressive npcs) return after collecting items
+        // Should we hold a position (aggressive npcs, ranging) return after collecting items
         JLabel lblReturnPosition = new JLabel("Return Position");
         lblReturnPosition.setForeground(Color_WhiteSmoke);
         lblReturnPosition.setBounds(200, 40, 150, 20);
