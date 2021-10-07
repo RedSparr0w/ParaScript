@@ -7,10 +7,7 @@ import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.Items;
 import org.rev317.min.api.methods.SceneObjects;
-import org.rev317.min.api.wrappers.Item;
 import org.rev317.min.api.wrappers.SceneObject;
-
-import java.util.Date;
 
 public class LoadCannon implements Strategy {
     private SceneObject cannon;
@@ -23,6 +20,7 @@ public class LoadCannon implements Strategy {
         if (Variables.running
                 && Variables.load_cannon
                 && cannon != null
+                && hasCannonBalls()
                 && nextFill <= System.currentTimeMillis()
         ) {
             Variables.setStatus("filling cannon");
@@ -47,5 +45,10 @@ public class LoadCannon implements Strategy {
                 return _cannon;
         }
         return null;
+    }
+
+    private boolean hasCannonBalls(){
+        // Make sure we have cannon balls
+        return Inventory.getItem(2 + 1) != null;
     }
 }
