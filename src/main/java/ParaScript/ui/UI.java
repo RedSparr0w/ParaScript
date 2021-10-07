@@ -52,9 +52,11 @@ public class UI extends JFrame {
     private JComboBox thievingNpcSelect = new JComboBox();
     private JLabel lblThievingNpcCustomID = new JLabel("Custom NPC IDs");
     private JTextField thievingNpcCustomID = new JTextField();
+    private JComboBox thievingMethod = new JComboBox();
 
     // Fishing
     private JComboBox fishingTypeSelect = new JComboBox();
+    private JComboBox fishingMethod = new JComboBox();
 
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
@@ -600,6 +602,22 @@ public class UI extends JFrame {
         lblThievingNpcCustomID.setVisible(false);
         thievingNpcCustomID.setVisible(false);
 
+        // What should we do with our items
+        JLabel lblThievingMethod = new JLabel("Method");
+        lblThievingMethod.setForeground(Color_WhiteSmoke);
+        lblThievingMethod.setBounds(20, 60, 150, 20);
+        thievingPanel.add(lblThievingMethod);
+        thievingMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Drop",
+        }));
+        thievingMethod.setBounds(20, 80, 150, 20);
+        thievingMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.thieving_method = thievingMethod.getSelectedItem().toString();
+            }
+        });
+        thievingPanel.add(thievingMethod);
+
         /*
          * Fishing Panel
          */
@@ -627,6 +645,22 @@ public class UI extends JFrame {
             }
         });
         fishingPanel.add(fishingTypeSelect);
+
+        // What should we do with out fish
+        JLabel lblFishingMethod = new JLabel("Method");
+        lblFishingMethod.setForeground(Color_WhiteSmoke);
+        lblFishingMethod.setBounds(20, 60, 150, 20);
+        fishingPanel.add(lblFishingMethod);
+        fishingMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Drop",
+        }));
+        fishingMethod.setBounds(20, 80, 150, 20);
+        fishingMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.fishing_method = fishingMethod.getSelectedItem().toString();
+            }
+        });
+        fishingPanel.add(fishingMethod);
 
         /*
          * Slave Panel

@@ -47,10 +47,11 @@ public class Variables {
 
     // Thieving
     public static ThievingNpcs thieving_npc_selected = ThievingNpcs.MAN_WOMAN;
-    //public static String thieving_method = "None";
+    public static String thieving_method = "Drop";
 
     // Fishing
     public static FishingSpots fishing_spot_selected = FishingSpots.NET;
+    public static String fishing_method = "Drop";
 
     // Banking
     public static int[] bank_items = new int[]{};
@@ -207,6 +208,10 @@ public class Variables {
                 return woodcutting_method.equalsIgnoreCase("Drop");
             case "Mining":
                 return mining_method.equalsIgnoreCase("Drop");
+            case "Fishing":
+                return fishing_method.equalsIgnoreCase("Drop");
+            case "Thieving":
+                return thieving_method.equalsIgnoreCase("Drop");
             default:
                 return false;
         }
