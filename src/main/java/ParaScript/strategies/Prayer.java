@@ -24,16 +24,17 @@ public class Prayer implements Strategy {
 
     @Override
     public void execute() {
-        Variables.setStatus("withdrawing bones");
-        Bank.openBank();
-        // TODO: allow player to select which bones they want to make use of
-        Bank.withdrawItem(536, -1);
-        Time.sleep(500);
-        Variables.setStatus("closing bank");
-        Bank.closeBank();
-        Time.sleep(500);
-        Variables.setStatus("burying bones");
-        BuryBones.buryBones();
-        Variables.setStatus("none");
+        if (!BuryBones.hasBones()) {
+            Variables.setStatus("withdrawing bones");
+            Bank.openBank();
+            Bank.withdrawItem(Variables.prayer_bone_type_selected.getID(), -1);
+            Time.sleep(500);
+            Variables.setStatus("closing bank");
+            Bank.closeBank();
+            Time.sleep(500);
+        } else {
+            Variables.setStatus("burying bones");
+            BuryBones.buryBones();
+        }
     }
 }

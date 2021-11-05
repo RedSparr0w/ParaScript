@@ -54,6 +54,10 @@ public class Variables {
     public static FishingSpots fishing_spot_selected = FishingSpots.NET;
     public static String fishing_method = "Drop";
 
+    // Prayer
+    public static Bones prayer_bone_type_selected = Bones.BONES;
+    public static String prayer_method = "Bury";
+
     // Banking
     public static int[] bank_items = new int[]{};
 

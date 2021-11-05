@@ -58,6 +58,10 @@ public class UI extends JFrame {
     private JComboBox fishingTypeSelect = new JComboBox();
     private JComboBox fishingMethod = new JComboBox();
 
+    // Prayer
+    private JComboBox prayerBoneTypeSelect = new JComboBox();
+    private JComboBox prayerMethod = new JComboBox();
+
     // Our colors
     private Color Color_MidnightBlue = new Color(44, 62, 80);
     private Color Color_WetAsphalt = new Color(52, 73, 94);
@@ -639,7 +643,7 @@ public class UI extends JFrame {
         fishingTypeSelect.addActionListener (new ActionListener () {
             public void actionPerformed(ActionEvent e) {
                 for (FishingSpots fishingSpot : FishingSpots.values()) {
-                    if (fishingSpot.name().equalsIgnoreCase(fishingTypeSelect.getSelectedItem().toString())) {
+                    if (fishingSpot.getName().equalsIgnoreCase(fishingTypeSelect.getSelectedItem().toString())) {
                         Variables.fishing_spot_selected = fishingSpot;
                     }
                 }
@@ -662,6 +666,53 @@ public class UI extends JFrame {
             }
         });
         fishingPanel.add(fishingMethod);
+
+        /*
+         * Prayer Panel
+         */
+
+        JPanel prayerPanel = new JPanel();
+        prayerPanel.setForeground(Color_WhiteSmoke);
+        prayerPanel.setBackground(Color_WetAsphalt);
+        tabbedPane.addTab("Prayer", prayerPanel);
+        prayerPanel.setLayout(null);
+
+        // Select our bone type
+        JLabel lblBoneTypeSelect = new JLabel("Bone Type");
+        lblBoneTypeSelect.setForeground(Color_WhiteSmoke);
+        lblBoneTypeSelect.setBounds(20, 20, 73, 20);
+        prayerPanel.add(lblBoneTypeSelect);
+        prayerBoneTypeSelect.setModel(new DefaultComboBoxModel(Bones.toStringArray()));
+        prayerBoneTypeSelect.setBounds(20, 40, 150, 20);
+        prayerBoneTypeSelect.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Selected bones: " + prayerBoneTypeSelect.getSelectedItem().toString());
+                for (Bones bone : Bones.values()) {
+                    if (bone.getName().equalsIgnoreCase(prayerBoneTypeSelect.getSelectedItem().toString())) {
+                        Variables.prayer_bone_type_selected = bone;
+                        System.out.println("Updated bone: " + bone.name());
+                    }
+                    System.out.println("Updating the bones: " + bone.name());
+                }
+            }
+        });
+        prayerPanel.add(prayerBoneTypeSelect);
+
+        // What should we do with out fish
+        JLabel lblPrayerMethod = new JLabel("Method");
+        lblPrayerMethod.setForeground(Color_WhiteSmoke);
+        lblPrayerMethod.setBounds(20, 60, 150, 20);
+        prayerPanel.add(lblPrayerMethod);
+        prayerMethod.setModel(new DefaultComboBoxModel(new String[]{
+                "Bury",
+        }));
+        prayerMethod.setBounds(20, 80, 150, 20);
+        prayerMethod.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                Variables.prayer_method = prayerMethod.getSelectedItem().toString();
+            }
+        });
+        prayerPanel.add(prayerMethod);
 
         /*
          * Slave Panel
