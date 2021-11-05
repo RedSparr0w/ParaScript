@@ -67,7 +67,7 @@ public class UI extends JFrame {
     private Color Color_BelizeHole = new Color(41, 128, 185);
 
     public UI() {
-        setTitle("2006 AIO");
+        setTitle("ParaScript");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 400, 300);

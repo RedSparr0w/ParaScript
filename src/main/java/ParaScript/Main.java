@@ -17,7 +17,7 @@ import org.rev317.min.api.methods.Skill;
 import java.awt.*;
 import java.util.ArrayList;
 
-@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "2006 AIO Script", name = "2006 AIO", servers = { "2006rebotted" }, version = 1.3)
+@ScriptManifest(author = "RedSparr0w & Dark98", category = Category.OTHER, description = "ParaScript", name = "ParaScript", servers = { "2006rebotted" }, version = 1.3)
 public class Main extends Script implements MessageListener, Paintable {
 
     private final ArrayList<Strategy> strategies = new ArrayList<Strategy>();
@@ -95,7 +95,7 @@ public class Main extends Script implements MessageListener, Paintable {
     public void onFinish() {
         Variables.desktopTray.removeTray();
         ui.dispose();
-        System.out.println("2006 AIO Script Stopped");
+        System.out.println("ParaScript Stopped");
     }
 
     @Override
@@ -114,7 +114,7 @@ public class Main extends Script implements MessageListener, Paintable {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 14));
-        g.drawString("2006 AIO", 360, 247);
+        g.drawString("ParaScript", 360, 247);
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString("Status: " + Variables.getStatus(), 360, 270);
         if (SCRIPT_TIMER == null) return;
