@@ -21,8 +21,6 @@ public class UpdateBank implements Strategy {
 
     @Override
     public void execute() {
-        Variables.bank_items = Bank.getBankItemIDs();
-        Time.sleep(500);
         saveBankFile();
         // Variables.setStatus("none");
     }
@@ -31,7 +29,9 @@ public class UpdateBank implements Strategy {
         return "." + seperator + "bank" + seperator + Variables.getAccountUsername() + ".bank";
     }
 
-    public void saveBankFile(){
+    public static void saveBankFile(){
+        Variables.bank_items = Bank.getBankItemIDs();
+        Time.sleep(500);
         String filePath = getfileName();
         checkOrCreateFile(filePath);
         try {

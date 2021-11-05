@@ -4,6 +4,7 @@ import ParaScript.data.Variables;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.wrappers.Npc;
+import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Item;
 
@@ -32,15 +33,31 @@ public class Bank implements Strategy {
         if (isBankOpen()) {
             return true;
         }
-        Npc banker = Npcs.getClosest(494);
+
+        // Try find a nearby bank booth/chest
+        SceneObject bank_booth = SceneObjects.getClosest(11338, 2214, 3045, 5276, 6084, 11758, 14367, 4483, 3194, 10517, 2213);
+        if (bank_booth != null) {
+            bank_booth.interact(SceneObjects.Option.USE_QUICKLY);
+            Time.sleep(() -> isBankOpen(), 10000);
+            if (isBankOpen()) {
+                UpdateBank.saveBankFile();
+                return true;
+            }
+        }
+
+        // Try find a nearby banker
+        Npc banker = Npcs.getClosest(953, 166, 1702, 495, 496, 497, 498, 499, 567, 1036, 1360, 2163, 2164, 2354, 2355, 2568, 2569, 2570, 2271, 494, 2619);
         if (banker != null) {
             banker.interact(Npcs.Option.BANK);
             Time.sleep(() -> isBankOpen(), 10000);
-            return true;
-        } else {
-            System.out.println("Unable to find a banker");
-            return false;
+            if (isBankOpen()) {
+                UpdateBank.saveBankFile();
+                return true;
+            }
         }
+
+        System.out.println("Unable to find a nearby bank booth or banker");
+        return false;
     }
 
     public static int getInventorySlot(int item_id){
