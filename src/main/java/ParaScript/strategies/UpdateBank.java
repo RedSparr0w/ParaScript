@@ -13,7 +13,7 @@ public class UpdateBank implements Strategy {
     @Override
     public boolean activate() {
         if (Bank.isOpen()) {
-            Variables.setStatus("Saving Bank");
+            // Variables.setStatus("Saving Bank");
             return true;
         }
         return false;
@@ -24,6 +24,7 @@ public class UpdateBank implements Strategy {
         Variables.bank_items = Bank.getBankItemIDs();
         Time.sleep(500);
         saveBankFile();
+        // Variables.setStatus("none");
     }
 
     private static String getfileName(){

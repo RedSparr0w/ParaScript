@@ -141,6 +141,7 @@ public class UI extends JFrame {
                 Skill.THIEVING.getName(),
                 Skill.FISHING.getName(),
                 // Skill.CRAFTING.getName(),
+                Skill.PRAYER.getName(),
                 "Bank Runner",
         }));
         skillSelect.setBounds(20, 40, 150, 20);

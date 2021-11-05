@@ -228,4 +228,16 @@ public class Variables {
                 return false;
         }
     }
+
+    public static boolean shouldBuryBones(){
+        if (skill_to_train == null) return true;
+        switch (skill_to_train.getName()){
+            case "Prayer":
+                return true;
+            case "Attack":
+                return Variables.fighting_bury_bones;
+            default:
+                return false;
+        }
+    }
 }

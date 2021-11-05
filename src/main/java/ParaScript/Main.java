@@ -80,6 +80,9 @@ public class Main extends Script implements MessageListener, Paintable {
             strategies.add(new Walk());
             strategies.add(new PickupItems());
         }
+        if(Variables.skill_to_train == Skill.PRAYER) {
+            strategies.add(new Prayer());
+        }
         
         // These strategies should always be running
         strategies.add(new Drop());

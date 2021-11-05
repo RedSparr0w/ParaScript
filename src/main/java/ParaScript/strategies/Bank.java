@@ -121,4 +121,8 @@ public class Bank implements Strategy {
                 return;
         }
     }
+
+    public static void closeBank(){
+        Menu.sendAction(200, 440, 5, 5384, 1);
+    }
 }

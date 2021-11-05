@@ -11,8 +11,8 @@ public class BuryBones implements Strategy {
     @Override
     public boolean activate() {
         if (Variables.running
-                && Variables.fighting_bury_bones
                 && hasBones()
+                && Variables.shouldBuryBones()
                 // && !Players.getMyPlayer().isInCombat()
                 // && Inventory.isFull()
         ) {
@@ -25,10 +25,10 @@ public class BuryBones implements Strategy {
 
     @Override
     public void execute() {
-        buryBones();
+        BuryBones.buryBones();
     }
 
-    private void buryBones(){
+    public static void buryBones(){
         try {
             getBones().interact(Items.Option.SECOND);
             Time.sleep(500);
@@ -38,12 +38,12 @@ public class BuryBones implements Strategy {
         }
     }
 
-    private boolean hasBones(){
+    public static boolean hasBones(){
         // Make sure we have bones
         return getBones() != null;
     }
 
-    private Item getBones(){
+    public static Item getBones(){
         // Make sure we have bones
         for (int bone_id : getBoneIds()) {
             if (Inventory.getItem(bone_id + 1) != null) {
